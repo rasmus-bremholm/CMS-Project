@@ -26,10 +26,10 @@ export default function Navbar() {
 				))}
 			</Box>
 			<Box>
-				<IconButton LinkComponent={Link} href='/account'>
+				<IconButton LinkComponent={Link} href='/account' aria-label='Go to Account Page'>
 					<AccountCircleIcon />
 				</IconButton>
-				<IconButton LinkComponent={Link} href='/cart'>
+				<IconButton LinkComponent={Link} href='/cart' aria-label='View your Cart'>
 					<ShoppingCartIcon />
 				</IconButton>
 			</Box>
