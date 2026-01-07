@@ -1,15 +1,37 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
+
+import { QuantitySelector } from "../components/QuantitySelector";
 
 export default function ProductDetails() {
-	const product = {
-		title: 'Arvid Nordquist, Classic Mellan',
-		price: 89,
-		description: 'Elegant smak med nötiga toner. Lång och frisk eftersmak. Mellan är certifierat av Rainforest Alliance.',
-		inStock: true
-	}
+  const [quantity, setQuantity] = useState(1);
+
+  const handleDecrease = () => {
+    console.log("Decrease!");
+  };
+
+  const handleIncrease = () => {
+    console.log("Increase!");
+  };
+
+  const product = {
+    title: "Arvid Nordquist, Classic Mellan",
+    price: 89,
+    description:
+      "Elegant smak med nötiga toner. Lång och frisk eftersmak. Mellan är certifierat av Rainforest Alliance.",
+    inStock: true,
+  };
 
   return (
     <Container
@@ -34,13 +56,21 @@ export default function ProductDetails() {
 
             <Typography>{product.price}:-</Typography>
 
-            <Typography>
-              {product.description}
-            </Typography>
+            <Typography>{product.description}</Typography>
 
             <Typography>
-							{product.inStock ? 'I lager' : 'Ej i lager'}
-						</Typography>
+              {product.inStock ? "I lager" : "Ej i lager"}
+            </Typography>
+
+            <Stack direction="row" spacing={2}>
+              <QuantitySelector
+                quantity={quantity}
+                onDecrease={handleDecrease}
+                onIncrease={handleIncrease}
+              />
+
+              <Button>Lägg till</Button>
+            </Stack>
           </Stack>
         </Grid>
       </Grid>
