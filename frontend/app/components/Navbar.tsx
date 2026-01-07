@@ -16,7 +16,7 @@ export default function Navbar() {
 	return (
 		<Box component='nav'>
 			<Box>
-				<Image src='/logo.png' height={50} width={50} alt='Coffee Time Logo' />
+				<Image src='/logo.png' height={100} width={100} alt='Coffee Time Logo' />
 			</Box>
 			<Box>
 				{menuLinks.map((item) => (
