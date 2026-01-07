@@ -14,11 +14,13 @@ export default function Navbar() {
 	];
 
 	return (
-		<Box component='nav'>
+		<Box component='nav' sx={{ display: "flex", justifyContent: "center", alignItems: "center", px: 2, py: 1 }}>
 			<Box>
-				<Image src='/logo.png' height={100} width={100} alt='Coffee Time Logo' />
+				<Link href='/'>
+					<Image src='/coffe-time-logo.png' height={70} width={74} alt='Coffee Time Logo' />
+				</Link>
 			</Box>
-			<Box>
+			<Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
 				{menuLinks.map((item) => (
 					<Link key={item.id} href={item.url}>
 						{item.title}
