@@ -14,13 +14,13 @@ export default function Navbar() {
 	];
 
 	return (
-		<Box component='nav' sx={{ display: "flex", justifyContent: "center", alignItems: "center", px: 2, py: 1 }}>
+		<Box component='nav' sx={{ display: "flex", justifyContent: "center", alignItems: "center", px: 2, py: 1, fontSize: 24 }}>
 			<Box>
 				<Link href='/'>
 					<Image src='/coffe-time-logo.png' height={70} width={74} alt='Coffee Time Logo' />
 				</Link>
 			</Box>
-			<Box sx={{ flex: 1, display: "flex", justifyContent: "center" }}>
+			<Box sx={{ flex: 1, display: "flex", justifyContent: "center", gap: 3 }}>
 				{menuLinks.map((item) => (
 					<Link key={item.id} href={item.url}>
 						{item.title}
@@ -29,10 +29,10 @@ export default function Navbar() {
 			</Box>
 			<Box>
 				<IconButton LinkComponent={Link} href='/account' aria-label='Go to Account Page'>
-					<AccountCircleIcon />
+					<AccountCircleIcon sx={{ color: "#fafafa" }} />
 				</IconButton>
 				<IconButton LinkComponent={Link} href='/cart' aria-label='View your Cart'>
-					<ShoppingCartIcon />
+					<ShoppingCartIcon sx={{ color: "#fafafa" }} />
 				</IconButton>
 			</Box>
 		</Box>
