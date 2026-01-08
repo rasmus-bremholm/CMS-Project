@@ -5,7 +5,8 @@
     "price": 89,
     "description": "Elegant smak med nötiga toner. Lång och frisk eftersmak. Mellan är certifierat av Rainforest Alliance.",
     "inStock": true,
-		"imageUrl": "/mellan.webp"
+		"imageUrl": "/mellan.webp",
+		"slug": "arvid-nordquist-mellan"
   },
 	{
     "id": 2,
@@ -13,6 +14,7 @@
     "price": 79,
     "description": "Svea har en djup och nötig smak. Balanserad eftersmak med ton av mörka bär.",
     "inStock": true,
-		"imageUrl": "/svea.webp"
+		"imageUrl": "/svea.webp",
+		"slug": "arvid-nordquist-svea"
   }
 ]

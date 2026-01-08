@@ -3,12 +3,12 @@ import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { ProductActions } from "./ProductActions";
 
 interface Props {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }
 
 export default async function ProductDetails({ params }: Props) {
-	const { id } = await params;
-	const product = await getProduct(id);
+	const { slug } = await params;
+	const product = await getProduct(slug);
 
   return (
     <Container
@@ -49,9 +49,9 @@ export default async function ProductDetails({ params }: Props) {
   );
 }
 
-async function getProduct(id: string) {
+async function getProduct(slug: string) {
   const module = await import("@/app/mockdata/products.json");
   const products = module.default;
 
-  return products.find((product) => product.id == id);
+  return products.find((product) => product.slug === slug);
 }
