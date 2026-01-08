@@ -2,15 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  IconButton,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 
 import { QuantitySelector } from "../components/QuantitySelector";
 
@@ -41,7 +33,7 @@ export default function ProductDetails() {
         display: "flex",
       }}
     >
-      <Grid container spacing={2} alignItems="center">
+      <Grid container spacing={4} alignItems="center">
         <Grid size={{ xs: 12, md: 6 }}>
           <Box sx={{ aspectRatio: "1/1", position: "relative", width: "100%" }}>
             <Image fill src="/example.webp" alt="Alt text" />
@@ -49,12 +41,14 @@ export default function ProductDetails() {
         </Grid>
 
         <Grid size={{ xs: 12, md: 6 }}>
-          <Stack sx={{ color: "white" }}>
-            <Typography component="h1" variant="h4" fontWeight="bold">
-              {product.title}
-            </Typography>
+          <Stack spacing={3} sx={{ color: "white" }}>
+            <Box>
+              <Typography component="h1" variant="h4" fontWeight="bold">
+                {product.title}
+              </Typography>
 
-            <Typography>{product.price}:-</Typography>
+              <Typography fontWeight="bold">{product.price}:-</Typography>
+            </Box>
 
             <Typography>{product.description}</Typography>
 
