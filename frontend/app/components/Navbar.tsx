@@ -14,10 +14,10 @@ export default function Navbar() {
 	];
 
 	return (
-		<Box component='nav' sx={{ display: "flex", justifyContent: "center", alignItems: "center", px: 2, py: 1, fontSize: 24 }}>
+		<Box component='nav' sx={{ display: "flex", justifyContent: "center", alignItems: "center", px: { xs: 2, sm: 4, m: 6 }, py: 1, fontSize: 24 }}>
 			<Box>
 				<Link href='/'>
-					<Image src='/coffe-time-logo.png' height={70} width={74} alt='Coffee Time Logo' />
+					<Image src='/coffe-time-logo.png' height={60} width={64} alt='Coffee Time Logo' />
 				</Link>
 			</Box>
 			<Box sx={{ flex: 1, display: "flex", justifyContent: "center", gap: 3 }}>
