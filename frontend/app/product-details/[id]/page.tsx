@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
 
-import { QuantitySelector } from "../components/QuantitySelector";
+import { QuantitySelector } from "../../components/QuantitySelector";
 
 export default function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
@@ -31,7 +31,7 @@ export default function ProductDetails() {
       <Grid container spacing={4} alignItems="center">
         <Grid size={{ xs: 12, md: 6 }}>
           <Box sx={{ aspectRatio: "1/1", position: "relative", width: "100%" }}>
-            <Image fill src="/example.webp" alt="Alt text" />
+            <Image fill src="/mellan.webp" alt="Alt text" />
           </Box>
         </Grid>
 
