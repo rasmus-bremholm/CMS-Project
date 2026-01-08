@@ -13,7 +13,7 @@ export default function BackButton() {
         display: "inline-flex",
         alignItems: "center",
         mb: 4,
-        color: "text.secondary",
+        color: "white",
         textDecoration: "none",
         "&:hover": { color: "text.primary" },
       }}

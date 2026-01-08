@@ -13,33 +13,29 @@ export default function CheckoutPage() {
   };
 
   return (
-    <Box sx={{ minHeight: "100vh", py: { xs: 4, md: 6 } }}>
-      <Container maxWidth="lg">
-        {/* Back to cart */}
-        <BackButton />
+    <Container maxWidth="lg" sx={{ py: 6 }}>
+      {/* Back to cart */}
+      <BackButton />
 
-        <Typography variant="h4" align="left" mb={2} sx={{ fontSize: "1.75rem" }}>
-          Checkout
-        </Typography>
+      <Typography variant="h3" color="white" sx={{ mb: 4 }}>
+        Checkout
+      </Typography>
 
-        <Box component="form" onSubmit={handleSubmit}>
-          <Grid container spacing={4}>
-            {/* LEFT COLUMN */}
-            <Grid size={{ xs: 12, lg: 8 }}>
-              <Stack spacing={4}>
-                <ContactCard />
-                <AddressCard />
-                <PaymentCard />
-              </Stack>
-            </Grid>
+      <Grid container spacing={4}>
+        {/* LEFT COLUMN */}
+        <Grid size={{ xs: 12, lg: 8 }}>
+          <Stack spacing={4}>
+            <ContactCard />
+            <AddressCard />
+            <PaymentCard />
+          </Stack>
+        </Grid>
 
-            {/* RIGHT COLUMN */}
-            <Grid size={{ xs: 12, lg: 4 }}>
-              <OrderSummary />
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
-    </Box>
+        {/* RIGHT COLUMN */}
+        <Grid size={{ xs: 12, lg: 4 }}>
+          <OrderSummary />
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
