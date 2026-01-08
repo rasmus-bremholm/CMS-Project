@@ -6,7 +6,7 @@ export default function ContactCard() {
   return (
     <Card>
       <CardContent>
-        <Typography variant="h3" fontWeight={600} mb={2}>
+        <Typography variant="h6" fontWeight={600} mb={2}>
           Contact Information
         </Typography>
 

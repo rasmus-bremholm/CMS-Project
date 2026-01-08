@@ -4,6 +4,8 @@ import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import BackButton from "./components/Buttons/BackButton";
 import ContactCard from "./components/Cards/ContactCard";
 import AddressCard from "./components/Cards/AddressCard";
+import PaymentCard from "./components/Cards/PaymentCard";
+import OrderSummary from "./components/OrderSummary";
 
 export default function CheckoutPage() {
   const handleSubmit = (e) => {
@@ -13,7 +15,6 @@ export default function CheckoutPage() {
   return (
     <Container
       component="main"
-      maxWidth="xs"
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -35,7 +36,13 @@ export default function CheckoutPage() {
             <Stack spacing={4}>
               <ContactCard />
               <AddressCard />
+              <PaymentCard />
             </Stack>
+          </Grid>
+
+          {/* RIGHT COLUMN */}
+          <Grid>
+            <OrderSummary />
           </Grid>
         </Box>
       </Stack>

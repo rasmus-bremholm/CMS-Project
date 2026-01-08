@@ -9,7 +9,7 @@ export default function AddressCard() {
       <CardContent>
         <Stack direction="row" alignItems="center" spacing={1} mb={2}>
           <LocalShipping color="primary" />
-          <Typography variant="h3" fontWeight={600} mb={2}>
+          <Typography variant="h6" fontWeight={600} mb={2}>
             Shipping Address
           </Typography>
         </Stack>
