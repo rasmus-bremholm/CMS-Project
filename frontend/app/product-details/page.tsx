@@ -9,13 +9,8 @@ import { QuantitySelector } from "../components/QuantitySelector";
 export default function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
 
-  const handleDecrease = () => {
-    console.log("Decrease!");
-  };
-
-  const handleIncrease = () => {
-    console.log("Increase!");
-  };
+  const handleDecrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  const handleIncrease = () => setQuantity((prev) => prev + 1);
 
   const product = {
     title: "Arvid Nordquist, Classic Mellan",
