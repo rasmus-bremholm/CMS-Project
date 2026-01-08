@@ -1,10 +1,15 @@
 "use client";
 
-import { Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import BackButton from "./components/Buttons/BackButton";
 import ContactCard from "./components/Cards/ContactCard";
+import AddressCard from "./components/Cards/AddressCard";
 
 export default function CheckoutPage() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Container
       component="main"
@@ -25,7 +30,14 @@ export default function CheckoutPage() {
         </Typography>
       </Stack>
       <Stack>
-        <ContactCard />
+        <Box component="form" onSubmit={handleSubmit}>
+          <Grid container spacing={4}>
+            <Stack spacing={4}>
+              <ContactCard />
+              <AddressCard />
+            </Stack>
+          </Grid>
+        </Box>
       </Stack>
     </Container>
   );
