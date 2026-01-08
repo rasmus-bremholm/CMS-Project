@@ -1,13 +1,34 @@
 import { Box, Typography, IconButton, Icon } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import { styled } from "@mui/material/styles";
+
+const FooterText = styled(Typography)({
+   fontSize
+})
 
 export default function Footer() {
 	return (
-		<Box component='footer' sx={{ display: "flex", flexDirection: "column", pt: 6, pb: 1, bgcolor: "#fafafa" }}>
+		<Box
+			component='footer'
+			sx={{ display: "flex", flexDirection: "column", pt: 6, pb: 1, bgcolor: "#fafafa", position: "fixed", bottom: 0, width: "100%" }}>
 			<Box sx={{ display: "flex", justifyContent: "space-around" }}>
-				<Box>
-					<Typography variant='h5'>Shop</Typography>
+				<Box sx={{ display: "flex", flexDirection: "column" }}>
+					<Typography sx={{ fontSize: "0.9rem" }} variant='h5'>
+						CoffeTime
+					</Typography>
+					<Typography sx={{ fontSize: "0.8rem" }} variant='body1'>
+						Adressvägen 123
+					</Typography>
+					<Typography sx={{ fontSize: "0.8rem" }} variant='body1'>
+						123 45 Staden
+					</Typography>
+					<Typography sx={{ fontSize: "0.8rem" }} variant='body1'>
+						Orgnr: 1234 56789
+					</Typography>
+					<Typography sx={{ fontSize: "0.8rem" }} variant='body1'>
+						Tel: 031-26 58 00
+					</Typography>
 				</Box>
 				<Box>
 					<Typography variant='h5'>Populärt</Typography>
