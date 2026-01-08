@@ -18,7 +18,7 @@ export default function CheckoutPage() {
         {/* Back to cart */}
         <BackButton />
 
-        <Typography variant="h4" align="center" sx={{ fontSize: "1.75rem" }}>
+        <Typography variant="h4" align="left" mb={2} sx={{ fontSize: "1.75rem" }}>
           Checkout
         </Typography>
 
@@ -34,7 +34,7 @@ export default function CheckoutPage() {
             </Grid>
 
             {/* RIGHT COLUMN */}
-            <Grid>
+            <Grid size={{ xs: 12, lg: 4 }}>
               <OrderSummary />
             </Grid>
           </Grid>

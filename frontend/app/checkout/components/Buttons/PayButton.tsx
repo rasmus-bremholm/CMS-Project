@@ -13,7 +13,9 @@ export default function PayButton() {
         sx={{
           mt: 3,
         }}
-      ></Button>
+      >
+        Pay price
+      </Button>
     </>
   );
 }

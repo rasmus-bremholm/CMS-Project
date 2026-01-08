@@ -32,9 +32,9 @@ export default function AddressCard() {
               <TextField label="City" required fullWidth />
             </Grid>
 
-            <Grid size={{ xs: 12, sm: 6 }}>
+            {/*             <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="State" required fullWidth />
-            </Grid>
+            </Grid> */}
 
             <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="ZIP Code" required fullWidth />

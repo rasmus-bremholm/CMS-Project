@@ -5,7 +5,7 @@ import PayButton from "./Buttons/PayButton";
 
 export default function OrderSummary() {
   return (
-    <Card>
+    <Card sx={{ position: "sticky", top: 96 }}>
       <CardContent>
         <Typography variant="h6" fontWeight={600} mb={2}>
           Order Summary
