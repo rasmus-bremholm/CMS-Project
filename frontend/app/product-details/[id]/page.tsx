@@ -1,24 +1,14 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
-import { Box, Button, Container, Grid, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { ProductActions } from "./ProductActions";
 
-import { QuantitySelector } from "../../components/QuantitySelector";
+interface Props {
+  params: Promise<{ id: string }>;
+}
 
-export default function ProductDetails() {
-  const [quantity, setQuantity] = useState(1);
-
-  const handleDecrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
-  const handleIncrease = () => setQuantity((prev) => prev + 1);
-
-  const product = {
-    title: "Arvid Nordquist, Classic Mellan",
-    price: 89,
-    description:
-      "Elegant smak med nötiga toner. Lång och frisk eftersmak. Mellan är certifierat av Rainforest Alliance.",
-    inStock: true,
-  };
+export default async function ProductDetails({ params }: Props) {
+	const { id } = await params;
+	const product = await getProduct(id);
 
   return (
     <Container
@@ -51,18 +41,17 @@ export default function ProductDetails() {
               {product.inStock ? "I lager" : "Ej i lager"}
             </Typography>
 
-            <Stack direction="row" spacing={2}>
-              <QuantitySelector
-                quantity={quantity}
-                onDecrease={handleDecrease}
-                onIncrease={handleIncrease}
-              />
-
-              <Button>Lägg till</Button>
-            </Stack>
+            <ProductActions product={product} />
           </Stack>
         </Grid>
       </Grid>
     </Container>
   );
+}
+
+async function getProduct(id: string) {
+  const module = await import("@/app/mockdata/products.json");
+  const products = module.default;
+
+  return products.find((product) => product.id == id);
 }
