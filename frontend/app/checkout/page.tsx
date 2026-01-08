@@ -13,39 +13,33 @@ export default function CheckoutPage() {
   };
 
   return (
-    <Container
-      component="main"
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        justifyContent: "flex-start",
-        height: "100vh",
-        width: "100vw",
-      }}
-    >
-      <Stack>
+    <Box sx={{ minHeight: "100vh", py: { xs: 4, md: 6 } }}>
+      <Container maxWidth="lg">
+        {/* Back to cart */}
         <BackButton />
-        <Typography variant="h2" align="center" sx={{ fontSize: "1.75rem" }}>
+
+        <Typography variant="h4" align="center" sx={{ fontSize: "1.75rem" }}>
           Checkout
         </Typography>
-      </Stack>
-      <Stack>
+
         <Box component="form" onSubmit={handleSubmit}>
           <Grid container spacing={4}>
-            <Stack spacing={4}>
-              <ContactCard />
-              <AddressCard />
-              <PaymentCard />
-            </Stack>
-          </Grid>
+            {/* LEFT COLUMN */}
+            <Grid size={{ xs: 12, lg: 8 }}>
+              <Stack spacing={4}>
+                <ContactCard />
+                <AddressCard />
+                <PaymentCard />
+              </Stack>
+            </Grid>
 
-          {/* RIGHT COLUMN */}
-          <Grid>
-            <OrderSummary />
+            {/* RIGHT COLUMN */}
+            <Grid>
+              <OrderSummary />
+            </Grid>
           </Grid>
         </Box>
-      </Stack>
-    </Container>
+      </Container>
+    </Box>
   );
 }

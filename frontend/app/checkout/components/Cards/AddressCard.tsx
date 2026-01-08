@@ -16,11 +16,11 @@ export default function AddressCard() {
 
         <Stack spacing={2}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="First Name" required fullWidth />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="Last Name" required fullWidth />
             </Grid>
           </Grid>
@@ -28,15 +28,15 @@ export default function AddressCard() {
           <TextField label="Address" required placeholder="Street Address" fullWidth />
 
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="City" required fullWidth />
             </Grid>
 
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="State" required fullWidth />
             </Grid>
 
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="ZIP Code" required fullWidth />
             </Grid>
           </Grid>

@@ -23,7 +23,7 @@ export default function PaymentCard() {
           ></TextField>
 
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={4}>
+            <Grid size={{ xs: 12, sm: 4 }}>
               <TextField label="CVV" required placeholder="123" fullWidth />
             </Grid>
           </Grid>

@@ -1,15 +1,7 @@
 "use client";
 
-import {
-  Box,
-  Card,
-  CardContent,
-  Divider,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardContent, Divider, Stack, Typography } from "@mui/material";
+import PayButton from "./Buttons/PayButton";
 
 export default function OrderSummary() {
   return (
@@ -48,6 +40,8 @@ export default function OrderSummary() {
             <Typography fontWeight={600}>Final cost</Typography>
           </Box>
         </Stack>
+
+        <PayButton />
       </CardContent>
     </Card>
   );

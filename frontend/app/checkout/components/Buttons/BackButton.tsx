@@ -1,23 +1,24 @@
 "use client";
 
-import { Button } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Link from "next/link";
+import { ArrowBack } from "@mui/icons-material";
+import { Box } from "@mui/material";
 
 export default function BackButton() {
   return (
-    <>
-      <Button
-        variant="contained"
-        sx={{
-          gap: 1,
-          background: "none",
-          boxShadow: "none",
-          textTransform: "none",
-          px: 3,
-        }}
-      >
-        <ArrowBackIcon /> Back to cart
-      </Button>
-    </>
+    <Box
+      component={Link}
+      href="/cart"
+      sx={{
+        display: "inline-flex",
+        alignItems: "center",
+        mb: 4,
+        color: "text.secondary",
+        textDecoration: "none",
+        "&:hover": { color: "text.primary" },
+      }}
+    >
+      <ArrowBack fontSize="small" sx={{ mr: 1 }} /> Back to cart
+    </Box>
   );
 }
