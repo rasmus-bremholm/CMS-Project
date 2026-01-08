@@ -1,26 +1,50 @@
 "use client";
 
-import { Box, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 export default function ContactCard() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <>
-      <Box
-        sx={{
-          minWidth: 100,
-          minHeight: { xs: 200, md: 350 },
-          height: "100%",
-          maxHeight: "62vh",
-          overflowY: "auto",
-          scrollbarWidth: "none",
-          borderRadius: 3,
-          px: { xs: 2, md: 1, lg: 2 },
-          py: 2,
-          transition: "all 0.2s",
-        }}
-      >
-        <Typography>Test</Typography>
-      </Box>
-    </>
+    <Box component="form" onSubmit={handleSubmit}>
+      <Grid container spacing={4}>
+        <Stack spacing={4}>
+          <Card>
+            <CardContent>
+              <Typography variant="h3" fontWeight={600} mb={2}>
+                Contact Information
+              </Typography>
+
+              <Stack spacing={2}>
+                <TextField
+                  label="Email"
+                  type="email"
+                  required
+                  placeholder="your@email.com"
+                  fullWidth
+                />
+                <TextField
+                  label="Phone"
+                  type="tel"
+                  required
+                  placeholder="+46 00 00 000"
+                  fullWidth
+                />
+              </Stack>
+            </CardContent>
+          </Card>
+        </Stack>
+      </Grid>
+    </Box>
   );
 }
