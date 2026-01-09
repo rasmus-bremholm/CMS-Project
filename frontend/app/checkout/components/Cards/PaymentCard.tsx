@@ -20,7 +20,7 @@ export default function PaymentCard() {
             required
             placeholder="1234 5678 9012 3456"
             fullWidth
-          ></TextField>
+          />
 
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 4 }}>

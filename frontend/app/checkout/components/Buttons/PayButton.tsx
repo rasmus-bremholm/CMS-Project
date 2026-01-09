@@ -2,7 +2,11 @@
 
 import { Button } from "@mui/material";
 
-export default function PayButton() {
+type PayButtonProps = {
+  total: number;
+};
+
+export default function PayButton({ total }: PayButtonProps) {
   return (
     <>
       <Button
@@ -14,7 +18,7 @@ export default function PayButton() {
           mt: 3,
         }}
       >
-        Pay price
+        Pay ${total.toFixed(2)}
       </Button>
     </>
   );

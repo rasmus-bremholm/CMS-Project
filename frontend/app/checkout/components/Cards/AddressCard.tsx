@@ -9,7 +9,7 @@ export default function AddressCard() {
       <CardContent>
         <Stack direction="row" alignItems="center" spacing={1} mb={2}>
           <LocalShipping color="primary" />
-          <Typography variant="h6" fontWeight={600} mb={2}>
+          <Typography variant="h6" fontWeight={600}>
             Shipping Address
           </Typography>
         </Stack>
@@ -31,10 +31,6 @@ export default function AddressCard() {
             <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="City" required fullWidth />
             </Grid>
-
-            {/*             <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField label="State" required fullWidth />
-            </Grid> */}
 
             <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="ZIP Code" required fullWidth />
