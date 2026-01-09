@@ -21,7 +21,7 @@ export default async function ProductDetails({ params }: Props) {
       <Grid container spacing={4} alignItems="center">
         <Grid size={{ xs: 12, md: 6 }}>
           <Box sx={{ aspectRatio: "1/1", position: "relative", width: "100%" }}>
-            <Image fill src="/mellan.webp" alt="Alt text" />
+            <Image fill src={product.imageUrl} alt="Alt text" />
           </Box>
         </Grid>
 
