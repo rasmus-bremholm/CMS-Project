@@ -1,0 +1,56 @@
+{
+  "products": [
+    {
+      "id": "coffee_ethiopian",
+      "name": "Ethiopian Yirgacheffe",
+      "description": "Bright and floral single-origin coffee.",
+      "price": 18.99,
+      "image": "/images/ethiopian.jpg",
+      "category": "coffee",
+      "inventory": 20
+    },
+    {
+      "id": "coffee_colombian",
+      "name": "Colombian Supremo",
+      "description": "Smooth, well-balanced coffee with nutty notes.",
+      "price": 16.99,
+      "image": "/images/colombian.jpg",
+      "category": "coffee",
+      "inventory": 25
+    },
+    {
+      "id": "coffee_sumatra",
+      "name": "Sumatra Mandheling",
+      "description": "Full-bodied coffee with earthy tones.",
+      "price": 19.99,
+      "image": "/images/sumatra.jpg",
+      "category": "coffee",
+      "inventory": 15
+    },
+    {
+      "id": "tea_earl_grey",
+      "name": "Earl Grey Tea",
+      "description": "Classic black tea with bergamot.",
+      "price": 12.5,
+      "image": "/images/earl-grey.jpg",
+      "category": "tea",
+      "inventory": 30
+    },
+    {
+      "id": "tea_matcha",
+      "name": "Japanese Matcha",
+      "description": "Premium ceremonial grade matcha.",
+      "price": 22.0,
+      "image": "/images/matcha.jpg",
+      "category": "tea",
+      "inventory": 18
+    }
+  ],
+  "shippingRules": {
+    "freeShippingThreshold": 50,
+    "flatRate": 7.99
+  },
+  "tax": {
+    "rate": 0.07
+  }
+}
