@@ -1,4 +1,4 @@
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -14,7 +14,7 @@ export default function Navbar() {
 	];
 
 	return (
-		<Box component='nav' sx={{ display: "flex", justifyContent: "center", alignItems: "center", px: { xs: 2, sm: 4, m: 6 }, py: 1, fontSize: 24 }}>
+		<Box component='nav' sx={{ display: "flex", justifyContent: "center", alignItems: "center", px: { xs: 2, sm: 4, m: 6 }, py: 1, bgcolor: "#fafafa" }}>
 			<Box>
 				<Link href='/'>
 					<Image src='/coffe-time-logo.png' height={60} width={64} alt='Coffee Time Logo' />
@@ -22,17 +22,17 @@ export default function Navbar() {
 			</Box>
 			<Box sx={{ flex: 1, display: "flex", justifyContent: "center", gap: 3 }}>
 				{menuLinks.map((item) => (
-					<Link key={item.id} href={item.url}>
-						{item.title}
+					<Link key={item.id} href={item.url} style={{ color: "inherit", textDecoration: "none" }}>
+						<Typography fontWeight='bold'>{item.title}</Typography>
 					</Link>
 				))}
 			</Box>
 			<Box>
 				<IconButton LinkComponent={Link} href='/account' aria-label='Go to Account Page'>
-					<AccountCircleIcon sx={{ color: "#fafafa" }} />
+					<AccountCircleIcon sx={{ color: "#1a1a1a" }} />
 				</IconButton>
 				<IconButton LinkComponent={Link} href='/cart' aria-label='View your Cart'>
-					<ShoppingCartIcon sx={{ color: "#fafafa" }} />
+					<ShoppingCartIcon sx={{ color: "#1a1a1a" }} />
 				</IconButton>
 			</Box>
 		</Box>
