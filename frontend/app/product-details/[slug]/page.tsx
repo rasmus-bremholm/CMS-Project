@@ -26,7 +26,7 @@ export default async function ProductDetails({ params }: Props) {
         </Grid>
 
         <Grid size={{ xs: 12, md: 6 }}>
-          <Stack spacing={3} sx={{ color: "white" }}>
+          <Stack spacing={3} sx={{  }}>
             <Box>
               <Typography component="h1" variant="h4" fontWeight="bold">
                 {product.title}
