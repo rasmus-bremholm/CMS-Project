@@ -1,21 +1,26 @@
 "use client";
 
-import Link from "next/link";
 import { ArrowBack } from "@mui/icons-material";
 import { Button } from "@mui/material";
+import { useRouter } from "next/navigation";
 
-export default function BackButton() {
+type BackButtonProps = {
+  label: string;
+};
+
+export default function BackButton({ label = "Back", ...props }: BackButtonProps) {
+  const router = useRouter();
+
   return (
     <Button
-      component={Link}
-      href="/cart"
+      onClick={() => router.back()}
       startIcon={<ArrowBack />}
       sx={{
-        mb: 4,
         textTransform: "none",
       }}
+      {...props}
     >
-      Back to cart
+      {label}
     </Button>
   );
 }
