@@ -20,12 +20,12 @@ export const QuantitySelector = ({
         display: "flex",
       }}
     >
-      <IconButton onClick={onDecrease} aria-label="Minska antal">
-        <RemoveIcon sx={{ color: "white" }} />
+      <IconButton onClick={onDecrease} aria-label="Minska antal" disabled={quantity <= 1}>
+        <RemoveIcon />
       </IconButton>
       <Typography>{quantity}</Typography>
       <IconButton onClick={onIncrease} aria-label="Öka antal">
-        <AddIcon sx={{ color: "white" }} />
+        <AddIcon />
       </IconButton>
     </Box>
   );

@@ -21,12 +21,12 @@ export default async function ProductDetails({ params }: Props) {
       <Grid container spacing={4} alignItems="center">
         <Grid size={{ xs: 12, md: 6 }}>
           <Box sx={{ aspectRatio: "1/1", position: "relative", width: "100%" }}>
-            <Image fill src="/mellan.webp" alt="Alt text" />
+            <Image fill src={product.imageUrl} alt="Alt text" />
           </Box>
         </Grid>
 
         <Grid size={{ xs: 12, md: 6 }}>
-          <Stack spacing={3} sx={{ color: "white" }}>
+          <Stack spacing={3} sx={{  }}>
             <Box>
               <Typography component="h1" variant="h4" fontWeight="bold">
                 {product.title}
@@ -50,8 +50,8 @@ export default async function ProductDetails({ params }: Props) {
 }
 
 async function getProduct(slug: string) {
-  const module = await import("@/app/mockdata/products.json");
-  const products = module.default;
+  const mod = await import("@/app/mockdata/products.json");
+  const products = mod.default;
 
   return products.find((product) => product.slug === slug);
 }
