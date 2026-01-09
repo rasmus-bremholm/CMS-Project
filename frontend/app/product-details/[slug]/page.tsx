@@ -50,8 +50,8 @@ export default async function ProductDetails({ params }: Props) {
 }
 
 async function getProduct(slug: string) {
-  const module = await import("@/app/mockdata/products.json");
-  const products = module.default;
+  const mod = await import("@/app/mockdata/products.json");
+  const products = mod.default;
 
   return products.find((product) => product.slug === slug);
 }
