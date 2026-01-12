@@ -1,6 +1,7 @@
 "use client";
 import { Box, Typography, Button } from "@mui/material";
 import OrderList from "./OrderList";
+import AdressList from "./AdressList";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -8,8 +9,6 @@ import { useState } from "react";
 
 export default function AccountDashboard() {
 	const [tab, setTab] = useState("orders");
-
-
 
 	return (
 		<>
@@ -28,7 +27,8 @@ export default function AccountDashboard() {
 				<Button variant='outlined'>Logga ut</Button>
 			</Box>
 			<Box id='content' sx={{ flex: 2 }}>
-				<OrderList />
+				{tab === "orders" && <OrderList />}
+				{tab === "shipping" && <AdressList />}
 			</Box>
 		</>
 	);
