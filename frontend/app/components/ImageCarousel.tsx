@@ -4,7 +4,17 @@ import useEmblaCarousel from "embla-carousel-react";
 import { Box } from "@mui/material";
 import Image from "next/image";
 
-export default function ImageCarousel(images) {
+interface CarouselImage {
+  id: number;
+  url: string;
+  alt: string;
+}
+
+interface ImageCarouselProps {
+  images: CarouselImage[];
+}
+
+export default function ImageCarousel({ images }: ImageCarouselProps) {
   const [emblaRef] = useEmblaCarousel({ loop: true });
 
   return (
