@@ -5,13 +5,26 @@ import { Product } from "@/types/product";
 
 const allProducts = await getAllProducts();
 
+const getPopularProducts = (
+  products: Product[],
+  category: "coffee" | "tea"
+) => {
+  return products
+    .filter((p) => p.category === category)
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 3);
+};
+
 export default async function PopularProducts() {
+  const popularCoffe = getPopularProducts(allProducts, "coffee");
+  const popularTea = getPopularProducts(allProducts, "tea");
+
   return (
     <>
       <Typography component="h2" variant="h2" fontWeight="bold">
         Populära produkter
       </Typography>
-      {allProducts?.map((product) => (
+      {popularTea?.map((product) => (
         <p key={product.id}>{product.title}</p>
       ))}
     </>
