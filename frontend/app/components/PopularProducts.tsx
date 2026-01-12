@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import { DisplayPopularProducts } from "./DisplayPopularProducts";
 
 //types
 import { Product } from "@/types/product";
@@ -16,7 +17,7 @@ const getPopularProducts = (
 };
 
 export default async function PopularProducts() {
-  const popularCoffe = getPopularProducts(allProducts, "coffee");
+  const popularCoffee = getPopularProducts(allProducts, "coffee");
   const popularTea = getPopularProducts(allProducts, "tea");
 
   return (
@@ -27,6 +28,10 @@ export default async function PopularProducts() {
       {popularTea?.map((product) => (
         <p key={product.id}>{product.title}</p>
       ))}
+      <DisplayPopularProducts
+        coffeeProducts={popularCoffee}
+        teaProducts={popularTea}
+      />
     </>
   );
 }
