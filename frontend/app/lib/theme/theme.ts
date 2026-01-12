@@ -9,7 +9,8 @@ declare module '@mui/material/styles' {
 			silver: string,
 			coffeeBean: string,
 			darkCoffee: string,
-			carbonBlack: string
+			carbonBlack: string,
+			latte: string
 		};
   }
   interface PaletteOptions {
@@ -18,7 +19,8 @@ declare module '@mui/material/styles' {
 			silver: string,
 			coffeeBean: string,
 			darkCoffee: string,
-			carbonBlack: string
+			carbonBlack: string,
+			latte: string
 		};
   }
 }
@@ -30,7 +32,8 @@ export const theme = createTheme({
 			silver: "#c4bbaf",
 			coffeeBean: "#7f5539",
 			darkCoffee: "#432818",
-			carbonBlack: "#222323"
+			carbonBlack: "#222323",
+			latte: "#CEC5BA",
 		},
 		primary: {
 			main: "#1a1a1a",

@@ -13,6 +13,7 @@ export const PopularProductCard = ({ product }: Props) => {
   return (
     <Card
       sx={{
+				backgroundColor: "brand.silver",
         height: "100%",
         display: "flex",
         flexDirection: "column",
