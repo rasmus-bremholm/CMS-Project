@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { Box, IconButton } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
@@ -13,7 +14,10 @@ interface ImageCarouselProps {
 }
 
 export default function ImageCarousel({ images }: ImageCarouselProps) {
-  const [emblaRef] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  const handlePrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const handleNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
     <Box
@@ -44,6 +48,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
 
       {/* Prev/Next buttons */}
       <IconButton
+        onClick={handlePrev}
         sx={{
           backgroundColor: "rgba(0,0,0,0.3)",
           color: "rgba(255,255,255,0.9)",
@@ -59,6 +64,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
       </IconButton>
 
       <IconButton
+        onClick={handleNext}
         sx={{
           backgroundColor: "rgba(0,0,0,0.3)",
           color: "rgba(255,255,255,0.9)",
