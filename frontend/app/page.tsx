@@ -1,21 +1,14 @@
 import ImageCarousel from "./components/ImageCarousel";
 
-export default function Home() {
-	const images = [
-		{
-			id: 1,
-			url: "/1.jpg",
-			alt: "Such access"
-		},
-		{
-			id: 2,
-			url: "/2.jpg",
-			alt: "Much wow"
-		}
-	]
+export default async function Home() {
+  const images = await getCarouselImages();
 
-	return (
-		<ImageCarousel images={images}/>
-	);
+  return <ImageCarousel images={images} />;
 }
 
+async function getCarouselImages(): Promise<CarouselImage[]> {
+  const mod = await import("@/app/mockdata/carouselimages.json");
+  const images = mod.default;
+
+  return images;
+}
