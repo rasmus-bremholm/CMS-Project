@@ -49,14 +49,19 @@ export default function AdressList() {
 			</Box>
 			{editMode ? (
 				<>
-					<TextField variant='standard' label='Förnamn' value={formData.firstName} onChange={handleChange} />
-					<TextField variant='standard' label='Efternamn' value={formData.lastName} onChange={handleChange} />
-					<TextField variant='standard' label='Adress' value={formData.address} onChange={handleChange} />
-					<TextField variant='standard' label='Stad' value={formData.city} onChange={handleChange} />
-					<TextField variant='standard' label='Land' value={formData.country} onChange={handleChange} />
-					<TextField variant='standard' label='Telefon' value={formData.phone} onChange={handleChange} />
-					<Box sx={{ display: "flex" }}>
-						<Button>Spara</Button> <Button>Avbryt</Button>
+					<TextField variant='standard' name='firstName' label='Förnamn' value={formData.firstName} onChange={handleChange} />
+					<TextField variant='standard' name='lastName' label='Efternamn' value={formData.lastName} onChange={handleChange} />
+					<TextField variant='standard' name='address' label='Adress' value={formData.address} onChange={handleChange} />
+					<TextField variant='standard' name='city' label='Stad' value={formData.city} onChange={handleChange} />
+					<TextField variant='standard' name='country' label='Land' value={formData.country} onChange={handleChange} />
+					<TextField variant='standard' name='phone' label='Telefon' value={formData.phone} onChange={handleChange} />
+					<Box sx={{ display: "flex", gap: 2, mt: 2 }}>
+						<Button onClick={handleSave} variant='contained'>
+							Spara
+						</Button>{" "}
+						<Button onClick={handleCancel} variant='outlined'>
+							Avbryt
+						</Button>
 					</Box>
 				</>
 			) : (
