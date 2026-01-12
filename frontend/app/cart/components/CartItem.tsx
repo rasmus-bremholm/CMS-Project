@@ -25,8 +25,8 @@ export default function CartItem({ item }: CartItemProps) {
       alignItems="center"
     >
       <Image
-        src={product.image}
-        alt={product.name}
+        src={product.imageUrl}
+        alt={product.title}
         width={64}
         height={64}
         style={{ objectFit: "cover", borderRadius: 4 }}

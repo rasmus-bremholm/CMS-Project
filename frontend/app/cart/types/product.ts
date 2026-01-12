@@ -1,9 +1,11 @@
 export interface Product {
-  title: string;
   id: string;
-  name: string;
-  image: string;
+  title: string;
   price: number;
+  description: string;
+  inStock: boolean;
+  imageUrl: string;
+  slug: string;
 }
 
 export interface CartItemType {
