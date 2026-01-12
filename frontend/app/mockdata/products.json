@@ -41,7 +41,7 @@
     "category": "tea",
     "imageUrl": "/products/tea-relax.webp",
     "slug": "java-relax",
-    "rating": 5
+    "rating": 3
   },
   {
     "id": 5,
@@ -63,6 +63,6 @@
     "category": "tea",
     "imageUrl": "/products/tea-glow.webp",
     "slug": "java-glow",
-    "rating": 5
+    "rating": 4
   }
 ]
