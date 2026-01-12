@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Box, Button, Grid } from "@mui/material";
+import { PopularProductCard } from "./PopularProductCard";
 
 //types
 import { Product } from "@/types/product";
@@ -19,11 +20,15 @@ export const DisplayPopularProducts = ({
 
   return (
     <Box>
-      <Box>
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
         <Button>Kaffe</Button>
         <Button>Te</Button>
       </Box>
-      <Grid></Grid>
+      <Grid container spacing={3}>
+        {coffeeProducts.map((product) => (
+          <PopularProductCard product={product} key={product.id} />
+        ))}
+      </Grid>
     </Box>
   );
 };

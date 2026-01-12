@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { DisplayPopularProducts } from "./DisplayPopularProducts";
 
 //types
@@ -21,18 +21,18 @@ export default async function PopularProducts() {
   const popularTea = getPopularProducts(allProducts, "tea");
 
   return (
-    <>
-      <Typography component="h2" variant="h2" fontWeight="bold">
+    <Box
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <Typography component="h2" variant="h4" fontWeight="bold">
         Populära produkter
       </Typography>
-      {popularTea?.map((product) => (
-        <p key={product.id}>{product.title}</p>
-      ))}
+
       <DisplayPopularProducts
         coffeeProducts={popularCoffee}
         teaProducts={popularTea}
       />
-    </>
+    </Box>
   );
 }
 
