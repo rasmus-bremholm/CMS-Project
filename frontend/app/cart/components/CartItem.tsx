@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { CartItemType } from "@/app/cart/types/product";
 import { useCart } from "@/app/cart/lib/CartContext";
-import { grey } from "@mui/material/colors";
-import { Add, Delete } from "@mui/icons-material";
+import { Add, Close, Remove } from "@mui/icons-material";
 
 interface CartItemProps {
   item: CartItemType;
@@ -17,56 +16,41 @@ export default function CartItem({ item }: CartItemProps) {
 
   return (
     <Box
-      display="flex"
+      display="grid"
+      gridTemplateColumns="80px 1fr 140px 80px 40px"
       gap={2}
       py={2}
-      borderBottom={1}
+      borderBottom="1px solid"
       borderColor="divider"
       alignItems="center"
     >
-      <Box
-        width={80}
-        height={80}
-        borderRadius={1}
-        overflow="hidden"
-        flexShrink={0}
-        bgcolor={grey}
-        display="flex"
-        justifyContent="center"
-      >
-        <Image
-          src={product.image}
-          alt={product.name}
-          fill
-          sizes="80px"
-          style={{ objectFit: "cover" }}
-          priority={false}
-        />
-      </Box>
+      <Image
+        src={product.image}
+        alt={product.name}
+        width={64}
+        height={64}
+        style={{ objectFit: "cover", borderRadius: 4 }}
+      />
 
-      <Box flex={1} minWidth={0}>
-        <Typography variant="subtitle1" noWrap>
-          {product.name}
-        </Typography>
-        <Typography variant="subtitle1" color="primary" mt={0.5}>
-          ${product.price.toFixed(2)}
-        </Typography>
-      </Box>
+      <Typography fontWeight={500}>{product.title}</Typography>
 
-      <Stack spacing={1} alignItems="flex-end">
+      <Box display="flex" alignItems="center" gap={1}>
+        <IconButton size="small" onClick={() => updateQuantity(product.id, quantity - 1)}>
+          <Remove fontSize="small" />
+        </IconButton>
+
+        <Typography>{quantity}</Typography>
+
         <IconButton size="small" onClick={() => updateQuantity(product.id, quantity + 1)}>
           <Add fontSize="small" />
         </IconButton>
+      </Box>
 
-        <Button
-          startIcon={<Delete fontSize="small" />}
-          color="error"
-          size="small"
-          onClick={() => removeItem(product.id)}
-        >
-          Remove
-        </Button>
-      </Stack>
+      <Typography>${(product.price * quantity).toFixed(2)}</Typography>
+
+      <IconButton size="small" onClick={() => removeItem(product.id)}>
+        <Close fontSize="small" />
+      </IconButton>
     </Box>
   );
 }

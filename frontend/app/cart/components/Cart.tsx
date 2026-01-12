@@ -1,13 +1,23 @@
 "use client";
 
-import { Box, Button, Grid, Paper, Stack, Typography } from "@mui/material";
+import { Box, Button, MenuItem, Paper, Select, Stack, Typography } from "@mui/material";
 import { useCart } from "../lib/CartContext";
 import { ArrowForward, ShoppingBag } from "@mui/icons-material";
 import Link from "next/link";
 import CartItem from "./CartItem";
 
+import products from "@/app/mockdata/products.json";
+
 export default function Cart() {
-  const { items, total, itemCount } = useCart();
+  const {
+    /* items,  total, itemCount */
+  } = useCart();
+
+  /* for testing */
+  const mockProducts = products;
+  const items = mockProducts.slice(0, 3).map((product) => ({ product, quantity: 1 }));
+  const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+  const itemCount = items.length;
 
   if (items.length === 0) {
     return (
@@ -56,69 +66,83 @@ export default function Cart() {
           Shopping Cart
         </Typography>
 
-        <Grid container spacing={4}>
-          <Grid size={{ xs: 12, lg: 12 }}>
-            <Paper elevation={2} sx={{ p: { xs: 2, md: 3 }, borderRadius: 2 }}>
-              <Stack spacing={2}>
-                {items.map((item) => (
-                  <CartItem key={item.product.id} item={item} />
-                ))}
-              </Stack>
-            </Paper>
-          </Grid>
-
-          <Grid size={{ xs: 12, lg: 4 }}>
-            <Paper
-              elevation={2}
-              sx={{
-                p: { xs: 2, md: 3 },
-                borderRadius: 2,
-                position: { md: "sticky" },
-                top: { md: 80 },
-              }}
+        <Stack spacing={4}>
+          <Paper sx={{ p: 2 }}>
+            <Box
+              display="grid"
+              gridTemplateColumns="80px 1fr 140px 80px 40px"
+              mb={2}
+              fontWeight={600}
             >
-              <Typography variant="h6" fontWeight={600} mb={2}>
-                Order Summary
+              <Typography fontWeight={600}>Product</Typography>
+              <Box />
+              <Typography fontWeight={600}>Quantity</Typography>
+              <Typography fontWeight={600}>Total</Typography>
+              <Box />
+            </Box>
+            <Stack spacing={1}>
+              {items.map((item) => (
+                <CartItem key={item.product.id} item={item} />
+              ))}
+            </Stack>
+          </Paper>
+
+          <Paper
+            sx={{
+              p: 3,
+            }}
+          >
+            <Typography variant="h6" fontWeight={600} mb={2}>
+              Order Summary
+            </Typography>
+
+            <Box display="flex" justifyContent="flex-start" fontWeight={600} mb={2}>
+              <Typography fontWeight={600} marginRight={3}>
+                {itemCount} x items
               </Typography>
+              <Typography fontWeight={600}>${total.toFixed(2)}</Typography>
+            </Box>
 
-              <Stack spacing={1} mb={3}>
-                <Box display="flex" justifyContent="space-between" color="text.secondary">
-                  <Typography>Subtotal ({itemCount} items)</Typography>
-                  <Typography>${total.toFixed(2)}</Typography>
-                </Box>
-                <Box display="flex" justifyContent="space-between" color="text.secondary">
-                  <Typography>Shipping</Typography>
-                  <Typography>Calculated at checkout</Typography>
-                </Box>
-                <Box
-                  display="flex"
-                  justifyContent="space-between"
-                  borderTop={1}
-                  borderColor="divider"
-                  pt={1.5}
-                >
-                  <Typography fontWeight={600} variant="subtitle1">
-                    Total
-                  </Typography>
-                  <Typography fontWeight={600} variant="subtitle1" color="primary">
-                    ${total.toFixed(2)}
-                  </Typography>
-                </Box>
-              </Stack>
+            <Box mb={2}>
+              <Typography mb={1}>Shipping</Typography>
+              <Select fullWidth defaultValue="standard">
+                <MenuItem value="standard">Standard shipping - $5.00</MenuItem>
+                <MenuItem value="express">Express shipping - $15.00</MenuItem>
+              </Select>
+            </Box>
 
-              <Link href="/products" passHref>
-                <Button
-                  fullWidth
-                  variant="text"
-                  color="inherit"
-                  sx={{ textTransform: "none" }}
-                >
-                  Continue Shopping
-                </Button>
-              </Link>
-            </Paper>
-          </Grid>
-        </Grid>
+            <Box
+              display="flex"
+              justifyContent="flex-start"
+              fontWeight={600}
+              mt={2}
+              mb={3}
+            >
+              <Typography marginRight={3}>Total:</Typography>
+              <Typography>${(total + 5).toFixed(2)}</Typography>
+            </Box>
+
+            <Stack direction="row" justifyContent="center" spacing={2}>
+              <Button
+                component={Link}
+                variant="outlined"
+                href="/products"
+                sx={{ minWidth: 180 }}
+              >
+                Continue Shopping
+              </Button>
+
+              <Button
+                component={Link}
+                variant="contained"
+                href="/checkout"
+                sx={{ minWidth: 180 }}
+              >
+                Checkout
+              </Button>
+            </Stack>
+          </Paper>
+        </Stack>
       </Box>
     </Box>
   );
