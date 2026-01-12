@@ -7,17 +7,18 @@ import Link from "next/link";
 import CartItem from "./CartItem";
 
 import products from "@/app/mockdata/products.json";
+import { useEffect } from "react";
 
 export default function Cart() {
-  const {
-    /* items,  total, itemCount */
-  } = useCart();
+  const { items, total, itemCount, addItem } = useCart();
 
-  /* for testing */
-  const mockProducts = products;
-  const items = mockProducts.slice(0, 3).map((product) => ({ product, quantity: 1 }));
-  const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
-  const itemCount = items.length;
+  useEffect(() => {
+    if (items.length === 0) {
+      products.slice(0, 3).forEach((product) => {
+        addItem(product);
+      });
+    }
+  }, [items.length, addItem]);
 
   if (items.length === 0) {
     return (
