@@ -1,5 +1,8 @@
 import ImageCarousel from "./components/ImageCarousel";
 
+//Types
+import { CarouselImage } from "@/types/carousel";
+
 export default async function Home() {
   const images = await getCarouselImages();
 

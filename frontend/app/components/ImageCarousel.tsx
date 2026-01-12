@@ -4,11 +4,8 @@ import useEmblaCarousel from "embla-carousel-react";
 import { Box } from "@mui/material";
 import Image from "next/image";
 
-interface CarouselImage {
-  id: number;
-  url: string;
-  alt: string;
-}
+//Types
+import { CarouselImage } from "@/types/carousel";
 
 interface ImageCarouselProps {
   images: CarouselImage[];
