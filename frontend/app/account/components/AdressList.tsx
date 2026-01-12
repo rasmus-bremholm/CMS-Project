@@ -31,6 +31,15 @@ export default function AdressList() {
 		setEditMode(false);
 	};
 
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+
+		setFormData((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+	};
+
 	return (
 		<Box sx={{ border: "1px solid #454444", p: 2, borderRadius: 2, display: "flex", flexDirection: "column", gap: 1, position: "relative" }}>
 			<Box sx={{ position: "absolute", top: 8, right: 8 }}>
@@ -40,12 +49,12 @@ export default function AdressList() {
 			</Box>
 			{editMode ? (
 				<>
-					<TextField variant='standard' label='Förnamn' />
-					<TextField variant='standard' label='Efternamn' />
-					<TextField variant='standard' label='Adress' />
-					<TextField variant='standard' label='Stad' />
-					<TextField variant='standard' label='Land' />
-					<TextField variant='standard' label='Telefon' />
+					<TextField variant='standard' label='Förnamn' value={formData.firstName} onChange={handleChange} />
+					<TextField variant='standard' label='Efternamn' value={formData.lastName} onChange={handleChange} />
+					<TextField variant='standard' label='Adress' value={formData.address} onChange={handleChange} />
+					<TextField variant='standard' label='Stad' value={formData.city} onChange={handleChange} />
+					<TextField variant='standard' label='Land' value={formData.country} onChange={handleChange} />
+					<TextField variant='standard' label='Telefon' value={formData.phone} onChange={handleChange} />
 					<Box sx={{ display: "flex" }}>
 						<Button>Spara</Button> <Button>Avbryt</Button>
 					</Box>
