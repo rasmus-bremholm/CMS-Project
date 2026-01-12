@@ -25,6 +25,7 @@
     "@types/node": "25.0.3",
     "eslint": "^9",
     "eslint-config-next": "15.5.9",
+    "prettier": "^3.7.4",
     "typescript": "^5.9.3"
   }
 }
