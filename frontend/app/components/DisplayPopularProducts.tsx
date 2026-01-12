@@ -18,14 +18,16 @@ export const DisplayPopularProducts = ({
 }: Props) => {
   const [category, setCategory] = useState<"coffee" | "tea">("coffee");
 
+	const activeProducts = category === "coffee" ? coffeeProducts : teaProducts
+
   return (
     <Box>
       <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <Button>Kaffe</Button>
-        <Button>Te</Button>
+        <Button onClick={() => setCategory("coffee")}>Kaffe</Button>
+        <Button onClick={() => setCategory("tea")}>Te</Button>
       </Box>
       <Grid container spacing={3}>
-        {coffeeProducts.map((product) => (
+        {activeProducts.map((product) => (
           <PopularProductCard product={product} key={product.id} />
         ))}
       </Grid>
