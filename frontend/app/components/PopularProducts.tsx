@@ -24,7 +24,7 @@ export default async function PopularProducts() {
     <Box
       sx={{ backgroundColor: "brand.latte", display: "flex", flexDirection: "column", alignItems: "center", gap: 2, py: 10 }}
     >
-      <Typography component="h2" variant="h4" fontWeight="bold">
+      <Typography component="h2" variant="h3">
         Populära produkter
       </Typography>
 
