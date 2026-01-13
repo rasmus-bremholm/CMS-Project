@@ -17,8 +17,6 @@ const merriweather = Merriweather({
   weight: ["400", "700"],
 });
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata = {
   title: "Coffee Time",
   description: "The only place for Tea & Coffee blends",
