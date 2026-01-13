@@ -13,7 +13,7 @@ export default function Footer() {
         pt: 6,
         pb: 1,
         bgcolor: "brand.carbonBlack",
-        position: "fixed",
+        //position: "fixed",
         bottom: 0,
         width: "100%",
       }}
