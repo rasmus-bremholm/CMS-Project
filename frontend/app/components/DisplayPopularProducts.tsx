@@ -48,7 +48,7 @@ export const DisplayPopularProducts = ({
           Te
         </Button>
       </Box>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} sx={{display: 'flex', justifyContent: 'center'}}>
         {activeProducts.map((product) => (
           <PopularProductCard product={product} key={product.id} />
         ))}
