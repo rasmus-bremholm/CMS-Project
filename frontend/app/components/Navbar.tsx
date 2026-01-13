@@ -2,8 +2,8 @@ import { Box, IconButton, Typography } from "@mui/material";
 import NextLink from "next/link";
 import { Link as MuiLink } from "@mui/material";
 import Image from "next/image";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 
 export default function Navbar() {
   const menuLinks = [
@@ -55,14 +55,14 @@ export default function Navbar() {
           href="/account"
           aria-label="Go to Account Page"
         >
-          <AccountCircleIcon sx={{ color: "text.primary" }} />
+          <AccountCircleOutlinedIcon sx={{ color: "text.primary" }} />
         </IconButton>
         <IconButton
           LinkComponent={NextLink}
           href="/cart"
           aria-label="View your Cart"
         >
-          <ShoppingCartIcon sx={{ color: "text.primary" }} />
+          <ShoppingCartOutlinedIcon sx={{ color: "text.primary" }} />
         </IconButton>
       </Box>
     </Box>
