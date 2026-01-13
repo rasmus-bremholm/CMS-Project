@@ -23,6 +23,18 @@ declare module "@mui/material/styles" {
       latte: string;
     };
   }
+  interface TypographyVariants {
+    navLink: React.CSSProperties;
+  }
+  interface TypographyVariantsOptions {
+    navLink?: React.CSSProperties;
+  }
+}
+
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    navLink: true;
+  }
 }
 
 export const theme = createTheme({
@@ -60,5 +72,11 @@ export const theme = createTheme({
       lineHeight: 1.2,
     },
     h3: { fontFamily: "var(--font-merriweather), serif", fontWeight: 400 },
+    navLink: {
+      fontSize: "16px",
+      fontWeight: 400,
+      lineHeight: 1,
+      textTransform: "uppercase",
+    },
   },
 });

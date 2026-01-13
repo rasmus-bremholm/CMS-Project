@@ -4,6 +4,7 @@ import Important from "./important";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ThemeRegistry from "./lib/theme/ThemeRegistry";
+import { CartProvider } from "./cart/lib/CartContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,6 +17,8 @@ const merriweather = Merriweather({
   weight: ["400", "700"],
 });
 
+const inter = Inter({ subsets: ["latin"] });
+
 export const metadata = {
   title: "Coffee Time",
   description: "The only place for Tea & Coffee blends",
@@ -26,9 +29,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${merriweather.variable}`}>
         <ThemeRegistry>
-          <Navbar />
-          {children}
-          <Footer />
+          <CartProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </CartProvider>
         </ThemeRegistry>
       </body>
     </html>
