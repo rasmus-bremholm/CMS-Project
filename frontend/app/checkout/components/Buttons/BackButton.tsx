@@ -4,11 +4,7 @@ import { ArrowBack } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-type BackButtonProps = {
-  label: string;
-};
-
-export default function BackButton({ label, ...props }: BackButtonProps) {
+export default function BackButton() {
   const router = useRouter();
 
   return (
@@ -18,9 +14,8 @@ export default function BackButton({ label, ...props }: BackButtonProps) {
       sx={{
         textTransform: "none",
       }}
-      {...props}
     >
-      {label}
+      Back
     </Button>
   );
 }
