@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { alpha, Button } from "@mui/material";
 
 export default function AddToCartButton() {
   const handleAdd = () => {
@@ -6,7 +6,18 @@ export default function AddToCartButton() {
   };
 
   return (
-    <Button variant="contained" onClick={handleAdd}>
+    <Button
+      variant="contained"
+      sx={{
+        backgroundColor: (theme) => alpha(theme.palette.brand.darkCoffee, 0.65),
+        color: "brand.whiteSmoke",
+        "&:hover": {
+          backgroundColor: (theme) =>
+            alpha(theme.palette.brand.darkCoffee, 0.45),
+        },
+      }}
+      onClick={handleAdd}
+    >
       Lägg till
     </Button>
   );
