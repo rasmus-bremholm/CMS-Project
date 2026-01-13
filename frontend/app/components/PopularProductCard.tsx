@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import AddToCartButton from "./AddToCartButton";
 
@@ -22,16 +23,30 @@ export const PopularProductCard = ({ product }: Props) => {
         boxShadow: 3,
       }}
     >
-      <CardMedia
-        component="img"
-        height="250"
-        image={product.imageUrl}
-        alt={product.title}
-        sx={{ objectFit: "cover" }}
-      />
+      <Link href={`product-details/${product.slug}`}>
+        <CardMedia
+          component="img"
+          height="250"
+          image={product.imageUrl}
+          alt={product.title}
+          sx={{ objectFit: "cover" }}
+        />
+      </Link>
 
-      <CardContent sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, gap: 1 }}>
-        <Typography variant="h6" component="h3" fontWeight="bold">
+      <CardContent
+        sx={{ display: "flex", flexDirection: "column", flexGrow: 1, gap: 1 }}
+      >
+        <Typography
+          variant="h6"
+          component={Link}
+          href={`product-details/${product.slug}`}
+          sx={{
+            color: "inherit",
+            fontWeight: "semi-bold",
+            textDecoration: "none",
+            "&:hover": { color: "brand.darkCoffee" },
+          }}
+        >
           {product.title}
         </Typography>
 
