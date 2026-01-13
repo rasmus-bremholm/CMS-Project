@@ -1,0 +1,23 @@
+[
+	{
+		"id": 1,
+		"author": "Andreas Bergström",
+		"title": "Hemmabarista",
+		"testimonial": "Jag är kräsen med mina bönor, men rostningen här håller absolut världsklass och man känner verkligen de unika aromerna från varje ursprung.",
+		"avatarUrl": ""
+	},
+	{
+		"id": 2,
+		"author": "Linda Sjöberg",
+		"title": "Te-entusiast",
+		"testimonial": "Det märks att det är kvalitet i varje blad, och den snabba leveransen gör att jag aldrig behöver stå utan mitt morgonte.",
+		"avatarUrl": ""
+	},
+	{
+		"id": 3,
+		"author": "Johan Holmgren",
+		"title": "Kaffe-njutare",
+		"testimonial": "Webbshoppen är superenkel att navigera och kaffet smakar precis så lyxigt som beskrivningen lovar.",
+		"avatarUrl": ""
+	}
+]

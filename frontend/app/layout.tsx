@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
 import Important from "./important";
 import Navbar from "./components/Navbar";
@@ -6,14 +6,15 @@ import Footer from "./components/Footer";
 import ThemeRegistry from "./lib/theme/ThemeRegistry";
 import { CartProvider } from "./cart/lib/CartContext";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,7 +27,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${merriweather.variable}`}>
         <ThemeRegistry>
           <CartProvider>
             <Navbar />

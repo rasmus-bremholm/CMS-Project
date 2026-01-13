@@ -5,8 +5,10 @@
     "price": 89,
     "description": "Elegant smak med nötiga toner. Lång och frisk eftersmak. Mellan är certifierat av Rainforest Alliance.",
     "inStock": true,
-    "imageUrl": "/mellan.webp",
-    "slug": "arvid-nordquist-mellan"
+    "category": "coffee",
+    "imageUrl": "/products/mellan.png",
+    "slug": "arvid-nordquist-mellan",
+    "rating": 3
   },
   {
     "id": 2,
@@ -14,7 +16,53 @@
     "price": 79,
     "description": "Svea har en djup och nötig smak. Balanserad eftersmak med ton av mörka bär.",
     "inStock": true,
-    "imageUrl": "/svea.webp",
-    "slug": "arvid-nordquist-svea"
+    "category": "coffee",
+    "imageUrl": "/products/svea.png",
+    "slug": "arvid-nordquist-svea",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "title": "Arvid Nordquist, Gran Dia",
+    "price": 85,
+    "description": "Gran Dia är ett bryggkaffe som är mellanmörkt rostat. Det är ett fylligt kaffe med runda toner och har en generös och fruktig eftersmak.",
+    "inStock": true,
+    "category": "coffee",
+    "imageUrl": "/products/gran-dia.png",
+    "slug": "arvid-nordquist-gran-dia",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "title": "Java, Relax",
+    "price": 79,
+    "description": "Upptäck den lugnande effekten av örtteet Relax, en harmonisk örtblandning utformad för att främja avslappningen och inre frid.",
+    "inStock": true,
+    "category": "tea",
+    "imageUrl": "/products/tea-relax.png",
+    "slug": "java-relax",
+    "rating": 3
+  },
+  {
+    "id": 5,
+    "title": "Java, Swedish Candy",
+    "price": 89,
+    "description": "Svart te med smak av svenskt godis. En sötsyrlig smakexplosion av tropiska frukter.",
+    "inStock": true,
+    "category": "tea",
+    "imageUrl": "/products/tea-swedish-candy.png",
+    "slug": "java-swedish-candy",
+    "rating": 5
+  },
+  {
+    "id": 6,
+    "title": "Java, Glow",
+    "price": 79,
+    "description": "Glow är en energigivande och harmonisk örtblandning som återupplivar både kropp och själ av naturens finaste örter från världens norra delar.",
+    "inStock": true,
+    "category": "tea",
+    "imageUrl": "/products/tea-glow.png",
+    "slug": "java-glow",
+    "rating": 4
   }
 ]

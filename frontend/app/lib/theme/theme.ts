@@ -10,6 +10,7 @@ declare module "@mui/material/styles" {
       coffeeBean: string;
       darkCoffee: string;
       carbonBlack: string;
+      latte: string;
     };
   }
   interface PaletteOptions {
@@ -19,6 +20,7 @@ declare module "@mui/material/styles" {
       coffeeBean: string;
       darkCoffee: string;
       carbonBlack: string;
+      latte: string;
     };
   }
   interface TypographyVariants {
@@ -43,6 +45,7 @@ export const theme = createTheme({
       coffeeBean: "#7f5539",
       darkCoffee: "#432818",
       carbonBlack: "#222323",
+      latte: "#CEC5BA",
     },
     primary: {
       main: "#1a1a1a",
@@ -57,7 +60,18 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "inherit",
+    fontFamily: "var(--font-inter), sans-serif",
+    h1: {
+      fontFamily: "var(--font-merriweather), serif",
+      fontWeight: 700,
+      lineHeight: 1.15,
+    },
+    h2: {
+      fontFamily: "var(--font-merriweather), serif",
+      fontWeight: 700,
+      lineHeight: 1.2,
+    },
+    h3: { fontFamily: "var(--font-merriweather), serif", fontWeight: 400 },
     navLink: {
       fontSize: "16px",
       fontWeight: 400,
