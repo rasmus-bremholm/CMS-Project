@@ -10,7 +10,8 @@ import products from "@/app/mockdata/products.json";
 import { useEffect } from "react";
 
 export default function Cart() {
-  const { items, total, itemCount, addItem } = useCart();
+  const { items, subtotal, total, itemCount, shippingCost, setShippingCost, addItem } =
+    useCart();
 
   useEffect(() => {
     if (items.length === 0) {
@@ -101,14 +102,18 @@ export default function Cart() {
               <Typography fontWeight={600} marginRight={3}>
                 {itemCount} x items
               </Typography>
-              <Typography fontWeight={600}>${total.toFixed(2)}</Typography>
+              <Typography fontWeight={600}>${subtotal.toFixed(2)}</Typography>
             </Box>
 
             <Box mb={2}>
               <Typography mb={1}>Shipping</Typography>
-              <Select fullWidth defaultValue="standard">
-                <MenuItem value="standard">Standard shipping - $5.00</MenuItem>
-                <MenuItem value="express">Express shipping - $15.00</MenuItem>
+              <Select
+                fullWidth
+                value={shippingCost}
+                onChange={(e) => setShippingCost(Number(e.target.value))}
+              >
+                <MenuItem value={5}>Standard shipping - $5.00</MenuItem>
+                <MenuItem value={15}>Express shipping - $15.00</MenuItem>
               </Select>
             </Box>
 
