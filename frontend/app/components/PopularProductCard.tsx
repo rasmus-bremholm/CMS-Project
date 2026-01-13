@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import AddToCartButton from "./AddToCartButton";
 
 //types
 import { Product } from "@/types/product";
@@ -13,7 +14,7 @@ export const PopularProductCard = ({ product }: Props) => {
   return (
     <Card
       sx={{
-				backgroundColor: "brand.silver",
+        backgroundColor: "brand.silver",
         height: "100%",
         display: "flex",
         flexDirection: "column",
@@ -29,23 +30,23 @@ export const PopularProductCard = ({ product }: Props) => {
         sx={{ objectFit: "cover" }}
       />
 
-      <CardContent sx={{ flexGrow: 1 }}>
+      <CardContent sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, gap: 1 }}>
+        <Typography variant="h6" component="h3" fontWeight="bold">
+          {product.title}
+        </Typography>
+
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            mb: 1,
           }}
         >
-          <Typography variant="h6" component="h3" fontWeight="bold">
-            {product.title}
+          <Typography variant="body1" color="primary" fontWeight="bold">
+            {product.price} kr
           </Typography>
+          <AddToCartButton />
         </Box>
-
-        <Typography variant="body1" color="primary" fontWeight="bold">
-          {product.price} kr
-        </Typography>
       </CardContent>
     </Card>
   );
