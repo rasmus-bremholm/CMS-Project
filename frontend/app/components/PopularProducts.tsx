@@ -22,7 +22,7 @@ export default async function PopularProducts() {
 
   return (
     <Box
-      sx={{ backgroundColor: "brand.latte", display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{ backgroundColor: "brand.latte", display: "flex", flexDirection: "column", alignItems: "center", gap: 2, py: 10 }}
     >
       <Typography component="h2" variant="h4" fontWeight="bold">
         Populära produkter

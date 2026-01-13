@@ -33,7 +33,7 @@ export const DisplayPopularProducts = ({
   });
 
   return (
-    <Box>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
       <Box sx={{ display: "flex", justifyContent: "center", gap: "2em" }}>
         <Button
           sx={buttonStyles(category === "coffee")}
@@ -48,7 +48,11 @@ export const DisplayPopularProducts = ({
           Te
         </Button>
       </Box>
-      <Grid container spacing={3} sx={{display: 'flex', justifyContent: 'center'}}>
+      <Grid
+        container
+        spacing={3}
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
         {activeProducts.map((product) => (
           <PopularProductCard product={product} key={product.id} />
         ))}
