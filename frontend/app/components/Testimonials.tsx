@@ -5,10 +5,13 @@ export default async function Testimonials() {
 
   return (
     <Box component="section" sx={{ backgroundColor: "#302620", py: 6 }}>
-      <Container maxWidth="lg">
-        <Grid container spacing={4} alignItems="center" justifyContent="center">
+      <Container>
+        <Grid container spacing={4} alignItems="stretch" justifyContent="center">
           {testimonials.map((testimonial) => (
-            <Grid key={testimonial.id} size={{ xs: 12, md: 3 }}>
+            <Grid
+              key={testimonial.id}
+              size={{ sm: 8, md: 4 }}
+            >
               <Box
                 sx={{
                   backgroundColor: "#46382f",
@@ -16,9 +19,12 @@ export default async function Testimonials() {
                   boxShadow: 3,
                   display: "flex",
                   flexDirection: "column",
+									justifyContent: "space-between",
                   alignItems: "flex-start",
                   color: "#d2cbc6",
                   gap: 3,
+									height: "100%",
+									width: "100%",
                   px: 4,
                   py: 2,
                 }}
