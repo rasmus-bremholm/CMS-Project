@@ -19,7 +19,7 @@ export default function Cart() {
         addItem(product);
       });
     }
-  }, [items.length, addItem]);
+  }, [addItem, items.length]);
 
   if (items.length === 0) {
     return (
