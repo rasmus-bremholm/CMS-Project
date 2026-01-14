@@ -129,3 +129,9 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+
+############################
+# Testa att ta bort types/generated för att Strapi ska lira
+############################
+
+types/generated/
