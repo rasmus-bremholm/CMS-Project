@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, MenuItem, Paper, Select, Stack, Typography } from "@mui/material";
+import { Box, Button, Card, MenuItem, Paper, Select, Stack, Typography } from "@mui/material";
 import { useCart } from "../lib/CartContext";
 import { ArrowForward, ShoppingBag } from "@mui/icons-material";
 import Link from "next/link";
@@ -19,7 +19,7 @@ export default function Cart() {
         addItem(product);
       });
     }
-  }, [items.length, addItem]);
+  }, [addItem, items.length]);
 
   if (items.length === 0) {
     return (
@@ -69,12 +69,11 @@ export default function Cart() {
         </Typography>
 
         <Stack spacing={4}>
-          <Paper sx={{ p: 2 }}>
+          <Card sx={{ p: 2 }}>
             <Box
               display="grid"
               gridTemplateColumns="80px 1fr 140px 80px 40px"
-              mb={2}
-              fontWeight={600}
+              gap={2}
             >
               <Typography fontWeight={600}>Product</Typography>
               <Box />
@@ -82,14 +81,15 @@ export default function Cart() {
               <Typography fontWeight={600}>Total</Typography>
               <Box />
             </Box>
+
             <Stack spacing={1}>
               {items.map((item) => (
                 <CartItem key={item.product.id} item={item} />
               ))}
             </Stack>
-          </Paper>
+          </Card>
 
-          <Paper
+          <Card
             sx={{
               p: 3,
             }}
@@ -125,7 +125,7 @@ export default function Cart() {
               mb={3}
             >
               <Typography marginRight={3}>Total:</Typography>
-              <Typography>${(total + 5).toFixed(2)}</Typography>
+              <Typography>${(total).toFixed(2)}</Typography>
             </Box>
 
             <Stack direction="row" justifyContent="center" spacing={2}>
@@ -147,7 +147,7 @@ export default function Cart() {
                 Checkout
               </Button>
             </Stack>
-          </Paper>
+          </Card>
         </Stack>
       </Box>
     </Box>

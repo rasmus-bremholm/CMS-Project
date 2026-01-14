@@ -14,9 +14,9 @@ export default function CheckoutPage() {
 
   return (
     <Container maxWidth="lg" sx={{ py: 6 }}>
-      <BackButton label={"Back to cart"} />
+      <BackButton />
 
-      <Typography variant="h3" sx={{ mb: 4 }}>
+      <Typography variant="h4" fontWeight={600} mb={4}>
         Checkout
       </Typography>
 
