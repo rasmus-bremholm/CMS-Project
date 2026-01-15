@@ -1,6 +1,13 @@
 "use client";
 
-import { Box, Card, CardContent, Divider, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Divider,
+  Stack,
+  Typography,
+} from "@mui/material";
 import PayButton from "./Buttons/PayButton";
 import { useCart } from "@/app/cart/lib/CartContext";
 
@@ -25,8 +32,12 @@ export default function OrderSummary() {
         </Typography>
 
         <Stack spacing={1.5} mb={2}>
-          {items.map((item) => (
-            <Box key={item.product.id} display="flex" justifyContent="space-between">
+          {items.map(item => (
+            <Box
+              key={item.product.id}
+              display="flex"
+              justifyContent="space-between"
+            >
               <Typography variant="body2" color="text.secondary">
                 {item.product.title} x {item.quantity}
               </Typography>
@@ -47,7 +58,9 @@ export default function OrderSummary() {
 
           <Box display="flex" justifyContent="space-between">
             <Typography color="text.secondary">Shipping</Typography>
-            <Typography>{shippingCost === 0 ? "Free" : `$${shippingCost}`}</Typography>
+            <Typography>
+              {shippingCost === 0 ? "Free" : `$${shippingCost}`}
+            </Typography>
           </Box>
 
           <Divider />

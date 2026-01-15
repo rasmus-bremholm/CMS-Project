@@ -30,18 +30,35 @@ export default function ContactForm() {
 
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, md: 6 }}>
-              <TextField fullWidth label="Name" />
+              <label>
+                Name
+                <TextField fullWidth placeholder="Your name" />
+              </label>
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
-              <TextField fullWidth label="Email" />
+              <label>
+                Email
+                <TextField fullWidth placeholder="your@email.com" />
+              </label>
             </Grid>
 
             <Grid size={{ xs: 12 }}>
-              <TextField fullWidth label="Subject" />
+              <label>
+                Subject
+                <TextField fullWidth placeholder="What's this about?" />
+              </label>
             </Grid>
 
             <Grid size={{ xs: 12 }}>
-              <TextField fullWidth multiline rows={4} label="Message" />
+              <label>
+                Message
+                <TextField
+                  fullWidth
+                  multiline
+                  rows={4}
+                  placeholder="Tell us more..."
+                />
+              </label>
             </Grid>
 
             <Grid size={{ xs: 12 }}>

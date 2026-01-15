@@ -35,13 +35,19 @@ export default function CartItem({ item }: CartItemProps) {
       <Typography fontWeight={500}>{product.title}</Typography>
 
       <Box display="flex" alignItems="center" gap={1}>
-        <IconButton size="small" onClick={() => updateQuantity(product.id, quantity - 1)}>
+        <IconButton
+          size="small"
+          onClick={() => updateQuantity(product.id, quantity - 1)}
+        >
           <Remove fontSize="small" />
         </IconButton>
 
         <Typography>{quantity}</Typography>
 
-        <IconButton size="small" onClick={() => updateQuantity(product.id, quantity + 1)}>
+        <IconButton
+          size="small"
+          onClick={() => updateQuantity(product.id, quantity + 1)}
+        >
           <Add fontSize="small" />
         </IconButton>
       </Box>

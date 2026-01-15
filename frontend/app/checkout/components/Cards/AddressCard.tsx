@@ -1,7 +1,14 @@
 "use client";
 
 import { LocalShipping } from "@mui/icons-material";
-import { Card, CardContent, Grid, Stack, TextField, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 export default function AddressCard() {
   return (
@@ -25,7 +32,12 @@ export default function AddressCard() {
             </Grid>
           </Grid>
 
-          <TextField label="Address" required placeholder="Street Address" fullWidth />
+          <TextField
+            label="Address"
+            required
+            placeholder="Street Address"
+            fullWidth
+          />
 
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 6 }}>

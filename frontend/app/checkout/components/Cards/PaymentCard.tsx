@@ -1,7 +1,14 @@
 "use client";
 
 import { CreditCard } from "@mui/icons-material";
-import { Card, CardContent, Grid, Stack, TextField, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 export default function PaymentCard() {
   return (
