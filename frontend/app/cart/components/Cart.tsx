@@ -28,13 +28,13 @@ export default function Cart() {
     addItem,
   } = useCart();
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (items.length === 0) {
       products.slice(0, 3).forEach(product => {
         addItem(product);
       });
     }
-  }, [addItem, items.length]);
+  }, [addItem, items.length]); */
 
   if (items.length === 0) {
     return (
@@ -71,6 +71,7 @@ export default function Cart() {
               variant="contained"
               endIcon={<ArrowForward />}
               size="medium"
+              sx={{ bgcolor: "brand.coffeeBean" }}
             >
               Continue Shopping
             </Button>
