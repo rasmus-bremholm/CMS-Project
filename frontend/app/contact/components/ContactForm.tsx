@@ -24,7 +24,7 @@ export default function ContactForm() {
             bgcolor: "background.default",
           }}
         >
-          <Typography variant="h5" mb={3}>
+          <Typography variant="h5" fontWeight={600} mb={3}>
             Send us a Message
           </Typography>
 
@@ -47,12 +47,14 @@ export default function ContactForm() {
             <Grid size={{ xs: 12 }}>
               <Button
                 variant="contained"
-                size="large"
+                fullWidth
                 sx={{
                   mt: 2,
                   px: 4,
-                  borderRadius: 999,
                   textTransform: "none",
+                  bgcolor: "brand.latte",
+                  color: "text.secondary",
+                  fontWeight: "600",
                 }}
               >
                 Send Message
