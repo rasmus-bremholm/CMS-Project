@@ -1,7 +1,7 @@
-import { StrapiImage } from "./strapiImage";
+import { StrapiImage } from "./strapi-image";
 
 export interface Testimonial {
-	id: number;
+  id: number;
   author: string;
   title: string;
   testimonial: string;

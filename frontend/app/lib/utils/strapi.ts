@@ -1,4 +1,5 @@
 import { Testimonial } from "@/types/testimonial";
+import { Product } from "@/types/product";
 
 interface StrapiData {
   data: any[];
@@ -33,7 +34,7 @@ export async function getTestimonials(): Promise<Testimonial[]> {
   return response.data;
 }
 
-export async function getProductsByCategory(category: string) {
+export async function getProductsByCategory(category: string): Promise<Product[]> {
   // API test
   // http://localhost:1337/api/products/filters[category][field][$eq]=value&populate=*
   const query = "filters[category][title][$eq]=" + category + "&populate=*";
@@ -43,7 +44,7 @@ export async function getProductsByCategory(category: string) {
   return response.data;
 }
 
-export async function getProductBySlug(slug: string) {
+export async function getProductBySlug(slug: string): Promise<Product[]> {
   // API test
   // http://localhost:1337/api/products?filters[slug][$eq]=arvid-nordquist-mellan&populate=*
   const query = "filters[slug][$eq]=" + slug + "&populate=*";
