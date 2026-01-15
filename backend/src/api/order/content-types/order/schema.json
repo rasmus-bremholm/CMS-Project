@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    },
+    "orderDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "deliveryDate": {
+      "type": "datetime"
+    },
+    "orderStatus": {
+      "type": "string",
+      "default": "pending",
+      "required": true
+    }
+  }
+}
