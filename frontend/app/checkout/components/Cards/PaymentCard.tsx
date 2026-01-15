@@ -1,14 +1,21 @@
 "use client";
 
 import { CreditCard } from "@mui/icons-material";
-import { Card, CardContent, Grid, Stack, TextField, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 export default function PaymentCard() {
   return (
     <Card>
       <CardContent>
         <Stack direction="row" alignItems="center" spacing={1} mb={2}>
-          <CreditCard color="primary" />
+          <CreditCard sx={{ color: "brand.coffeeBean" }} />
           <Typography variant="h6" fontWeight={600}>
             Payment
           </Typography>

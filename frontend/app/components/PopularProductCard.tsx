@@ -60,7 +60,7 @@ export const PopularProductCard = ({ product }: Props) => {
           <Typography variant="body1" color="primary" fontWeight="bold">
             {product.price} kr
           </Typography>
-          <AddToCartButton />
+          <AddToCartButton product={product} />
         </Box>
       </CardContent>
     </Card>

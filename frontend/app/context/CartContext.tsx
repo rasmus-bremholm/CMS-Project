@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, ReactNode, useContext, useState } from "react";
-import type { Product, CartItemType } from "../types/product";
+import type { Product, CartItemType } from "../cart/types/product";
 
 interface CartContextType {
   items: CartItemType[];
@@ -23,12 +23,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [shippingCost, setShippingCost] = useState<number>(5);
 
   const addItem = (product: Product) =>
-    setItems((prev) => {
-      const existing = prev.find((item) => item.product.id === product.id);
+    setItems(prev => {
+      const existing = prev.find(item => item.product.id === product.id);
 
       if (existing) {
-        return prev.map((item) =>
-          item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        return prev.map(item =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
         );
       }
 
@@ -36,7 +38,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
 
   const removeItem = (productId: number) =>
-    setItems((prev) => prev.filter((item) => item.product.id !== productId));
+    setItems(prev => prev.filter(item => item.product.id !== productId));
 
   const updateQuantity = (productId: number, quantity: number) => {
     if (quantity <= 0) {
@@ -44,8 +46,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       return;
     }
 
-    setItems((prev) =>
-      prev.map((item) => (item.product.id === productId ? { ...item, quantity } : item))
+    setItems(prev =>
+      prev.map(item =>
+        item.product.id === productId ? { ...item, quantity } : item
+      )
     );
   };
 

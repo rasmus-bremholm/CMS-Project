@@ -1,7 +1,15 @@
 "use client";
 
-import { Box, Button, Card, MenuItem, Paper, Select, Stack, Typography } from "@mui/material";
-import { useCart } from "../lib/CartContext";
+import {
+  Box,
+  Button,
+  Card,
+  MenuItem,
+  Select,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { useCart } from "../../context/CartContext";
 import { ArrowForward, ShoppingBag } from "@mui/icons-material";
 import Link from "next/link";
 import CartItem from "./CartItem";
@@ -10,16 +18,23 @@ import products from "@/app/mockdata/products.json";
 import { useEffect } from "react";
 
 export default function Cart() {
-  const { items, subtotal, total, itemCount, shippingCost, setShippingCost, addItem } =
-    useCart();
+  const {
+    items,
+    subtotal,
+    total,
+    itemCount,
+    shippingCost,
+    setShippingCost,
+    addItem,
+  } = useCart();
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (items.length === 0) {
-      products.slice(0, 3).forEach((product) => {
+      products.slice(0, 3).forEach(product => {
         addItem(product);
       });
     }
-  }, [addItem, items.length]);
+  }, [addItem, items.length]); */
 
   if (items.length === 0) {
     return (
@@ -52,7 +67,12 @@ export default function Cart() {
             Discover our selection of premium products
           </Typography>
           <Link href="/products" passHref>
-            <Button variant="contained" endIcon={<ArrowForward />} size="medium">
+            <Button
+              variant="contained"
+              endIcon={<ArrowForward />}
+              size="medium"
+              sx={{ bgcolor: "brand.coffeeBean" }}
+            >
               Continue Shopping
             </Button>
           </Link>
@@ -83,7 +103,7 @@ export default function Cart() {
             </Box>
 
             <Stack spacing={1}>
-              {items.map((item) => (
+              {items.map(item => (
                 <CartItem key={item.product.id} item={item} />
               ))}
             </Stack>
@@ -98,7 +118,12 @@ export default function Cart() {
               Order Summary
             </Typography>
 
-            <Box display="flex" justifyContent="flex-start" fontWeight={600} mb={2}>
+            <Box
+              display="flex"
+              justifyContent="flex-start"
+              fontWeight={600}
+              mb={2}
+            >
               <Typography fontWeight={600} marginRight={3}>
                 {itemCount} x items
               </Typography>
@@ -110,7 +135,7 @@ export default function Cart() {
               <Select
                 fullWidth
                 value={shippingCost}
-                onChange={(e) => setShippingCost(Number(e.target.value))}
+                onChange={e => setShippingCost(Number(e.target.value))}
               >
                 <MenuItem value={5}>Standard shipping - $5.00</MenuItem>
                 <MenuItem value={15}>Express shipping - $15.00</MenuItem>
@@ -125,7 +150,9 @@ export default function Cart() {
               mb={3}
             >
               <Typography marginRight={3}>Total:</Typography>
-              <Typography>${(total).toFixed(2)}</Typography>
+              <Typography color="brand.coffeeBean">
+                ${total.toFixed(2)}
+              </Typography>
             </Box>
 
             <Stack direction="row" justifyContent="center" spacing={2}>
@@ -142,7 +169,7 @@ export default function Cart() {
                 component={Link}
                 variant="contained"
                 href="/checkout"
-                sx={{ minWidth: 180 }}
+                sx={{ minWidth: 180, bgcolor: "brand.darkCoffee" }}
               >
                 Checkout
               </Button>

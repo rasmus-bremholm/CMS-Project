@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Box, IconButton, Typography } from "@mui/material";
 import { CartItemType } from "@/app/cart/types/product";
-import { useCart } from "@/app/cart/lib/CartContext";
+import { useCart } from "@/app/context/CartContext";
 import { Add, Close, Remove } from "@mui/icons-material";
 
 interface CartItemProps {
@@ -35,21 +35,29 @@ export default function CartItem({ item }: CartItemProps) {
       <Typography fontWeight={500}>{product.title}</Typography>
 
       <Box display="flex" alignItems="center" gap={1}>
-        <IconButton size="small" onClick={() => updateQuantity(product.id, quantity - 1)}>
+        <IconButton
+          size="small"
+          onClick={() => updateQuantity(product.id, quantity - 1)}
+        >
           <Remove fontSize="small" />
         </IconButton>
 
         <Typography>{quantity}</Typography>
 
-        <IconButton size="small" onClick={() => updateQuantity(product.id, quantity + 1)}>
+        <IconButton
+          size="small"
+          onClick={() => updateQuantity(product.id, quantity + 1)}
+        >
           <Add fontSize="small" />
         </IconButton>
       </Box>
 
-      <Typography>${(product.price * quantity).toFixed(2)}</Typography>
+      <Typography color="brand.coffeeBean">
+        ${(product.price * quantity).toFixed(2)}
+      </Typography>
 
       <IconButton size="small" onClick={() => removeItem(product.id)}>
-        <Close fontSize="small" />
+        <Close fontSize="small" sx={{ color: "brand.coffeeBean" }} />
       </IconButton>
     </Box>
   );
