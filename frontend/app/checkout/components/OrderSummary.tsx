@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import PayButton from "./PayButton";
-import { useCart } from "@/app/cart/lib/CartContext";
+import { useCart } from "@/app/context/CartContext";
 
 export default function OrderSummary() {
   const { items, subtotal, shippingCost, total } = useCart();

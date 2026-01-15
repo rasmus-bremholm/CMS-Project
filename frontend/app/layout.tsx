@@ -4,7 +4,7 @@ import Important from "./important";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ThemeRegistry from "./lib/theme/ThemeRegistry";
-import { CartProvider } from "./cart/lib/CartContext";
+import { CartProvider } from "./context/CartContext";
 
 const inter = Inter({
   variable: "--font-inter",

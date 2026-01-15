@@ -1,5 +1,5 @@
 import { alpha, Button } from "@mui/material";
-import { useCart } from "../cart/lib/CartContext";
+import { useCart } from "../context/CartContext";
 import { Product } from "@/types/product";
 
 interface AddToCartButtonProps {
