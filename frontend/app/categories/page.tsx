@@ -24,47 +24,58 @@ export default function Categories() {
       </Paper>
 
       <Box
-        display="flex"
-        flexWrap="wrap"
-        justifyContent="center"
-        gap={4}
-        paddingTop={2}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+        }}
       >
-        {categories.map(category => (
-          <Box
-            key={category.id}
-            sx={{
-              width: 200,
-              height: 200,
-              borderRadius: 1,
-              backgroundColor: "#432818",
-              color: "white",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="h6"
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+            },
+            gap: 2,
+          }}
+        >
+          {categories.map(category => (
+            <Box
+              key={category.id}
               sx={{
+                width: 200,
+                height: 200,
+                borderRadius: 1,
+                backgroundColor: "#432818",
+                color: "white",
+                display: "flex",
+                flexDirection: "column",
                 marginBottom: 1,
-                textAlign: "center",
               }}
             >
-              {category.title}
-            </Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  marginBottom: 1,
+                  textAlign: "center",
+                }}
+              >
+                {category.title}
+              </Typography>
 
-            {/* Bild */}
-            <Box
-              sx={{
-                flexGrow: 1,
-                width: "100%",
-                backgroundColor: "rgba(0,0,0,0.2)",
-                borderRadius: 1,
-              }}
-            />
-          </Box>
-        ))}
+              {/* Bild */}
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  width: "100%",
+                  backgroundColor: "rgba(0,0,0,0.2)",
+                  borderRadius: 1,
+                }}
+              />
+            </Box>
+          ))}
+        </Box>
       </Box>
     </Container>
   );
