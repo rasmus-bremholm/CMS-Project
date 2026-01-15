@@ -6,6 +6,7 @@ type Locale = "en" | "sv";
 
 interface LanguageContextType {
   locale: Locale;
+  toggleLanguage: () => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
@@ -25,6 +26,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     <LanguageContext.Provider
       value={{
         locale,
+        toggleLanguage,
       }}
     >
       {children}
