@@ -67,7 +67,9 @@ export default function OrderSummary() {
 
           <Box display="flex" justifyContent="space-between">
             <Typography fontWeight={600}>Total</Typography>
-            <Typography fontWeight={600}>${total.toFixed(2)}</Typography>
+            <Typography fontWeight={600} color="brand.coffeeBean">
+              ${total.toFixed(2)}
+            </Typography>
           </Box>
         </Stack>
 

@@ -16,6 +16,7 @@ export default function PayButton({ total }: PayButtonProps) {
         fullWidth
         sx={{
           mt: 3,
+          bgcolor: "brand.coffeeBean",
         }}
       >
         Pay ${total.toFixed(2)}

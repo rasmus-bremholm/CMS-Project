@@ -149,7 +149,9 @@ export default function Cart() {
               mb={3}
             >
               <Typography marginRight={3}>Total:</Typography>
-              <Typography>${total.toFixed(2)}</Typography>
+              <Typography color="brand.coffeeBean">
+                ${total.toFixed(2)}
+              </Typography>
             </Box>
 
             <Stack direction="row" justifyContent="center" spacing={2}>
@@ -166,7 +168,7 @@ export default function Cart() {
                 component={Link}
                 variant="contained"
                 href="/checkout"
-                sx={{ minWidth: 180 }}
+                sx={{ minWidth: 180, bgcolor: "brand.darkCoffee" }}
               >
                 Checkout
               </Button>

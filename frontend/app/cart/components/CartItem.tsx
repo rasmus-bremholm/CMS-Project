@@ -52,10 +52,12 @@ export default function CartItem({ item }: CartItemProps) {
         </IconButton>
       </Box>
 
-      <Typography>${(product.price * quantity).toFixed(2)}</Typography>
+      <Typography color="brand.coffeeBean">
+        ${(product.price * quantity).toFixed(2)}
+      </Typography>
 
       <IconButton size="small" onClick={() => removeItem(product.id)}>
-        <Close fontSize="small" />
+        <Close fontSize="small" sx={{ color: "brand.coffeeBean" }} />
       </IconButton>
     </Box>
   );
