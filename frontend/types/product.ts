@@ -1,11 +1,15 @@
+import { StrapiImage } from "./strapi-image";
+import { StrapiTag } from "./strapi-tag";
+
 export interface Product {
-	id: number,
-	title: string,
-	price: number,
-	description: string,
-	inStock: boolean,
-	category: string,
-	imageUrl: string,
-	slug: string,
-	rating: number
+  id: number;
+  title: string;
+  description: string;
+  image: StrapiImage;
+  price: number;
+  category: string;
+  tags: StrapiTag[];
+  slug: string;
+  quantity: number;
+  rating: number;
 }
