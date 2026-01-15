@@ -1,4 +1,5 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
+import { getTestimonials } from "../lib/utils/strapi";
 
 export default async function Testimonials() {
   const testimonials = await getTestimonials();
@@ -61,11 +62,4 @@ export default async function Testimonials() {
       </Container>
     </Box>
   );
-}
-
-async function getTestimonials() {
-  const mod = await import("@/app/mockdata/testimonials.json");
-  const testimonials = mod.default;
-
-  return testimonials;
 }
