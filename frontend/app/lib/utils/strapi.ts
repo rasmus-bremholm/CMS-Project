@@ -1,3 +1,5 @@
+import { Testimonial } from "@/types/testimonial";
+
 interface StrapiData {
   data: any[];
   meta?: {
@@ -25,7 +27,7 @@ async function strapiQuery(endpoint: string, queryParams: string = "") {
   return result;
 }
 
-export async function getTestimonials() {
+export async function getTestimonials(): Promise<Testimonial[]> {
   const response = await strapiQuery("testimonials");
 
   return response.data;
