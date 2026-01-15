@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, ReactNode, useContext } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 type Locale = "en" | "sv";
 
@@ -11,6 +11,16 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export const LaguageProvider = ({ children }: { children: ReactNode }) => {
+  const [locale, setLocale] = useState<Locale>("sv");
+
+  const toggleLanguage = () => {
+    setLocale(prev => {
+      const next = prev === "sv" ? "en" : "sv";
+      localStorage.setItem("locale", next);
+      return next;
+    });
+  };
+
   return (
     <LanguageContext.Provider
       value={{
