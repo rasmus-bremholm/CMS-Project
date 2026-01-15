@@ -2,7 +2,7 @@
 
 import { Container } from "@mui/material";
 import Cart from "./components/Cart";
-import BackButton from "../checkout/components/Buttons/BackButton";
+import BackButton from "../components/BackButton";
 
 export default function CartPage() {
   return (

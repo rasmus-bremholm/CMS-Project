@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Box, IconButton, Typography } from "@mui/material";
-import { CartItemType } from "@/app/cart/types/product";
+import { CartItemType } from "@/app/types/product";
 import { useCart } from "@/app/cart/lib/CartContext";
 import { Add, Close, Remove } from "@mui/icons-material";
 

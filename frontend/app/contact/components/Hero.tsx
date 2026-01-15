@@ -1,6 +1,6 @@
 "use client";
 
-import BackButton from "@/app/checkout/components/Buttons/BackButton";
+import BackButton from "@/app/components/BackButton";
 import { Box, Container, Typography } from "@mui/material";
 
 export default function Hero() {

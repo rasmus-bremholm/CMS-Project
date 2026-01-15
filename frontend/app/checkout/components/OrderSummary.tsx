@@ -8,7 +8,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import PayButton from "./Buttons/PayButton";
+import PayButton from "./PayButton";
 import { useCart } from "@/app/cart/lib/CartContext";
 
 export default function OrderSummary() {

@@ -1,7 +1,7 @@
 "use client";
 
 import { Container, Grid, Stack, Typography } from "@mui/material";
-import BackButton from "./components/Buttons/BackButton";
+import BackButton from "../components/BackButton";
 import ContactCard from "./components/Cards/ContactCard";
 import AddressCard from "./components/Cards/AddressCard";
 import PaymentCard from "./components/Cards/PaymentCard";
