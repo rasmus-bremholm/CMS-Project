@@ -1,7 +1,7 @@
-import ImageCarousel from "./components/ImageCarousel";
-import PopularProducts from "./components/PopularProducts";
-import AboutOurCoffee from "./components/AboutOurCoffee";
-import Testimonials from "./components/Testimonials";
+import ImageCarousel from "./home/components/ImageCarousel";
+import PopularProducts from "./home/components/PopularProducts";
+import AboutOurCoffee from "./home/components/AboutOurCoffee";
+import Testimonials from "./home/components/Testimonials";
 
 //Types
 import { CarouselImage } from "@/types/carousel";

@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
-import { getTestimonials } from "../lib/utils/strapi";
+import { getTestimonials } from "@/app/lib/utils/strapi";
 
 export default async function Testimonials() {
   const testimonials = await getTestimonials();
