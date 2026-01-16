@@ -2,6 +2,7 @@ import { Box, Typography, IconButton, Divider } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { FooterText, FooterTitle } from "./Footer.styles";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -36,8 +37,12 @@ export default function Footer() {
         </Box>
         <Box>
           <FooterTitle variant="h5">Support</FooterTitle>
-          <FooterText>Kontakt</FooterText>
-          <FooterText>Ditt Konto</FooterText>
+          <Link href="/contact">
+            <FooterText>Kontakt</FooterText>
+          </Link>
+          <Link href="/account">
+            <FooterText>Ditt Konto</FooterText>
+          </Link>
           <FooterText>Karriär</FooterText>
           <FooterText>Returer</FooterText>
         </Box>
