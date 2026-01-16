@@ -12,11 +12,11 @@ export default function OrderList({ orders }: OrderListProps) {
         <Box
           key={order.id}
           sx={{
-            border: "1px solid #454444",
             p: 2,
             borderRadius: 2,
             display: "flex",
             flexDirection: "column",
+            bgcolor: "brand.whiteSmoke",
           }}
         >
           <Typography variant="h5">Order: #{order.orderNumber}</Typography>
