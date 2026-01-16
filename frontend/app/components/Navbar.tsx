@@ -4,7 +4,7 @@ import { Link as MuiLink } from "@mui/material";
 import Image from "next/image";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import LaguageButton from "./LaguageButton";
+import LanguageToggle from "./LanguageToggle";
 
 export default function Navbar() {
   const menuLinks = [
@@ -52,7 +52,7 @@ export default function Navbar() {
       </Box>
 
       <Box mr={2}>
-        <LaguageButton />
+        <LanguageToggle />
       </Box>
 
       <Box>
