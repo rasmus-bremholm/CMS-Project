@@ -50,6 +50,11 @@ export default function Navbar() {
           </MuiLink>
         ))}
       </Box>
+
+      <Box mr={2}>
+        <LaguageButton />
+      </Box>
+
       <Box>
         <IconButton
           LinkComponent={NextLink}
@@ -65,7 +70,6 @@ export default function Navbar() {
         >
           <ShoppingCartOutlinedIcon sx={{ color: "text.primary" }} />
         </IconButton>
-        <LaguageButton />
       </Box>
     </Box>
   );

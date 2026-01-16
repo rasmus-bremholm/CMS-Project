@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function LanguageToggle() {
@@ -13,7 +13,6 @@ export default function LanguageToggle() {
       spacing={1}
       sx={{
         cursor: "pointer",
-        userSelect: "none",
       }}
     >
       <Typography

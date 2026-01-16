@@ -7,7 +7,6 @@ type Locale = "en" | "sv";
 interface LanguageContextType {
   locale: Locale;
   setLocale: (Locale: Locale) => void;
-  toggleLanguage: () => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
@@ -15,16 +14,11 @@ const LanguageContext = createContext<LanguageContextType | null>(null);
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [locale, setLocale] = useState<Locale>("sv");
 
-  const toggleLanguage = () => {
-    setLocale(prev => (prev === "sv" ? "en" : "sv"));
-  };
-
   return (
     <LanguageContext.Provider
       value={{
         locale,
         setLocale,
-        toggleLanguage,
       }}
     >
       {children}
