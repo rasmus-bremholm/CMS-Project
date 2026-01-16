@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ThemeRegistry from "./lib/theme/ThemeRegistry";
 import { CartProvider } from "./context/CartContext";
+import { LanguageProvider } from "./context/LanguageContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,11 +28,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${merriweather.variable}`}>
         <ThemeRegistry>
-          <CartProvider>
-            <Navbar />
-            {children}
-            <Footer />
-          </CartProvider>
+          <LanguageProvider>
+            <CartProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </CartProvider>
+          </LanguageProvider>
         </ThemeRegistry>
       </body>
     </html>

@@ -28,14 +28,6 @@ export default function Cart() {
     addItem,
   } = useCart();
 
-  /*   useEffect(() => {
-    if (items.length === 0) {
-      products.slice(0, 3).forEach(product => {
-        addItem(product);
-      });
-    }
-  }, [addItem, items.length]); */
-
   if (items.length === 0) {
     return (
       <Box
@@ -66,7 +58,7 @@ export default function Cart() {
           <Typography color="text.secondary" mb={3}>
             Discover our selection of premium products
           </Typography>
-          <Link href="/products" passHref>
+          <Link href="/categories" passHref>
             <Button
               variant="contained"
               endIcon={<ArrowForward />}

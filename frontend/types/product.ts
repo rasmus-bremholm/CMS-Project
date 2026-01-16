@@ -13,3 +13,7 @@ export interface Product {
   quantity: number;
   rating: number;
 }
+
+export interface CartItemType {
+  product: Product;
+  quantity: number;
