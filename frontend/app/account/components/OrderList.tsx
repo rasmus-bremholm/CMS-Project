@@ -1,26 +1,53 @@
 import { Box, Typography, Divider } from "@mui/material";
+import { Order } from "@/types/order"; // Import your Order type
 
-export default function OrderList() {
-	const mockOrders = [
-		{ nr: 123, numProducts: 4, orderTime: "13:37", orderDate: "Dec 18 2025", status: "Delivered", deliveredDate: "Dec 24 2025", total: "$1337" },
-		{ nr: 456, numProducts: 4, orderTime: "13:37", orderDate: "Dec 18 2025", status: "Delivered", deliveredDate: "Dec 24 2025", total: "$1337" },
-	];
-	return (
-		<Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-			{mockOrders.map((order) => (
-				<Box key={order.nr} sx={{ border: "1px solid #454444", p: 2, borderRadius: 2, display: "flex", flexDirection: "column" }}>
-					<Typography variant='h5'>Order #{order.nr}</Typography>
-					<Box sx={{ display: "flex", gap: 2 }}>
-						<Typography variant='caption'>{order.numProducts} produkter</Typography>
-						<Divider orientation='vertical' />
-						<Typography variant='caption'>{order.orderTime}</Typography>
-						<Typography variant='caption'>{order.orderDate}</Typography>
-					</Box>
-					<Typography variant='caption'>Status: {order.status}</Typography>
-					<Typography variant='caption'>Leveransdag: {order.deliveredDate}</Typography>
-					<Typography variant='caption'>Totalt: {order.total}</Typography>
-				</Box>
-			))}
-		</Box>
-	);
+interface OrderListProps {
+  orders: Order[];
+}
+
+export default function OrderList({ orders }: OrderListProps) {
+  return (
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+      {orders.map(order => (
+        <Box
+          key={order.id}
+          sx={{
+            p: 2,
+            borderRadius: 2,
+            display: "flex",
+            flexDirection: "column",
+            bgcolor: "brand.whiteSmoke",
+          }}
+        >
+          <Typography variant="h5">Order: #{order.orderNumber}</Typography>
+          <Box sx={{ display: "flex", gap: 2 }}>
+            <Typography variant="caption">
+              {order.order_items.length} produkter
+            </Typography>
+            <Divider orientation="vertical" />
+            <Typography variant="caption">
+              {new Date(order.orderDate).toLocaleDateString("sv-SE")}
+            </Typography>
+          </Box>
+          <Typography variant="caption">Status: {order.orderStatus}</Typography>
+          <Typography variant="caption">
+            Leveransdag:{" "}
+            {order.deliveryDate
+              ? new Date(order.deliveryDate).toLocaleDateString("sv-SE")
+              : "Ej satt"}
+          </Typography>
+
+          {/* List products */}
+          <Box sx={{ mt: 2 }}>
+            {order.order_items.map(item => (
+              <Typography key={item.id} variant="body2">
+                {item.quantity}x {item.product?.title || "Borttagen produkt"} -{" "}
+                {item.product?.price || 0} kr
+              </Typography>
+            ))}
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  );
 }

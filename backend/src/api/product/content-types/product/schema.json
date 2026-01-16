@@ -56,6 +56,12 @@
       "default": 3,
       "min": 0,
       "max": 5
+    },
+    "order_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "product"
     }
   }
 }
