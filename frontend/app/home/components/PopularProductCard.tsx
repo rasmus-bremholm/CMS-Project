@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "@/app/components/AddToCartButton";
 
 //types
 import { Product } from "@/types/product";
