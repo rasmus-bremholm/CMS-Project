@@ -1,5 +1,7 @@
 import { Container, Box, Typography } from "@mui/material";
 import AccountDashboard from "./components/AccountDashboard";
+import OrderList from "./components/OrderList";
+import AdressList from "./components/AdressList";
 import { getOrders } from "../lib/utils/strapi";
 
 export default async function AccountPage() {
@@ -11,7 +13,6 @@ export default async function AccountPage() {
   };
 
   const orders = await getOrders();
-  console.log(orders);
 
   return (
     <Container maxWidth="lg" sx={{ py: 6, bgcolor: "#CEC5BA" }}>
@@ -20,7 +21,10 @@ export default async function AccountPage() {
         <Typography variant="caption">{user.email}</Typography>
       </Box>
       <Box sx={{ display: "flex", py: 4, gap: 2 }}>
-        <AccountDashboard orders={orders} />
+        <AccountDashboard
+          ordersContent={<OrderList orders={orders} />}
+          addressContent={<AdressList />}
+        />
       </Box>
     </Container>
   );
