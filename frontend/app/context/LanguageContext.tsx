@@ -6,6 +6,7 @@ type Locale = "en" | "sv";
 
 interface LanguageContextType {
   locale: Locale;
+  setLocale: (Locale: Locale) => void;
   toggleLanguage: () => void;
 }
 
@@ -15,17 +16,14 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [locale, setLocale] = useState<Locale>("sv");
 
   const toggleLanguage = () => {
-    setLocale(prev => {
-      const next = prev === "sv" ? "en" : "sv";
-      localStorage.setItem("locale", next);
-      return next;
-    });
+    setLocale(prev => (prev === "sv" ? "en" : "sv"));
   };
 
   return (
     <LanguageContext.Provider
       value={{
         locale,
+        setLocale,
         toggleLanguage,
       }}
     >
@@ -37,7 +35,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 export const useLanguage = () => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error("useCart must be used within a LanguageProvider");
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 };
