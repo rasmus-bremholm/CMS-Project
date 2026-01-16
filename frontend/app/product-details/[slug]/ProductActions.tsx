@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Stack, Button } from '@mui/material';
+import { Stack } from '@mui/material';
 import { QuantitySelector } from "../../components/QuantitySelector";
+import AddToCartButton from "@/app/components/AddToCartButton";
 
 export const ProductActions = ({ product }: { product: any }) => {
   const [quantity, setQuantity] = useState(1);
@@ -18,7 +19,7 @@ export const ProductActions = ({ product }: { product: any }) => {
         onIncrease={handleIncrease}
       />
 
-      <Button>Lägg till</Button>
+      <AddToCartButton product={product}>Lägg till</AddToCartButton>
     </Stack>
   );
 };
