@@ -41,9 +41,20 @@ export default async function ProductDetails({ params }: Props) {
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
-              <Stack spacing={3} sx={{}}>
+              <Stack
+                spacing={3}
+                sx={{
+                  textAlign: { xs: "center", md: "left" },
+                  alignItems: { xs: "center", md: "flex-start" },
+                  px: { xs: 4, sm: 10, md: 0 },
+                }}
+              >
                 <Box>
-                  <Typography component="h1" variant="h4" fontWeight="bold">
+                  <Typography
+                    component="h1"
+                    fontWeight="bold"
+                    sx={{ fontSize: "1.8rem" }}
+                  >
                     {product.title}
                   </Typography>
 
