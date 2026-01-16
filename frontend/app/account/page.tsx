@@ -1,5 +1,6 @@
 import { Container, Box, Typography } from "@mui/material";
 import AccountDashboard from "./components/AccountDashboard";
+import { getOrders } from "../lib/utils/strapi";
 
 export default async function AccountPage() {
   const user = {
@@ -9,12 +10,8 @@ export default async function AccountPage() {
     email: "sofie@bahnhof.se",
   };
 
-  const response = await fetch(
-    `http://localhost:1337/api/orders/?populate[order_items][populate]=product`
-  );
-
-  const orders = await response.json();
-  console.log(orders.data);
+  const orders = await getOrders();
+  console.log(orders);
 
   return (
     <Container maxWidth="lg" sx={{ py: 6, bgcolor: "#CEC5BA" }}>
@@ -23,7 +20,7 @@ export default async function AccountPage() {
         <Typography variant="caption">{user.email}</Typography>
       </Box>
       <Box sx={{ display: "flex", py: 4, gap: 2 }}>
-        <AccountDashboard orders={orders.data} />
+        <AccountDashboard orders={orders} />
       </Box>
     </Container>
   );
