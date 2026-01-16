@@ -11,10 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product"
+    "orderNumber": {
+      "type": "string",
+      "default": "ORD-00",
+      "required": true,
+      "unique": true
     },
     "orderDate": {
       "type": "datetime",
@@ -22,6 +23,12 @@
     },
     "deliveryDate": {
       "type": "datetime"
+    },
+    "order_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "order"
     },
     "orderStatus": {
       "type": "string",
