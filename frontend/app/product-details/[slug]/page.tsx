@@ -25,7 +25,7 @@ export default async function ProductDetails({ params }: Props) {
       >
         <BackButton />
         <Box
-          sx={{ backgroundColor: "#E3DFD9", mx: "auto", py: 4, width: "100%" }}
+          sx={{ backgroundColor: "#E3DFD9", mx: "auto", px: 2, py: 4, width: "100%" }}
         >
           <Grid container spacing={4} alignItems="center">
             <Grid size={{ xs: 12, md: 6 }}>
