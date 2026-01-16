@@ -17,7 +17,7 @@ export default async function ProductDetails({ params }: Props) {
         component="main"
         maxWidth="md"
         sx={{
-					alignItems: "flex-start",
+          alignItems: "flex-start",
           display: "flex",
           flexDirection: "column",
           gap: 2,
@@ -28,7 +28,13 @@ export default async function ProductDetails({ params }: Props) {
           <Grid container spacing={4} alignItems="center">
             <Grid size={{ xs: 12, md: 6 }}>
               <Box
-                sx={{ aspectRatio: "1/1", position: "relative", width: "100%" }}
+                sx={{
+                  aspectRatio: "1/1",
+                  maxWidth: "100%",
+                  mx: "auto",
+                  position: "relative",
+                  width: { xs: "300px", md: "100%" },
+                }}
               >
                 <Image fill src={product.imageUrl} alt="Alt text" />
               </Box>
