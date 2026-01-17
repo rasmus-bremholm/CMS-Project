@@ -1,5 +1,5 @@
 export interface CarouselImage {
-  id: number;
+  documentId: number;
   url: string;
-  alt: string;
+  alternativeText: string;
 }

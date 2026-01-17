@@ -19,6 +19,8 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
   const handlePrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const handleNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
+	const strapiUrl = "http://localhost:1337";
+
   return (
     <Box
       sx={{ overflow: "hidden", position: "relative", width: "100%" }}
@@ -28,7 +30,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
       <Box sx={{ display: "flex" }}>
         {images.map((img) => (
           <Box
-            key={img.id}
+            key={img.documentId}
             sx={{
               flex: "0 0 100%",
               minWidth: 0,
@@ -37,8 +39,8 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
             }}
           >
             <Image
-              src={img.url}
-              alt={img.alt}
+              src={`${strapiUrl}${img.url}`}
+              alt={img.alternativeText}
               fill
               style={{ objectFit: "cover" }}
             />
