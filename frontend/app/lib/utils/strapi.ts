@@ -4,7 +4,7 @@ import { Product } from "@/types/product";
 import { Order, OrdersResponse } from "@/types/order";
 
 interface StrapiData {
-  data: any[];
+  data: any;
   meta?: {
     pagination?: {
       page: number;
