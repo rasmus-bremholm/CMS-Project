@@ -80,7 +80,16 @@ export async function getProductBySlug(slug: string): Promise<Product[]> {
 }
 
 export async function getOrders(): Promise<OrdersResponse> {
-  const query = "populate[order_items][populate]=product";
+  // API test
+  // http://localhost:1337/api/orders?populate[order_items][populate]=product
+  const query = {
+    populate: {
+      order_items: {
+        populate: "product",
+      },
+    },
+  };
+
   const response = await strapiQuery("orders", query);
 
   return response.data;
