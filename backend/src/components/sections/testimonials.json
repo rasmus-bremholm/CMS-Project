@@ -1,31 +1,26 @@
 {
-  "collectionName": "components_sections_split_sections",
+  "collectionName": "components_sections_testimonials",
   "info": {
-    "displayName": "Split Section",
-    "icon": "layout"
+    "displayName": "Testimonials",
+    "icon": "emotionHappy"
   },
   "options": {},
   "attributes": {
+    "author": {
+      "type": "string",
+      "required": true
+    },
     "title": {
       "type": "string",
       "required": true
     },
-    "body_text": {
+    "testimonial": {
       "type": "text",
       "required": true
     },
-    "button_label": {
-      "type": "string",
-      "required": true
-    },
-    "button_url": {
-      "type": "string",
-      "required": true
-    },
-    "image": {
+    "avatar": {
       "type": "media",
       "multiple": false,
-      "required": true,
       "allowedTypes": [
         "images"
       ]

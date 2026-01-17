@@ -94,3 +94,22 @@ export async function getOrders(): Promise<OrdersResponse> {
 
   return response.data;
 }
+
+export async function getHomepageData() {
+	// API test
+	// http://localhost:1337/api/home-page?populate[About][populate]=image&populate[carousel_images][populate]=*
+  const query = {
+    populate: {
+      About: {
+        populate: ["image"],
+      },
+      carousel_images: {
+        populate: "*",
+      },
+    },
+  };
+
+  const response = await strapiQuery("home-page", query);
+
+  return response.data;
+}

@@ -38,6 +38,18 @@
       "component": "sections.split-section",
       "repeatable": false,
       "required": true
+    },
+    "Testimonials": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.testimonials",
+      "repeatable": true,
+      "required": true,
+      "max": 3
     }
   }
 }
