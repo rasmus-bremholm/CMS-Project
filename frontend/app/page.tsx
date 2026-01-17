@@ -4,9 +4,6 @@ import PopularProducts from "./home/components/PopularProducts";
 import About from "./home/components/About";
 import Testimonials from "./home/components/Testimonials";
 
-//Types
-import { CarouselImage } from "@/types/carousel";
-
 export default async function Home() {
 	const data = await getHomepageData();
 	console.log('data', data)
@@ -16,7 +13,7 @@ export default async function Home() {
       <ImageCarousel images={data.carousel_images} />
       <PopularProducts />
 			<About data={data.about}/>
-			<Testimonials />
+			<Testimonials data={data.testimonials}/>
     </>
   );
 }
