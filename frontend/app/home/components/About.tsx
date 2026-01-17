@@ -1,7 +1,15 @@
 import Image from "next/image";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 
-export default function AboutOurCoffee() {
+// Types
+import { AboutTypes } from "@/types/about";
+
+interface AboutProps {
+	data: AboutTypes[];
+}
+
+
+export default function About({ data }: AboutProps) {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Grid container spacing={4} alignItems="center">

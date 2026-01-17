@@ -1,7 +1,7 @@
 import { getHomepageData } from "./lib/utils/strapi";
 import ImageCarousel from "./home/components/ImageCarousel";
 import PopularProducts from "./home/components/PopularProducts";
-import AboutOurCoffee from "./home/components/AboutOurCoffee";
+import About from "./home/components/About";
 import Testimonials from "./home/components/Testimonials";
 
 //Types
@@ -15,7 +15,7 @@ export default async function Home() {
     <>
       <ImageCarousel images={data.carousel_images} />
       <PopularProducts />
-			<AboutOurCoffee />
+			<About data={data.about}/>
 			<Testimonials />
     </>
   );
