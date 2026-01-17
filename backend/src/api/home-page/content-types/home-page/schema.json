@@ -28,7 +28,7 @@
         "images"
       ]
     },
-    "About": {
+    "about": {
       "type": "component",
       "pluginOptions": {
         "i18n": {

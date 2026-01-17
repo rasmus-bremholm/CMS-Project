@@ -15,7 +15,7 @@
     }
   },
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -24,7 +24,7 @@
       },
       "required": false
     },
-    "Image": {
+    "image": {
       "type": "media",
       "pluginOptions": {
         "i18n": {
@@ -47,7 +47,6 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "Title",
       "required": false
     }
   }
