@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { rootUrl } from "@/app/lib/utils/strapi";
 
@@ -41,12 +42,17 @@ export default async function Testimonials({ data }: TestimonialProps) {
                 <Box sx={{ display: "flex", gap: 2 }}>
                   <Box
                     sx={{
+											aspectRatio: "1/1",
                       backgroundColor: "#514740",
                       borderRadius: "50%",
                       height: "50px",
+											overflow: "hidden",
+											position: "relative",
                       width: "50px",
                     }}
-                  ></Box>
+                  >
+										<Image fill src={`${rootUrl}${testimonial.avatar.url}`} alt={testimonial.avatar.alternativeText} />
+									</Box>
                   <Box>
                     <Typography
                       variant="body1"
