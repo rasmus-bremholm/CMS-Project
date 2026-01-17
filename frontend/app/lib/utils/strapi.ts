@@ -96,14 +96,17 @@ export async function getOrders(): Promise<OrdersResponse> {
 }
 
 export async function getHomepageData() {
-	// API test
-	// http://localhost:1337/api/home-page?populate[About][populate]=image&populate[carousel_images][populate]=*
+  // API test
+  // http://localhost:1337/api/home-page?populate[about][populate]=image&populate[carousel_images][populate]=*
   const query = {
     populate: {
-      About: {
+      carousel_images: {
+        populate: "*",
+      },
+      about: {
         populate: ["image"],
       },
-      carousel_images: {
+      testimonials: {
         populate: "*",
       },
     },

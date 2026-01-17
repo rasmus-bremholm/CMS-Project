@@ -39,7 +39,7 @@
       "repeatable": false,
       "required": true
     },
-    "Testimonials": {
+    "testimonials": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
