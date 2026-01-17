@@ -1,5 +1,4 @@
 import qs from "qs";
-import { Testimonial } from "@/types/testimonial";
 import { Product } from "@/types/product";
 import { Order, OrdersResponse } from "@/types/order";
 
@@ -34,12 +33,6 @@ async function strapiQuery(
   const result: StrapiData = await response.json();
 
   return result;
-}
-
-export async function getTestimonials(): Promise<Testimonial[]> {
-  const response = await strapiQuery("testimonials");
-
-  return response.data;
 }
 
 export async function getProductsByCategory(
