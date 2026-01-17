@@ -1,3 +1,4 @@
+import qs from "qs";
 import { Testimonial } from "@/types/testimonial";
 import { Product } from "@/types/product";
 import { Order, OrdersResponse } from "@/types/order";
@@ -16,8 +17,13 @@ interface StrapiData {
 
 const strapiUrl = "http://localhost:1337/api/";
 
-async function strapiQuery(endpoint: string, queryParams: string = "") {
-  const url = strapiUrl + endpoint + (queryParams ? `?${queryParams}` : "");
+async function strapiQuery(
+  endpoint: string,
+  queryParams: Record<string, any> = {}
+) {
+  const queryString = qs.stringify(queryParams);
+	const url = strapiUrl + endpoint + (queryString ? `?${queryString}` : "");
+
   const response = await fetch(url);
 
   if (!response.ok) {
