@@ -15,6 +15,7 @@ interface StrapiData {
   };
 }
 
+export const rootUrl = "http://localhost:1337";
 const strapiUrl = "http://localhost:1337/api/";
 
 async function strapiQuery(

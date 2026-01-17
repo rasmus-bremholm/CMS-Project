@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { Box, IconButton } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import Image from "next/image";
+import { rootUrl } from "@/app/lib/utils/strapi";
 
 //Types
 import { CarouselImage } from "@/types/carousel";
@@ -18,8 +19,6 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
 
   const handlePrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const handleNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
-	const strapiUrl = "http://localhost:1337";
 
   return (
     <Box
@@ -39,7 +38,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
             }}
           >
             <Image
-              src={`${strapiUrl}${img.url}`}
+              src={`${rootUrl}${img.url}`}
               alt={img.alternativeText}
               fill
               style={{ objectFit: "cover" }}
