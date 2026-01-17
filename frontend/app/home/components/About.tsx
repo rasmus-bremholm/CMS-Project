@@ -5,7 +5,7 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { AboutTypes } from "@/types/about";
 
 interface AboutProps {
-	data: AboutTypes[];
+	data: AboutTypes;
 }
 
 
