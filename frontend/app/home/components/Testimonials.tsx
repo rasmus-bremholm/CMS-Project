@@ -1,14 +1,20 @@
+import Image from "next/image";
 import { Box, Container, Grid, Typography } from "@mui/material";
-import { getTestimonials } from "@/app/lib/utils/strapi";
+import { rootUrl } from "@/app/lib/utils/strapi";
 
-export default async function Testimonials() {
-  const testimonials = await getTestimonials();
+// Types
+import { TestimonialTypes } from "@/types/testimonial";
 
+interface TestimonialProps {
+	data: TestimonialTypes[];
+}
+
+export default async function Testimonials({ data }: TestimonialProps) {
   return (
     <Box component="section" sx={{ backgroundColor: "#302620", py: 6 }}>
       <Container>
         <Grid container spacing={4} alignItems="stretch" justifyContent="center">
-          {testimonials.map((testimonial) => (
+          {data.map((testimonial) => (
             <Grid
               key={testimonial.id}
               size={{ sm: 8, md: 4 }}
@@ -36,12 +42,17 @@ export default async function Testimonials() {
                 <Box sx={{ display: "flex", gap: 2 }}>
                   <Box
                     sx={{
+											aspectRatio: "1/1",
                       backgroundColor: "#514740",
                       borderRadius: "50%",
                       height: "50px",
+											overflow: "hidden",
+											position: "relative",
                       width: "50px",
                     }}
-                  ></Box>
+                  >
+										<Image fill src={`${rootUrl}${testimonial.avatar.url}`} alt={testimonial.avatar.alternativeText} />
+									</Box>
                   <Box>
                     <Typography
                       variant="body1"

@@ -1,9 +1,9 @@
-import { Testimonial } from "@/types/testimonial";
+import qs from "qs";
 import { Product } from "@/types/product";
 import { Order, OrdersResponse } from "@/types/order";
 
 interface StrapiData {
-  data: any[];
+  data: any;
   meta?: {
     pagination?: {
       page: number;
@@ -14,10 +14,16 @@ interface StrapiData {
   };
 }
 
+export const rootUrl = "http://localhost:1337";
 const strapiUrl = "http://localhost:1337/api/";
 
-async function strapiQuery(endpoint: string, queryParams: string = "") {
-  const url = strapiUrl + endpoint + (queryParams ? `?${queryParams}` : "");
+async function strapiQuery(
+  endpoint: string,
+  queryParams: Record<string, any> = {}
+) {
+  const queryString = qs.stringify(queryParams);
+  const url = strapiUrl + endpoint + (queryString ? `?${queryString}` : "");
+
   const response = await fetch(url);
 
   if (!response.ok) {
@@ -29,18 +35,21 @@ async function strapiQuery(endpoint: string, queryParams: string = "") {
   return result;
 }
 
-export async function getTestimonials(): Promise<Testimonial[]> {
-  const response = await strapiQuery("testimonials");
-
-  return response.data;
-}
-
 export async function getProductsByCategory(
-  category: string
+  categoryName: string
 ): Promise<Product[]> {
   // API test
-  // http://localhost:1337/api/products/filters[category][field][$eq]=value&populate=*
-  const query = "filters[category][title][$eq]=" + category + "&populate=*";
+  // http://localhost:1337/api/products/filters[category][title][$eq]=coffee&populate=*
+  const query = {
+    filters: {
+      category: {
+        title: {
+          $eq: categoryName,
+        },
+      },
+    },
+    populate: "*",
+  };
 
   const response = await strapiQuery("products", query);
 
@@ -50,7 +59,14 @@ export async function getProductsByCategory(
 export async function getProductBySlug(slug: string): Promise<Product[]> {
   // API test
   // http://localhost:1337/api/products?filters[slug][$eq]=arvid-nordquist-mellan&populate=*
-  const query = "filters[slug][$eq]=" + slug + "&populate=*";
+  const query = {
+    filters: {
+      slug: {
+        $eq: slug,
+      },
+    },
+    populate: "*",
+  };
 
   const response = await strapiQuery("products", query);
 
@@ -58,8 +74,39 @@ export async function getProductBySlug(slug: string): Promise<Product[]> {
 }
 
 export async function getOrders(): Promise<OrdersResponse> {
-  const query = "populate[order_items][populate]=product";
+  // API test
+  // http://localhost:1337/api/orders?populate[order_items][populate]=product
+  const query = {
+    populate: {
+      order_items: {
+        populate: "product",
+      },
+    },
+  };
+
   const response = await strapiQuery("orders", query);
+
+  return response.data;
+}
+
+export async function getHomepageData() {
+  // API test
+  // http://localhost:1337/api/home-page?populate[about][populate]=image&populate[carousel_images][populate]=*
+  const query = {
+    populate: {
+      carousel_images: {
+        populate: "*",
+      },
+      about: {
+        populate: ["image"],
+      },
+      testimonials: {
+        populate: "*",
+      },
+    },
+  };
+
+  const response = await strapiQuery("home-page", query);
 
   return response.data;
 }

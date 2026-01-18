@@ -5,6 +5,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { Box, IconButton } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import Image from "next/image";
+import { rootUrl } from "@/app/lib/utils/strapi";
 
 //Types
 import { CarouselImage } from "@/types/carousel";
@@ -28,7 +29,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
       <Box sx={{ display: "flex" }}>
         {images.map((img) => (
           <Box
-            key={img.id}
+            key={img.documentId}
             sx={{
               flex: "0 0 100%",
               minWidth: 0,
@@ -37,8 +38,8 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
             }}
           >
             <Image
-              src={img.url}
-              alt={img.alt}
+              src={`${rootUrl}${img.url}`}
+              alt={img.alternativeText}
               fill
               style={{ objectFit: "cover" }}
             />
