@@ -7,7 +7,6 @@ import { useState } from "react";
 import { DashboardLocale } from "../lib/AccountDashBoard";
 import { useLanguage } from "@/app/context/LanguageContext";
 
-
 interface AccountDashboardProps {
   ordersContent: React.ReactNode;
   addressContent: React.ReactNode;
@@ -45,7 +44,7 @@ export default function AccountDashboard({
           startIcon={<FavoriteBorderOutlinedIcon />}
           onClick={() => setTab("favorites")}
         >
-          {DashboardLocale.btnShipping[currentLocale]}
+          {DashboardLocale.btnFavorite[currentLocale]}
         </Button>
 
         <Button variant="outlined">
