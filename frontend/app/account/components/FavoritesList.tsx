@@ -9,15 +9,13 @@ interface FavoritesListProps {
 }
 
 export default function FavoritesList({ favorites }: FavoritesListProps) {
-  const currentLocale = useLanguage().locale;
+  //const currentLocale = useLanguage().locale;
 
   return (
     <Box sx={{ display: "flex", gap: 2 }}>
-      {favorites ? (
-        favorites.map(favorite => <Box key={favorite.id}></Box>)
-      ) : (
-        <Typography>{FavoritesLocale.missing[currentLocale]}</Typography>
-      )}
+      {favorites
+        ? favorites.map(favorite => <Box key={favorite.id}></Box>)
+        : null}
     </Box>
   );
 }
