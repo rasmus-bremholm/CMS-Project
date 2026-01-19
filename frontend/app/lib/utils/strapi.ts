@@ -110,3 +110,20 @@ export async function getHomepageData() {
 
   return response.data;
 }
+
+export async function getFavorites() {
+
+
+  const query = {
+    populate: {
+      product: {
+        populate: "*",
+      },
+      user: "*",
+    },
+  };
+
+  const response = await strapiQuery("favorites", query);
+
+  return response.data;
+}
