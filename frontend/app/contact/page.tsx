@@ -1,17 +1,7 @@
 "use client";
 
-import { Container } from "@mui/material";
-import Hero from "./components/Hero";
-import ContactForm from "./components/ContactForm";
+import ContactPageWrapper from "./ContactPageWrapper";
 
-export default function ContactPage() {
-  return (
-    <>
-      <Hero />
-
-      <Container maxWidth="lg" sx={{ py: { xs: 8, md: 12 } }}>
-        <ContactForm />
-      </Container>
-    </>
-  );
+export default function Page() {
+  return <ContactPageWrapper />;
 }
