@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_adresses",
+  "info": {
+    "displayName": "adress",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

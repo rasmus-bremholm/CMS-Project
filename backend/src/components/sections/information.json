@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_information",
+  "info": {
+    "displayName": "information",
+    "icon": "quote"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "about": {
+      "type": "component",
+      "component": "sections.about",
+      "repeatable": false
+    },
+    "phone": {
+      "type": "component",
+      "component": "sections.contact",
+      "repeatable": false
+    },
+    "email": {
+      "type": "component",
+      "component": "sections.email",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

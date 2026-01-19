@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_empty_checkouts",
+  "info": {
+    "displayName": "empty_checkout",
+    "icon": "archive"
+  },
+  "options": {},
+  "attributes": {
+    "subtitle": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

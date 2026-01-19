@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_order_checkouts",
+  "info": {
+    "displayName": "order_checkout",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "empty": {
+      "type": "component",
+      "component": "sections.empty-checkout",
+      "repeatable": false
+    },
+    "title": {
+      "type": "string"
+    },
+    "shipping_label": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

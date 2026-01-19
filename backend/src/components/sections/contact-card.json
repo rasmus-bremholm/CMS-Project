@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_contact_cards",
+  "info": {
+    "displayName": "contact_card",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
