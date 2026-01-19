@@ -14,9 +14,6 @@ import { ArrowForward, ShoppingBag } from "@mui/icons-material";
 import Link from "next/link";
 import CartItem from "./CartItem";
 
-import products from "@/app/mockdata/products.json";
-import { useEffect } from "react";
-
 export default function Cart() {
   const {
     items,
