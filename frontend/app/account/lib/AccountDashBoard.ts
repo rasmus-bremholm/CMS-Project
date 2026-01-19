@@ -27,3 +27,10 @@ export const AccountPageLocale = {
     en: "Hello",
   },
 };
+
+export const FavoritesLocale = {
+  missing: {
+    sv: "Du har inga favorit produkter, lägg till några!",
+    en: "No favorites found, try adding some!"
+  }
+}

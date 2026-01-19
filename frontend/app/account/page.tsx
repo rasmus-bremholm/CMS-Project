@@ -2,6 +2,7 @@ import { Container, Box, Typography } from "@mui/material";
 import AccountDashboard from "./components/AccountDashboard";
 import OrderList from "./components/OrderList";
 import AdressList from "./components/AdressList";
+import FavoritesList from "./components/FavoritesList";
 import { getOrders } from "../lib/utils/strapi";
 import { AccountPageLocale } from "./lib/AccountDashBoard";
 import Greeting from "./components/Greeting";
@@ -15,6 +16,7 @@ export default async function AccountPage() {
   };
 
   const orders = await getOrders();
+  const favorites = [];
   const currentLocale = "en";
 
   return (
@@ -27,6 +29,7 @@ export default async function AccountPage() {
         <AccountDashboard
           ordersContent={<OrderList orders={orders} />}
           addressContent={<AdressList />}
+          favoritesContent={<FavoritesList favorites={favorites} />}
         />
       </Box>
     </Container>
