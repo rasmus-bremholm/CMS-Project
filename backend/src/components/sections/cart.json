@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_carts",
+  "info": {
+    "displayName": "cart",
+    "icon": "archive"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "product_title": {
+      "type": "string"
+    },
+    "quantity_title": {
+      "type": "string"
+    },
+    "total_title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

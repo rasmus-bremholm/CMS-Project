@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_forms",
+  "info": {
+    "displayName": "Form",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "name_label": {
+      "type": "string"
+    },
+    "email_label": {
+      "type": "string"
+    },
+    "subject_label": {
+      "type": "string"
+    },
+    "message_label": {
+      "type": "string"
+    },
+    "button_label": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
