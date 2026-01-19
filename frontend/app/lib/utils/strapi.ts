@@ -1,6 +1,7 @@
 import qs from "qs";
 import { Product } from "@/types/product";
 import { Order, OrdersResponse } from "@/types/order";
+import { Categories } from "@/types/categories";
 
 interface StrapiData {
   data: any;
@@ -108,5 +109,14 @@ export async function getHomepageData() {
 
   const response = await strapiQuery("home-page", query);
 
+  return response.data;
+}
+
+export async function getCategories(): Promise<Categories[]> {
+  const query = {
+    populate: "*",
+  };
+
+  const response = await strapiQuery("categories", query);
   return response.data;
 }

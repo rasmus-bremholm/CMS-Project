@@ -1,7 +1,7 @@
 import { StrapiImage } from "./strapi-image";
 import { Product } from "./product";
 
-export interface CategoriesTypes {
+export interface Categories {
   id: number;
   title: string;
   image: StrapiImage;

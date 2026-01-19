@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Container, Typography, Paper } from "@mui/material";
+import { getCategories } from "../lib/utils/strapi";
 
 interface Category {
   id: number;
