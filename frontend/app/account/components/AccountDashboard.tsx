@@ -4,6 +4,9 @@ import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useState } from "react";
+import { DashboardLocale } from "../lib/AccountDashBoard";
+import { useLanguage } from "@/app/context/LanguageContext";
+
 
 interface AccountDashboardProps {
   ordersContent: React.ReactNode;
@@ -15,6 +18,7 @@ export default function AccountDashboard({
   addressContent,
 }: AccountDashboardProps) {
   const [tab, setTab] = useState("orders");
+  const currentLocale = useLanguage().locale;
 
   return (
     <>
@@ -27,25 +31,29 @@ export default function AccountDashboard({
           startIcon={<Inventory2OutlinedIcon />}
           onClick={() => setTab("orders")}
         >
-          Mina Beställningar
+          {DashboardLocale.btnOrders[currentLocale]}
         </Button>
         <Button
           variant="contained"
           startIcon={<HomeOutlinedIcon />}
           onClick={() => setTab("shipping")}
         >
-          Mina Adresser
+          {DashboardLocale.btnShipping[currentLocale]}
         </Button>
         <Button
           variant="contained"
           startIcon={<FavoriteBorderOutlinedIcon />}
           onClick={() => setTab("favorites")}
         >
-          Mina Favoriter
+          {DashboardLocale.btnShipping[currentLocale]}
         </Button>
 
-        <Button variant="outlined">Kundtjänst</Button>
-        <Button variant="outlined">Logga ut</Button>
+        <Button variant="outlined">
+          {DashboardLocale.btnSupport[currentLocale]}
+        </Button>
+        <Button variant="outlined">
+          {DashboardLocale.btnLogout[currentLocale]}
+        </Button>
       </Box>
       <Box id="content" sx={{ flex: 2 }}>
         {tab === "orders" && ordersContent}
