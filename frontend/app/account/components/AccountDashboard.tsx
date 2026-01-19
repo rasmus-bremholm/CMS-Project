@@ -11,7 +11,7 @@ interface AccountDashboardProps {
   addressContent: React.ReactNode;
 }
 
-const currentLocale = "sv";
+const currentLocale = "en";
 
 export default function AccountDashboard({
   ordersContent,
@@ -37,18 +37,22 @@ export default function AccountDashboard({
           startIcon={<HomeOutlinedIcon />}
           onClick={() => setTab("shipping")}
         >
-          Mina Adresser
+          {DashboardLocale.btnShipping[currentLocale]}
         </Button>
         <Button
           variant="contained"
           startIcon={<FavoriteBorderOutlinedIcon />}
           onClick={() => setTab("favorites")}
         >
-          Mina Favoriter
+          {DashboardLocale.btnShipping[currentLocale]}
         </Button>
 
-        <Button variant="outlined">Kundtjänst</Button>
-        <Button variant="outlined">Logga ut</Button>
+        <Button variant="outlined">
+          {DashboardLocale.btnSupport[currentLocale]}
+        </Button>
+        <Button variant="outlined">
+          {DashboardLocale.btnLogout[currentLocale]}
+        </Button>
       </Box>
       <Box id="content" sx={{ flex: 2 }}>
         {tab === "orders" && ordersContent}
