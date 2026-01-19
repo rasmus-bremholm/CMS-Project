@@ -4,11 +4,14 @@ import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useState } from "react";
+import { DashboardLocale } from "../lib/AccountDashBoard";
 
 interface AccountDashboardProps {
   ordersContent: React.ReactNode;
   addressContent: React.ReactNode;
 }
+
+const currentLocale = "sv";
 
 export default function AccountDashboard({
   ordersContent,
@@ -27,7 +30,7 @@ export default function AccountDashboard({
           startIcon={<Inventory2OutlinedIcon />}
           onClick={() => setTab("orders")}
         >
-          Mina Beställningar
+          {DashboardLocale.btnOrders[currentLocale]}
         </Button>
         <Button
           variant="contained"
