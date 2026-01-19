@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Button,
-  Container,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import ContactInformation from "./ContactInformation";
 
 export default function ContactForm() {

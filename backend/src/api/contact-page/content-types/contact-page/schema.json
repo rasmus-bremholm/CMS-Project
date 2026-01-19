@@ -15,7 +15,7 @@
     }
   },
   "attributes": {
-    "Hero": {
+    "hero": {
       "type": "component",
       "pluginOptions": {
         "i18n": {
