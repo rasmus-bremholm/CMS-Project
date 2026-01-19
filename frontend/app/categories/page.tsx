@@ -1,20 +1,28 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Box, Container, Typography, Paper } from "@mui/material";
+import { Category } from "@/types/category";
 import { getCategories } from "../lib/utils/strapi";
-
-interface Category {
-  id: number;
-  title: string;
-  image: string;
-}
+import { useTheme } from "@mui/material/styles";
 
 export default function Categories() {
-  const categories = Array.from({ length: 6 }, (_, index) => ({
-    id: index + 1,
-    title: "Placeholder",
-    image: "",
-  }));
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  const theme = useTheme();
+
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const data = await getCategories();
+        setCategories(data);
+      } catch (error) {
+        console.error("Failed to fetch categories:", error);
+      }
+    }
+
+    fetchCategories();
+  }, []);
 
   return (
     <Container>
@@ -48,11 +56,14 @@ export default function Categories() {
                 width: 200,
                 height: 200,
                 borderRadius: 1,
-                backgroundColor: "#432818",
+                backgroundColor: theme.palette.brand.darkCoffee,
                 color: "white",
                 display: "flex",
                 flexDirection: "column",
+                justifyContent: "flex-start",
+                overflow: "hidden",
                 marginBottom: 1,
+                padding: 1,
               }}
             >
               <Typography
@@ -65,15 +76,19 @@ export default function Categories() {
                 {category.title}
               </Typography>
 
-              {/* Bild */}
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  width: "100%",
-                  backgroundColor: "rgba(0,0,0,0.2)",
-                  borderRadius: 1,
-                }}
-              />
+              {category.image && (
+                <Box sx={{ flex: 1, overflow: "hidden" }}>
+                  <Box
+                    component="img"
+                    src={`http://localhost:1337${category.image.url}`}
+                    alt={category.image.alternativeText || category.title}
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </Box>
+              )}
             </Box>
           ))}
         </Box>
