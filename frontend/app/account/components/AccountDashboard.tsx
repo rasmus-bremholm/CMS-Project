@@ -5,19 +5,20 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useState } from "react";
 import { DashboardLocale } from "../lib/AccountDashBoard";
+import { useLanguage } from "@/app/context/LanguageContext";
+
 
 interface AccountDashboardProps {
   ordersContent: React.ReactNode;
   addressContent: React.ReactNode;
 }
 
-const currentLocale = "en";
-
 export default function AccountDashboard({
   ordersContent,
   addressContent,
 }: AccountDashboardProps) {
   const [tab, setTab] = useState("orders");
+  const currentLocale = useLanguage().locale;
 
   return (
     <>

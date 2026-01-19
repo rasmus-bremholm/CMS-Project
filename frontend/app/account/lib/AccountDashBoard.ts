@@ -20,3 +20,10 @@ export const DashboardLocale = {
     en: "Logout",
   },
 };
+
+export const AccountPageLocale = {
+  greeting: {
+    sv: "Hej",
+    en: "Hello",
+  },
+};

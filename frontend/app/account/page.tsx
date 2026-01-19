@@ -3,6 +3,8 @@ import AccountDashboard from "./components/AccountDashboard";
 import OrderList from "./components/OrderList";
 import AdressList from "./components/AdressList";
 import { getOrders } from "../lib/utils/strapi";
+import { AccountPageLocale } from "./lib/AccountDashBoard";
+import Greeting from "./components/Greeting";
 
 export default async function AccountPage() {
   const user = {
@@ -13,11 +15,12 @@ export default async function AccountPage() {
   };
 
   const orders = await getOrders();
+  const currentLocale = "en";
 
   return (
     <Container maxWidth="lg" sx={{ py: 6, bgcolor: "#CEC5BA" }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <Typography variant="h1">Hej {user.firstName}</Typography>
+        <Greeting user={user} />
         <Typography variant="caption">{user.email}</Typography>
       </Box>
       <Box sx={{ display: "flex", py: 4, gap: 2 }}>
