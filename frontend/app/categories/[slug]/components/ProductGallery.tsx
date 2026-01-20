@@ -22,10 +22,16 @@ export default function ProductGallery({ products }: Props) {
       <Grid
         container
         spacing={3}
-        sx={{ display: "flex", justifyContent: "center" }}
+        sx={{ display: "flex", justifyContent: {xs: "center", sm: "flex-start"} }}
       >
         {products.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <Grid
+            key={product.id}
+            size={{ xs: 10, sm: 6, md: 4, lg: 3 }}
+            sx={{ display: "flex" }}
+          >
+            <ProductCard product={product} />
+          </Grid>
         ))}
       </Grid>
     </Box>
