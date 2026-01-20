@@ -135,12 +135,22 @@ export async function getFavorites() {
   return response.data;
 }
 
-export async function getCategories(): Promise<Category[]> {
+export async function getCategories(locale: "sv" | "en"): Promise<Category[]> {
   const query = {
+    locale,
     populate: "*",
   };
 
   const response = await strapiQuery("categories", query);
+  return response.data;
+}
+
+export async function getCategoriesPage(locale: "sv" | "en") {
+  const query = {
+    locale,
+  };
+
+  const response = await strapiQuery("categories-page", query);
   return response.data;
 }
 

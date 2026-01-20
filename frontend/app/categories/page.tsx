@@ -3,32 +3,39 @@
 import { useEffect, useState } from "react";
 import { Box, Container, Typography, Paper } from "@mui/material";
 import { Category } from "@/types/category";
-import { getCategories } from "../lib/utils/strapi";
+import { getCategories, getCategoriesPage } from "../lib/utils/strapi";
 import { useTheme } from "@mui/material/styles";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function Categories() {
   const [categories, setCategories] = useState<Category[]>([]);
+  const [pageTitle, setPageTitle] = useState<string>("");
+
+  const { locale } = useLanguage();
 
   const theme = useTheme();
 
   useEffect(() => {
     async function fetchCategories() {
       try {
-        const data = await getCategories();
+        const data = await getCategories(locale);
         setCategories(data);
+
+        const pageData = await getCategoriesPage(locale);
+        setPageTitle(pageData.title);
       } catch (error) {
         console.error("Failed to fetch categories:", error);
       }
     }
 
     fetchCategories();
-  }, []);
+  }, [locale]);
 
   return (
     <Container>
       <Paper sx={{ padding: 2, marginBottom: 4 }}>
         <Typography variant="h5" component="h1">
-          Kategorier
+          {pageTitle}
         </Typography>
       </Paper>
 
