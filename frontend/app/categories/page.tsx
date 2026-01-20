@@ -1,19 +1,28 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Box, Container, Typography, Paper } from "@mui/material";
-
-interface Category {
-  id: number;
-  title: string;
-  image: string;
-}
+import { Category } from "@/types/category";
+import { getCategories } from "../lib/utils/strapi";
+import { useTheme } from "@mui/material/styles";
 
 export default function Categories() {
-  const categories = Array.from({ length: 6 }, (_, index) => ({
-    id: index + 1,
-    title: "Placeholder",
-    image: "",
-  }));
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  const theme = useTheme();
+
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const data = await getCategories();
+        setCategories(data);
+      } catch (error) {
+        console.error("Failed to fetch categories:", error);
+      }
+    }
+
+    fetchCategories();
+  }, []);
 
   return (
     <Container>
@@ -46,33 +55,53 @@ export default function Categories() {
               sx={{
                 width: 200,
                 height: 200,
-                borderRadius: 1,
-                backgroundColor: "#432818",
+                borderRadius: 2,
+                boxShadow: 3,
+                backgroundColor: "brand.silver",
                 color: "white",
                 display: "flex",
                 flexDirection: "column",
-                marginBottom: 1,
+                justifyContent: "flex-start",
+                overflow: "hidden",
+                marginBottom: 2,
               }}
             >
               <Typography
                 variant="h6"
                 sx={{
+                  width: "100%",
                   marginBottom: 1,
                   textAlign: "center",
+                  backgroundColor: "brand.darkCoffee",
+                  borderRadius: 0,
+                  boxShadow: 1,
                 }}
               >
                 {category.title}
               </Typography>
 
-              {/* Bild */}
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  width: "100%",
-                  backgroundColor: "rgba(0,0,0,0.2)",
-                  borderRadius: 1,
-                }}
-              />
+              {category.image && (
+                <Box
+                  sx={{
+                    flex: 1,
+                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={`http://localhost:1337${category.image.url}`}
+                    alt={category.image.alternativeText || category.title}
+                    sx={{
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                </Box>
+              )}
             </Box>
           ))}
         </Box>
