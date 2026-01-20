@@ -5,7 +5,7 @@ export interface Product {
   id: number;
   title: string;
   description: string;
-  image: StrapiImage;
+  img: StrapiImage;
   price: number;
   category: string;
   tags: StrapiTag[];

@@ -1,5 +1,5 @@
 import { Box, Grid } from "@mui/material";
-import { PopularProductCard } from "@/app/home/components/PopularProductCard";
+import { ProductCard } from "./ProductCard";
 
 // Types
 import { Product } from "@/types/product";
@@ -25,7 +25,7 @@ export default function ProductGallery({ products }: Props) {
         sx={{ display: "flex", justifyContent: "center" }}
       >
         {products.map(product => (
-          <PopularProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </Grid>
     </Box>
