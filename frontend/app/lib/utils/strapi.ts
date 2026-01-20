@@ -140,3 +140,11 @@ export async function getContactpageData(
     contact_information: data.contact_information,
   };
 }
+
+export async function getTags(): Promise<string[]> {
+	const query = {}
+
+	const response = await strapiQuery("tags", query);
+
+	return response.data;
+}
