@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import AddToCartButton from "@/app/components/AddToCartButton";
+import { rootUrl } from "@/app/lib/utils/strapi";
 
 //types
 import { Product } from "@/types/product";
@@ -27,7 +28,7 @@ export const PopularProductCard = ({ product }: Props) => {
         <CardMedia
           component="img"
           height="250"
-          image={product.imageUrl}
+          image={`${rootUrl}${product.img.url}`}
           alt={product.title}
           sx={{ objectFit: "cover" }}
         />
