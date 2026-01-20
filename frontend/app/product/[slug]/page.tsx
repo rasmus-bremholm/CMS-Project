@@ -11,7 +11,7 @@ interface Props {
 
 export default async function ProductDetails({ params }: Props) {
   const { slug } = await params;
-	const product = await getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
 
   return (
     <Box component="section" sx={{ backgroundColor: "brand.latte", py: 6 }}>
@@ -27,7 +27,13 @@ export default async function ProductDetails({ params }: Props) {
       >
         <BackButton />
         <Box
-          sx={{ backgroundColor: "#E3DFD9", mx: "auto", px: 2, py: 4, width: "100%" }}
+          sx={{
+            backgroundColor: "#E3DFD9",
+            mx: "auto",
+            px: 2,
+            py: 4,
+            width: "100%",
+          }}
         >
           <Grid container spacing={4} alignItems="center">
             <Grid size={{ xs: 12, md: 6 }}>
@@ -40,7 +46,11 @@ export default async function ProductDetails({ params }: Props) {
                   width: { xs: "300px", md: "100%" },
                 }}
               >
-                <Image fill src={`${rootUrl}${product.img.url}`} alt="Alt text" />
+                <Image
+                  fill
+                  src={`${rootUrl}${product.img.url}`}
+                  alt="Alt text"
+                />
               </Box>
             </Grid>
 
