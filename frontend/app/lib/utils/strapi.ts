@@ -125,23 +125,33 @@ export async function getFavorites() {
       product: {
         populate: "*",
       },
-      users_permissions_user: true, // Grrrr 
+      users_permissions_user: true, // Grrrr
     },
   };
 
   const response = await strapiQuery("favorites", query);
 
   return response.data;
-};
+}
 
-export async function getCategories(): Promise<Category[]> {
+export async function getCategories(locale: "sv" | "en"): Promise<Category[]> {
   const query = {
+    locale,
     populate: "*",
   };
 
   const response = await strapiQuery("categories", query);
   return response.data;
-};
+}
+
+export async function getCategoriesPage(locale: "sv" | "en") {
+  const query = {
+    locale,
+  };
+
+  const response = await strapiQuery("categories-page", query);
+  return response.data;
+}
 
 export async function getContactpageData(
   locale: "sv" | "en"
