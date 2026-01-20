@@ -174,6 +174,14 @@ export async function getContactpageData(
   };
 }
 
+export async function getTags(): Promise<string[]> {
+	const query = {}
+
+	const response = await strapiQuery("tags", query);
+
+	return response.data;
+}
+
 export async function getCartData(locale: "sv" | "en"): Promise<Cart> {
   const query = {
     locale,
