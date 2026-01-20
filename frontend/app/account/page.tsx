@@ -18,6 +18,7 @@ export default async function AccountPage() {
 
   const orders = await getOrders();
   const favorites: Favorite[] = await getFavorites();
+  console.log(favorites);
 
   const currentLocale = "en";
 
