@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { PopularProductCard } from "@/app/home/components/PopularProductCard";
 
 // Types
@@ -8,7 +8,7 @@ interface Props {
   products: Product[];
 }
 
-export default function ProductGallery({ products }: Props ) {
+export default function ProductGallery({ products }: Props) {
   return (
     <Box
       sx={{
@@ -19,9 +19,15 @@ export default function ProductGallery({ products }: Props ) {
         width: "100%",
       }}
     >
-      {products.map(product => (
-				<PopularProductCard key={product.id} product={product}/>
-			))}
+      <Grid
+        container
+        spacing={3}
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
+        {products.map(product => (
+          <PopularProductCard key={product.id} product={product} />
+        ))}
+      </Grid>
     </Box>
   );
 }
