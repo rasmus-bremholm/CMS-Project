@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { PopularProductCard } from "@/app/home/components/PopularProductCard";
 
 // Types
 import { Product } from "@/types/product";
@@ -7,7 +8,7 @@ interface Props {
   products: Product[];
 }
 
-export default function ProductGallery({ products }) {
+export default function ProductGallery({ products }: Props ) {
   return (
     <Box
       sx={{
@@ -18,7 +19,9 @@ export default function ProductGallery({ products }) {
         width: "100%",
       }}
     >
-      <Typography>Hi</Typography>
+      {products.map(product => (
+				<PopularProductCard key={product.id} product={product}/>
+			))}
     </Box>
   );
 }
