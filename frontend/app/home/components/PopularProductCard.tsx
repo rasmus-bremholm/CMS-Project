@@ -23,7 +23,7 @@ export const PopularProductCard = ({ product }: Props) => {
         boxShadow: 3,
       }}
     >
-      <Link href={`product-details/${product.slug}`}>
+      <Link href={`product/${product.slug}`}>
         <CardMedia
           component="img"
           height="250"
@@ -39,7 +39,7 @@ export const PopularProductCard = ({ product }: Props) => {
         <Typography
           variant="h6"
           component={Link}
-          href={`product-details/${product.slug}`}
+          href={`product/${product.slug}`}
           sx={{
             color: "inherit",
             fontWeight: "semi-bold",
