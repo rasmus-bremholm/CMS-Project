@@ -17,3 +17,4 @@ export interface Product {
 export interface CartItemType {
   product: Product;
   quantity: number;
+}

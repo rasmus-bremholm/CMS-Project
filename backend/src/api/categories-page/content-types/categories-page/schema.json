@@ -1,10 +1,10 @@
 {
-  "kind": "collectionType",
-  "collectionName": "tags",
+  "kind": "singleType",
+  "collectionName": "categories_pages",
   "info": {
-    "singularName": "tag",
-    "pluralName": "tags",
-    "displayName": "Tag"
+    "singularName": "categories-page",
+    "pluralName": "categories-pages",
+    "displayName": "Categories Page"
   },
   "options": {
     "draftAndPublish": true
@@ -22,16 +22,6 @@
           "localized": true
         }
       },
-      "required": true
-    },
-    "slug": {
-      "type": "uid",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "targetField": "title",
       "required": true
     }
   }
