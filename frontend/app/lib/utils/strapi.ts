@@ -117,6 +117,21 @@ export async function getHomepageData() {
   return response.data;
 }
 
+export async function getFavorites() {
+  const query = {
+    populate: {
+      product: {
+        populate: "*",
+      },
+      users_permissions_user: true, // Grrrr 
+    },
+  };
+
+  const response = await strapiQuery("favorites", query);
+
+  return response.data;
+};
+
 export async function getCategories(): Promise<Category[]> {
   const query = {
     populate: "*",

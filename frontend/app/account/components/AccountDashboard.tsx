@@ -10,11 +10,13 @@ import { useLanguage } from "@/app/context/LanguageContext";
 interface AccountDashboardProps {
   ordersContent: React.ReactNode;
   addressContent: React.ReactNode;
+  favoritesContent: React.ReactNode;
 }
 
 export default function AccountDashboard({
   ordersContent,
   addressContent,
+  favoritesContent,
 }: AccountDashboardProps) {
   const [tab, setTab] = useState("orders");
   const currentLocale = useLanguage().locale;
@@ -57,6 +59,7 @@ export default function AccountDashboard({
       <Box id="content" sx={{ flex: 2 }}>
         {tab === "orders" && ordersContent}
         {tab === "shipping" && addressContent}
+        {tab === "favorites" && favoritesContent}
       </Box>
     </>
   );

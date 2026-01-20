@@ -96,6 +96,12 @@
       "relation": "oneToMany",
       "target": "api::order-item.order-item",
       "mappedBy": "product"
+    },
+    "favorites": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::favorite.favorite",
+      "mappedBy": "product"
     }
   }
 }
