@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "categories_pages",
+  "info": {
+    "singularName": "categories-page",
+    "pluralName": "categories-pages",
+    "displayName": "Categories Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    }
+  }
+}
