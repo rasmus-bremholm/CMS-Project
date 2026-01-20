@@ -58,6 +58,7 @@ export const ProductCard = ({ product }: Props) => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            mt: "auto",
           }}
         >
           <Typography variant="body2" color="primary" fontWeight="bold">
