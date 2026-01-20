@@ -13,6 +13,8 @@ export default async function CategoryGalleryPage({ params }: Props) {
   const products = await getProductsByCategory(slug);
   const tags = await getTags();
 
+	console.log('products', products)
+	
   return (
     <Box component="section" sx={{ backgroundColor: "brand.latte", py: 6 }}>
       <Container

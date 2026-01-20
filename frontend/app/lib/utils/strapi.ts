@@ -44,15 +44,15 @@ async function strapiQuery(
 }
 
 export async function getProductsByCategory(
-  categoryName: string
+  categorySlug: string
 ): Promise<Product[]> {
   // API test
   // http://localhost:1337/api/products/filters[category][title][$eq]=coffee&populate=*
   const query = {
     filters: {
       category: {
-        title: {
-          $eq: categoryName,
+        slug: {
+          $eq: categorySlug,
         },
       },
     },
