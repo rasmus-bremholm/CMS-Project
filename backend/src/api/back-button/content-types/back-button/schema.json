@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "back_buttons",
+  "info": {
+    "singularName": "back-button",
+    "pluralName": "back-buttons",
+    "displayName": "Back button"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "label": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

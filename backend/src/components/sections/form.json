@@ -12,13 +12,25 @@
     "name_label": {
       "type": "string"
     },
+    "name_placeholder": {
+      "type": "string"
+    },
     "email_label": {
+      "type": "string"
+    },
+    "email_placeholder": {
       "type": "string"
     },
     "subject_label": {
       "type": "string"
     },
+    "subject_placeholder": {
+      "type": "string"
+    },
     "message_label": {
+      "type": "string"
+    },
+    "message_placeholder": {
       "type": "string"
     },
     "button_label": {

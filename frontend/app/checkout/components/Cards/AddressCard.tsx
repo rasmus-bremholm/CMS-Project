@@ -35,7 +35,7 @@ export default function AddressCard({ data }: { data?: any }) {
           </Grid>
 
           <TextField
-            label="Address"
+            label="Adress"
             required
             placeholder="Street Address"
             fullWidth
