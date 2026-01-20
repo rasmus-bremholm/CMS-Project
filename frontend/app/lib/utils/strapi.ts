@@ -5,6 +5,7 @@ import { Category } from "@/types/category";
 import { ContactPage } from "@/types/contact";
 import { Cart } from "@/types/cart";
 import { Checkout } from "@/types/checkout";
+import { BackButton } from "@/types/back-button";
 
 interface StrapiData {
   data: any;
@@ -125,14 +126,14 @@ export async function getFavorites() {
       product: {
         populate: "*",
       },
-      users_permissions_user: true, // Grrrr 
+      users_permissions_user: true, // Grrrr
     },
   };
 
   const response = await strapiQuery("favorites", query);
 
   return response.data;
-};
+}
 
 export async function getCategories(): Promise<Category[]> {
   const query = {
@@ -141,7 +142,7 @@ export async function getCategories(): Promise<Category[]> {
 
   const response = await strapiQuery("categories", query);
   return response.data;
-};
+}
 
 export async function getContactpageData(
   locale: "sv" | "en"
@@ -232,5 +233,25 @@ export async function getCheckoutData(locale: "sv" | "en"): Promise<Checkout> {
     contact: data.contact,
     payment: data.payment,
     order_summary: data.order_summary,
+    pay_button: data.pay_button,
+  };
+}
+
+export async function getBackButtonData(
+  locale: "sv" | "en"
+): Promise<BackButton> {
+  const query = {
+    locale,
+    populate: "*",
+  };
+
+  const response = await strapiQuery("back-button", query);
+
+  const data = response.data;
+
+  return {
+    id: data.id,
+    locale: data.locale,
+    label: data.label,
   };
 }

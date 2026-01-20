@@ -25,15 +25,20 @@ export default function PaymentCard({ data }: { data?: any }) {
 
         <Stack spacing={2}>
           <TextField
-            label="Card number"
+            label={payment?.card_number ?? ""}
             required
-            placeholder="1234 5678 9012 3456"
+            placeholder={payment?.card_number_placeholder ?? ""}
             fullWidth
           />
 
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 4 }}>
-              <TextField label="CVV" required placeholder="123" fullWidth />
+              <TextField
+                label={payment?.cvv ?? ""}
+                required
+                placeholder={payment?.cvv_placeholder ?? ""}
+                fullWidth
+              />
             </Grid>
           </Grid>
         </Stack>
