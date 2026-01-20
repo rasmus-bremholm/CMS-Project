@@ -7,17 +7,18 @@ import {
 } from "@mui/icons-material";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 
-export default function ContactInformation() {
+export default function ContactInformation({ data }: { data?: any }) {
+  const contactInformation = data?.contact_information;
+
   return (
     <Grid size={{ xs: 12, md: 5 }}>
       <Box sx={{ p: { xs: 2, md: 3 }, borderRadius: 3, height: "100%" }}>
         <Typography variant="h5" fontWeight={600} mb={2}>
-          Contact Information
+          {contactInformation?.title ?? ""}
         </Typography>
 
         <Typography color="text.secondary" mb={4}>
-          Drop by, give us a call, or send an email. We’re always happy to chat
-          about coffee, answer questions, or help with your order.
+          {contactInformation?.subtitle ?? ""}
         </Typography>
 
         <Stack spacing={3}>
@@ -37,9 +38,15 @@ export default function ContactInformation() {
               <LocationOnOutlined />
             </Box>
             <Box>
-              <Typography fontWeight={600}>Visit Us</Typography>
-              <Typography color="text.secondary">123 Coffee Lane</Typography>
-              <Typography color="text.secondary">Göteborg, Sweden</Typography>
+              <Typography fontWeight={600}>
+                {contactInformation?.about.title ?? ""}
+              </Typography>
+              <Typography color="text.secondary">
+                {contactInformation?.about.adress ?? ""}
+              </Typography>
+              <Typography color="text.secondary">
+                {contactInformation?.about.location ?? ""}
+              </Typography>
             </Box>
           </Box>
 
@@ -59,8 +66,12 @@ export default function ContactInformation() {
               <PhoneOutlined />
             </Box>
             <Box>
-              <Typography fontWeight={600}>Call Us</Typography>
-              <Typography color="text.secondary">123 456 789</Typography>
+              <Typography fontWeight={600}>
+                {contactInformation?.phone.title ?? ""}
+              </Typography>
+              <Typography color="text.secondary">
+                {contactInformation?.phone.phone_number ?? ""}
+              </Typography>
             </Box>
           </Box>
 
@@ -80,9 +91,11 @@ export default function ContactInformation() {
               <EmailOutlined />
             </Box>
             <Box>
-              <Typography fontWeight={600}>Email Us</Typography>
+              <Typography fontWeight={600}>
+                {contactInformation?.email.title ?? ""}
+              </Typography>
               <Typography color="text.secondary">
-                hello@coffetime.com
+                {contactInformation?.email.email ?? ""}
               </Typography>
             </Box>
           </Box>

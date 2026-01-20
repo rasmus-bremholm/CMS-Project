@@ -14,16 +14,13 @@ import { ArrowForward, ShoppingBag } from "@mui/icons-material";
 import Link from "next/link";
 import CartItem from "./CartItem";
 
-export default function Cart() {
-  const {
-    items,
-    subtotal,
-    total,
-    itemCount,
-    shippingCost,
-    setShippingCost,
-    addItem,
-  } = useCart();
+export default function Cart({ data }: { data?: any }) {
+  const cartEmpty = data?.cart_empty;
+  const cart = data?.cart;
+  const orderSummary = data?.order_summary;
+
+  const { items, subtotal, total, itemCount, shippingCost, setShippingCost } =
+    useCart();
 
   if (items.length === 0) {
     return (
@@ -50,10 +47,10 @@ export default function Cart() {
           </Box>
 
           <Typography variant="h5" fontWeight={600} mb={3}>
-            Your cart is empty
+            {cartEmpty?.title ?? ""}
           </Typography>
           <Typography color="text.secondary" mb={3}>
-            Discover our selection of premium products
+            {cartEmpty?.subtitle ?? ""}
           </Typography>
           <Link href="/categories" passHref>
             <Button
@@ -62,7 +59,7 @@ export default function Cart() {
               size="medium"
               sx={{ bgcolor: "brand.coffeeBean" }}
             >
-              Continue Shopping
+              {cartEmpty?.button_label ?? ""}
             </Button>
           </Link>
         </Box>
@@ -74,7 +71,7 @@ export default function Cart() {
     <Box minHeight="100vh" py={{ xs: 4, md: 8 }}>
       <Box maxWidth="1200px" mx="auto" px={2}>
         <Typography variant="h4" fontWeight={600} mb={4}>
-          Shopping Cart
+          {cart?.title ?? ""}
         </Typography>
 
         <Stack spacing={4}>
@@ -84,10 +81,16 @@ export default function Cart() {
               gridTemplateColumns="80px 1fr 140px 80px 40px"
               gap={2}
             >
-              <Typography fontWeight={600}>Product</Typography>
+              <Typography fontWeight={600}>
+                {cart?.product_title ?? ""}
+              </Typography>
               <Box />
-              <Typography fontWeight={600}>Quantity</Typography>
-              <Typography fontWeight={600}>Total</Typography>
+              <Typography fontWeight={600}>
+                {cart?.quantity_title ?? ""}
+              </Typography>
+              <Typography fontWeight={600}>
+                {cart?.total_title ?? ""}
+              </Typography>
               <Box />
             </Box>
 
@@ -104,7 +107,7 @@ export default function Cart() {
             }}
           >
             <Typography variant="h6" fontWeight={600} mb={2}>
-              Order Summary
+              {orderSummary?.title ?? ""}
             </Typography>
 
             <Box
@@ -120,14 +123,16 @@ export default function Cart() {
             </Box>
 
             <Box mb={2}>
-              <Typography mb={1}>Shipping</Typography>
+              <Typography mb={1}>
+                {orderSummary?.shipping_title ?? ""}
+              </Typography>
               <Select
                 fullWidth
                 value={shippingCost}
                 onChange={e => setShippingCost(Number(e.target.value))}
               >
-                <MenuItem value={5}>Standard shipping - $5.00</MenuItem>
-                <MenuItem value={15}>Express shipping - $15.00</MenuItem>
+                <MenuItem value={5}>{orderSummary?.shipping_1 ?? ""}</MenuItem>
+                <MenuItem value={15}>{orderSummary?.shipping_2 ?? ""}</MenuItem>
               </Select>
             </Box>
 
@@ -151,7 +156,7 @@ export default function Cart() {
                 href="/products"
                 sx={{ minWidth: 180 }}
               >
-                Continue Shopping
+                {orderSummary?.button_continue ?? ""}
               </Button>
 
               <Button
@@ -160,7 +165,7 @@ export default function Cart() {
                 href="/checkout"
                 sx={{ minWidth: 180, bgcolor: "brand.darkCoffee" }}
               >
-                Checkout
+                {orderSummary?.button_checkout ?? ""}
               </Button>
             </Stack>
           </Card>
