@@ -55,36 +55,49 @@ export default function Categories() {
               sx={{
                 width: 200,
                 height: 200,
-                borderRadius: 1,
-                backgroundColor: theme.palette.brand.darkCoffee,
+                borderRadius: 2,
+                boxShadow: 3,
+                backgroundColor: "brand.silver",
                 color: "white",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "flex-start",
                 overflow: "hidden",
-                marginBottom: 1,
-                padding: 1,
+                marginBottom: 2,
               }}
             >
               <Typography
                 variant="h6"
                 sx={{
+                  width: "100%",
                   marginBottom: 1,
                   textAlign: "center",
+                  backgroundColor: "brand.darkCoffee",
+                  borderRadius: 0,
+                  boxShadow: 1,
                 }}
               >
                 {category.title}
               </Typography>
 
               {category.image && (
-                <Box sx={{ flex: 1, overflow: "hidden" }}>
+                <Box
+                  sx={{
+                    flex: 1,
+                    overflow: "hidden",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
                   <Box
                     component="img"
                     src={`http://localhost:1337${category.image.url}`}
                     alt={category.image.alternativeText || category.title}
                     sx={{
-                      width: "100%",
-                      height: "100%",
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      objectFit: "contain",
                     }}
                   />
                 </Box>
