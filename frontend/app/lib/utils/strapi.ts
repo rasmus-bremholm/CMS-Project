@@ -27,8 +27,13 @@ async function strapiQuery(
 ) {
   const queryString = qs.stringify(queryParams, {
     encodeValuesOnly: true, // 🔥 REQUIRED FOR STRAPI V4
+    arrayFormat: "indices",
   });
   const url = strapiUrl + endpoint + (queryString ? `?${queryString}` : "");
+
+  console.log("--- STRAPI FETCH URL ---");
+  console.log(url);
+  console.log("------------------------");
 
   const response = await fetch(url, {
     next: { revalidate: 60 }, // optional but recommended
@@ -125,14 +130,14 @@ export async function getFavorites() {
       product: {
         populate: "*",
       },
-      users_permissions_user: true, // Grrrr 
+      users_permissions_user: true, // Grrrr
     },
   };
 
   const response = await strapiQuery("favorites", query);
 
   return response.data;
-};
+}
 
 export async function getCategories(): Promise<Category[]> {
   const query = {
@@ -141,7 +146,7 @@ export async function getCategories(): Promise<Category[]> {
 
   const response = await strapiQuery("categories", query);
   return response.data;
-};
+}
 
 export async function getContactpageData(
   locale: "sv" | "en"
@@ -175,11 +180,11 @@ export async function getContactpageData(
 }
 
 export async function getTags(): Promise<string[]> {
-	const query = {}
+  const query = {};
 
-	const response = await strapiQuery("tags", query);
+  const response = await strapiQuery("tags", query);
 
-	return response.data;
+  return response.data;
 }
 
 export async function getCartData(locale: "sv" | "en"): Promise<Cart> {
@@ -233,4 +238,28 @@ export async function getCheckoutData(locale: "sv" | "en"): Promise<Checkout> {
     payment: data.payment,
     order_summary: data.order_summary,
   };
+}
+
+export async function getPopularProducts(
+  categoryTitle: string
+): Promise<Product[]> {
+  const query = {
+    locale: "sv",
+    filters: {
+      category: {
+        title: {
+          $eq: categoryTitle,
+        },
+      },
+    },
+    sort: ["rating:desc"],
+    pagination: {
+      limit: 3,
+    },
+    populate: ["category", "img"],
+  };
+
+  const response = await strapiQuery("products", query);
+
+  return response.data;
 }
