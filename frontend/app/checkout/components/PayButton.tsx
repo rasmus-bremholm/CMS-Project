@@ -4,9 +4,10 @@ import { Button } from "@mui/material";
 
 type PayButtonProps = {
   total: number;
+  label: string;
 };
 
-export default function PayButton({ total }: PayButtonProps) {
+export default function PayButton({ total, label }: PayButtonProps) {
   return (
     <>
       <Button
@@ -19,7 +20,7 @@ export default function PayButton({ total }: PayButtonProps) {
           bgcolor: "brand.coffeeBean",
         }}
       >
-        Pay ${total.toFixed(2)}
+        {label} {total.toFixed(2)}
       </Button>
     </>
   );

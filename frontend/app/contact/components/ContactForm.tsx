@@ -44,20 +44,26 @@ export default function ContactForm({ data }: { data?: any }) {
             <Grid size={{ xs: 12, md: 6 }}>
               <label>
                 {contactForm?.name_label ?? ""}
-                <TextField fullWidth placeholder="Your name" />
+                <TextField
+                  fullWidth
+                  placeholder={contactForm?.name_placeholder ?? ""}
+                />
               </label>
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
               <label>
                 {contactForm?.email_label ?? ""}
-                <TextField fullWidth placeholder="your@email.com" />
+                <TextField fullWidth placeholder={contactForm?.email ?? ""} />
               </label>
             </Grid>
 
             <Grid size={{ xs: 12 }}>
               <label>
                 {contactForm?.subject_label ?? ""}
-                <TextField fullWidth placeholder="What's this about?" />
+                <TextField
+                  fullWidth
+                  placeholder={contactForm?.subject_placeholder ?? ""}
+                />
               </label>
             </Grid>
 
@@ -68,7 +74,7 @@ export default function ContactForm({ data }: { data?: any }) {
                   fullWidth
                   multiline
                   rows={4}
-                  placeholder="Tell us more..."
+                  placeholder={contactForm?.message_placeholder ?? ""}
                 />
               </label>
             </Grid>

@@ -78,7 +78,7 @@ export default function OrderSummary({ data }: { data?: any }) {
           </Box>
         </Stack>
 
-        <PayButton total={total} />
+        <PayButton total={total} label={data?.pay_button ?? ""} />
       </CardContent>
     </Card>
   );
