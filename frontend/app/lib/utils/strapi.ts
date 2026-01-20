@@ -125,14 +125,14 @@ export async function getFavorites() {
       product: {
         populate: "*",
       },
-      users_permissions_user: true, // Grrrr 
+      users_permissions_user: true, // Grrrr
     },
   };
 
   const response = await strapiQuery("favorites", query);
 
   return response.data;
-};
+}
 
 export async function getCategories(): Promise<Category[]> {
   const query = {
@@ -141,7 +141,7 @@ export async function getCategories(): Promise<Category[]> {
 
   const response = await strapiQuery("categories", query);
   return response.data;
-};
+}
 
 export async function getContactpageData(
   locale: "sv" | "en"
@@ -224,5 +224,6 @@ export async function getCheckoutData(locale: "sv" | "en"): Promise<Checkout> {
     contact: data.contact,
     payment: data.payment,
     order_summary: data.order_summary,
+    pay_button: data.pay_button,
   };
 }

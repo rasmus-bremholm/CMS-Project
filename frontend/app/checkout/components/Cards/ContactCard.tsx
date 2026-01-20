@@ -14,17 +14,17 @@ export default function ContactCard({ data }: { data?: any }) {
 
         <Stack spacing={2}>
           <TextField
-            label="Email"
+            label={contact?.email ?? ""}
             type="email"
             required
-            placeholder="your@email.com"
+            placeholder={contact?.email_placeholder ?? ""}
             fullWidth
           />
           <TextField
-            label="Phone"
+            label={contact?.phone ?? ""}
             type="tel"
             required
-            placeholder="+46 00 00 000"
+            placeholder={contact?.phone_placeholder ?? ""}
             fullWidth
           />
         </Stack>
