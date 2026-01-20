@@ -64,7 +64,7 @@ export async function getProductsByCategory(
   return response.data;
 }
 
-export async function getProductBySlug(slug: string): Promise<Product[]> {
+export async function getProductBySlug(slug: string): Promise<Product> {
   // API test
   // http://localhost:1337/api/products?filters[slug][$eq]=arvid-nordquist-mellan&populate=*
   const query = {
@@ -78,7 +78,7 @@ export async function getProductBySlug(slug: string): Promise<Product[]> {
 
   const response = await strapiQuery("products", query);
 
-  return response.data;
+  return response.data[0];
 }
 
 export async function getOrders(): Promise<OrdersResponse> {

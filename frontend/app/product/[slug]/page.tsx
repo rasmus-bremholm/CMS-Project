@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { ProductActions } from "./ProductActions";
 import BackButton from "@/app/components/BackButton";
+import { getProductBySlug } from "@/app/lib/utils/strapi";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -9,7 +10,10 @@ interface Props {
 
 export default async function ProductDetails({ params }: Props) {
   const { slug } = await params;
-  const product = await getProduct(slug);
+  //const product = await getProduct(slug);
+	const product = await getProductBySlug(slug);
+	console.log('product', product)
+	
 
   return (
     <Box component="section" sx={{ backgroundColor: "brand.latte", py: 6 }}>
@@ -79,9 +83,9 @@ export default async function ProductDetails({ params }: Props) {
   );
 }
 
-async function getProduct(slug: string) {
+/* async function getProduct(slug: string) {
   const mod = await import("@/app/mockdata/products.json");
   const products = mod.default;
 
   return products.find(product => product.slug === slug);
-}
+} */
