@@ -3,10 +3,6 @@ import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { ProductActions } from "./ProductActions";
 import BackButton from "@/app/components/BackButton";
 
-//
-import FilterPanel from "@/app/components/FilterPanel";
-import { getTags } from "@/app/lib/utils/strapi";
-
 interface Props {
   params: Promise<{ slug: string }>;
 }
@@ -14,14 +10,9 @@ interface Props {
 export default async function ProductDetails({ params }: Props) {
   const { slug } = await params;
   const product = await getProduct(slug);
-	//
-	const tags = await getTags();
-	console.log('tags', tags)
-	
 
   return (
     <Box component="section" sx={{ backgroundColor: "brand.latte", py: 6 }}>
-			<FilterPanel tags={tags} />
       <Container
         component="main"
         maxWidth="md"
