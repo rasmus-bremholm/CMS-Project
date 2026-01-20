@@ -2,12 +2,14 @@
 
 import { Card, CardContent, Stack, TextField, Typography } from "@mui/material";
 
-export default function ContactCard() {
+export default function ContactCard({ data }: { data?: any }) {
+  const contact = data?.contact;
+
   return (
     <Card>
       <CardContent>
         <Typography variant="h6" fontWeight={600} mb={2}>
-          Contact Information
+          {contact?.title ?? ""}
         </Typography>
 
         <Stack spacing={2}>

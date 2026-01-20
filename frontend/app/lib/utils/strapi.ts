@@ -3,6 +3,7 @@ import { Product } from "@/types/product";
 import { Order, OrdersResponse } from "@/types/order";
 import { ContactPage } from "@/types/contact";
 import { Cart } from "@/types/cart";
+import { Checkout } from "@/types/checkout";
 
 interface StrapiData {
   data: any;
@@ -167,6 +168,36 @@ export async function getCartData(locale: "sv" | "en"): Promise<Cart> {
     locale: data.locale,
     cart_empty: data.cart_empty,
     cart: data.cart,
+    order_summary: data.order_summary,
+  };
+}
+
+export async function getCheckoutData(locale: "sv" | "en"): Promise<Checkout> {
+  const query = {
+    locale,
+    populate: {
+      adress: true,
+      contact: true,
+      payment: true,
+      order_summary: {
+        populate: {
+          empty: true,
+        },
+      },
+    },
+  };
+
+  const response = await strapiQuery("checkout", query);
+
+  const data = response.data;
+
+  return {
+    id: data.id,
+    locale: data.locale,
+    title: data.title,
+    adress: data.adress,
+    contact: data.contact,
+    payment: data.payment,
     order_summary: data.order_summary,
   };
 }
