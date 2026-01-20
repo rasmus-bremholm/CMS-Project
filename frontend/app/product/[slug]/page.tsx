@@ -3,6 +3,7 @@ import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { ProductActions } from "./ProductActions";
 import BackButton from "@/app/components/BackButton";
 import { getProductBySlug } from "@/app/lib/utils/strapi";
+import { rootUrl } from "@/app/lib/utils/strapi";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -42,7 +43,7 @@ export default async function ProductDetails({ params }: Props) {
                   width: { xs: "300px", md: "100%" },
                 }}
               >
-                <Image fill src={product.imageUrl} alt="Alt text" />
+                <Image fill src={`${rootUrl}${product.img.url}`} alt="Alt text" />
               </Box>
             </Grid>
 
@@ -70,7 +71,7 @@ export default async function ProductDetails({ params }: Props) {
                 <Typography>{product.description}</Typography>
 
                 <Typography>
-                  {product.inStock ? "I lager" : "Ej i lager"}
+                  {product.quantity > 0 ? "I lager" : "Ej i lager"}
                 </Typography>
 
                 <ProductActions product={product} />
