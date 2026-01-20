@@ -112,14 +112,12 @@ export async function getHomepageData() {
 }
 
 export async function getFavorites() {
-
-
   const query = {
     populate: {
       product: {
         populate: "*",
       },
-      user: "*",
+      users_permissions_user: true, // Grrrr 
     },
   };
 
