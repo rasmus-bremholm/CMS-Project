@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_sections_payments",
+  "info": {
+    "displayName": "payment",
+    "icon": "priceTag"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

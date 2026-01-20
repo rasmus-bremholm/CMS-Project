@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_orders",
+  "info": {
+    "displayName": "order",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "shipping_title": {
+      "type": "string"
+    },
+    "shipping_1": {
+      "type": "string"
+    },
+    "shipping_2": {
+      "type": "string"
+    },
+    "button_continue": {
+      "type": "string"
+    },
+    "button_checkout": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

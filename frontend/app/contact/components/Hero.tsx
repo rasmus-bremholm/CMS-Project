@@ -3,7 +3,11 @@
 import BackButton from "@/app/components/BackButton";
 import { Box, Container, Typography } from "@mui/material";
 
-export default function Hero() {
+export default function Hero({ data }: { data?: any }) {
+  const hero = data?.hero;
+
+  console.log("data hero", data.hero);
+
   return (
     <Box
       sx={{
@@ -18,12 +22,10 @@ export default function Hero() {
 
         <Box textAlign="center">
           <Typography variant="h3" mb={2}>
-            Get in Touch
+            {hero?.title ?? ""}
           </Typography>
-          <Typography color="text.secondary">
-            Have a question or just want to say hello? We&apos;d love to hear
-            from you.
-          </Typography>
+
+          <Typography color="text.secondary">{hero?.subtitle ?? ""}</Typography>
         </Box>
       </Container>
     </Box>
