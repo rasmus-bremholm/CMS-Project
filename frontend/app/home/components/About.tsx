@@ -6,7 +6,7 @@ import { rootUrl } from "@/app/lib/utils/strapi";
 import { AboutTypes } from "@/types/about";
 
 interface AboutProps {
-	data: AboutTypes;
+  data: AboutTypes;
 }
 
 export default function About({ data }: AboutProps) {
@@ -14,7 +14,14 @@ export default function About({ data }: AboutProps) {
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Grid container spacing={4} alignItems="center">
         <Grid size={{ xs: 12, md: 6 }}>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 2, alignItems: 'flex-start' }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              alignItems: "flex-start",
+            }}
+          >
             <Typography variant="h2" component="h2">
               {data.title}
             </Typography>
@@ -26,7 +33,11 @@ export default function About({ data }: AboutProps) {
         </Grid>
         <Grid size={{ xs: 12, md: 6 }}>
           <Box sx={{ aspectRatio: "3/2", position: "relative", height: 400 }}>
-            <Image fill src={`${rootUrl}${data.image.url}`} alt={data.image.alternativeText} />
+            <Image
+              fill
+              src={`${rootUrl}${data.image.url}`}
+              alt={data.image.alternativeText}
+            />
           </Box>
         </Grid>
       </Grid>

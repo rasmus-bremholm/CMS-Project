@@ -25,7 +25,14 @@ export default async function CategoryGalleryPage({ params }: Props) {
         }}
       >
         <BackButton />
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2, width: "100%" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            width: "100%",
+          }}
+        >
           <FilterPanel tags={tags} />
           <ProductGallery products={products} />
         </Box>

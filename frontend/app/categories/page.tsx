@@ -52,7 +52,8 @@ export default function Categories() {
           }}
         >
           {categories.map(category => (
-            <MuiLink component={NextLink}
+            <MuiLink
+              component={NextLink}
               href={`http://localhost:3000/categories/${category.slug}`}
               key={category.id}
             >
