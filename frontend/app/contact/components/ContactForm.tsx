@@ -2,8 +2,27 @@
 
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import ContactInformation from "./ContactInformation";
+import { useLanguage } from "@/app/context/LanguageContext";
+import { useEffect, useState } from "react";
+import { getContactpageData } from "@/app/lib/utils/strapi";
 
-export default function ContactForm() {
+export default function ContactForm({ data }: { data?: any }) {
+  const { locale } = useLanguage();
+  const [contactPage, setContactPage] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  const contactForm = data?.contact_form;
+
+  useEffect(() => {
+    setLoading(true);
+    getContactpageData(locale)
+      .then(data => setContactPage(data))
+      .finally(() => setLoading(false));
+  }, [locale]);
+
+  if (loading) return <div>Loading...</div>;
+  if (!contactPage) return <div>No content available</div>;
+
   return (
     <Grid container spacing={6}>
       <Grid size={{ xs: 12, md: 7 }}>
@@ -18,33 +37,33 @@ export default function ContactForm() {
           }}
         >
           <Typography variant="h5" fontWeight={600} mb={3}>
-            Send us a Message
+            {contactForm?.title ?? ""}
           </Typography>
 
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, md: 6 }}>
               <label>
-                Name
+                {contactForm?.name_label ?? ""}
                 <TextField fullWidth placeholder="Your name" />
               </label>
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
               <label>
-                Email
+                {contactForm?.email_label ?? ""}
                 <TextField fullWidth placeholder="your@email.com" />
               </label>
             </Grid>
 
             <Grid size={{ xs: 12 }}>
               <label>
-                Subject
+                {contactForm?.subject_label ?? ""}
                 <TextField fullWidth placeholder="What's this about?" />
               </label>
             </Grid>
 
             <Grid size={{ xs: 12 }}>
               <label>
-                Message
+                {contactForm?.message_label ?? ""}
                 <TextField
                   fullWidth
                   multiline
@@ -67,14 +86,14 @@ export default function ContactForm() {
                   fontWeight: "600",
                 }}
               >
-                Send Message
+                {contactForm?.button_label ?? ""}
               </Button>
             </Grid>
           </Grid>
         </Paper>
       </Grid>
 
-      <ContactInformation />
+      <ContactInformation data={contactPage} />
     </Grid>
   );
 }

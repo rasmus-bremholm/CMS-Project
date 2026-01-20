@@ -124,7 +124,13 @@ export async function getContactpageData(
     populate: {
       hero: true,
       contact_form: true,
-      contact_information: true,
+      contact_information: {
+        populate: {
+          about: true,
+          phone: true,
+          email: true,
+        },
+      },
     },
   };
 
