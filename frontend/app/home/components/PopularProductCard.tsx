@@ -18,6 +18,7 @@ export const PopularProductCard = ({ product }: Props) => {
       sx={{
         backgroundColor: "brand.silver",
         height: "100%",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         borderRadius: 2,
@@ -30,7 +31,7 @@ export const PopularProductCard = ({ product }: Props) => {
           height="250"
           image={`${rootUrl}${product.img.url}`}
           alt={product.title}
-          sx={{ objectFit: "cover" }}
+          sx={{ objectFit: "contain" }}
         />
       </Link>
 
@@ -56,6 +57,7 @@ export const PopularProductCard = ({ product }: Props) => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            mt: "auto",
           }}
         >
           <Typography variant="body1" color="primary" fontWeight="bold">

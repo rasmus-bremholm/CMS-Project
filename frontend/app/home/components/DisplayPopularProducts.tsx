@@ -23,17 +23,17 @@ export const DisplayPopularProducts = ({
   const buttonStyles = (isActive: boolean) => ({
     backgroundColor: isActive
       ? "brand.darkCoffee"
-      : (theme) => alpha(theme.palette.brand.darkCoffee, 0.4),
+      : theme => alpha(theme.palette.brand.darkCoffee, 0.4),
     color: "brand.whiteSmoke",
     minWidth: "6rem",
     px: 3,
     "&:hover": {
-      backgroundColor: (theme) => alpha(theme.palette.brand.darkCoffee, 0.75),
+      backgroundColor: theme => alpha(theme.palette.brand.darkCoffee, 0.75),
     },
   });
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 4, px: 2 }}>
       <Box sx={{ display: "flex", justifyContent: "center", gap: "2em" }}>
         <Button
           sx={buttonStyles(category === "coffee")}
@@ -53,8 +53,14 @@ export const DisplayPopularProducts = ({
         spacing={3}
         sx={{ display: "flex", justifyContent: "center" }}
       >
-        {activeProducts.map((product) => (
-          <PopularProductCard product={product} key={product.id} />
+        {activeProducts.map(product => (
+          <Grid
+            key={product.id}
+            size={{ xs: 10, sm: 6, md: 4 }}
+            sx={{ display: "flex" }}
+          >
+            <PopularProductCard product={product} />
+          </Grid>
         ))}
       </Grid>
     </Box>
