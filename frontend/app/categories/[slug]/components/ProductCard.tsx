@@ -13,6 +13,7 @@ interface Props {
 }
 
 export const ProductCard = ({ product }: Props) => {
+	console.log(`/product-details/${product.slug}`)
   return (
     <Card
       sx={{
@@ -25,7 +26,7 @@ export const ProductCard = ({ product }: Props) => {
         boxShadow: 3,
       }}
     >
-      <Link href={`product-details/${product.slug}`}>
+      <Link href={`/product-details/${product.slug}`}>
         <CardMedia
           component="img"
           height="200"
@@ -41,7 +42,7 @@ export const ProductCard = ({ product }: Props) => {
         <Typography
           variant="h6"
           component={Link}
-          href={`product-details/${product.slug}`}
+          href={`/product-details/${product.slug}`}
           sx={{
             color: "inherit",
             fontSize: 18,
