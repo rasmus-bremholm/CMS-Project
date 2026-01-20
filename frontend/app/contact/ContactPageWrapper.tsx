@@ -26,7 +26,7 @@ export default function ContactPageWrapper() {
     <>
       <Hero data={contactPage} />
       <Container maxWidth="lg" sx={{ py: { xs: 8, md: 12 } }}>
-        <ContactForm />
+        <ContactForm data={contactPage} />
       </Container>
     </>
   );

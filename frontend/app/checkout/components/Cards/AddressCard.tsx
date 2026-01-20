@@ -10,14 +10,16 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function AddressCard() {
+export default function AddressCard({ data }: { data?: any }) {
+  const adress = data?.adress;
+
   return (
     <Card>
       <CardContent>
         <Stack direction="row" alignItems="center" spacing={1} mb={2}>
           <LocalShipping sx={{ color: "brand.coffeeBean" }} />
           <Typography variant="h6" fontWeight={600}>
-            Shipping Address
+            {adress?.title ?? ""}
           </Typography>
         </Stack>
 
@@ -33,7 +35,7 @@ export default function AddressCard() {
           </Grid>
 
           <TextField
-            label="Address"
+            label="Adress"
             required
             placeholder="Street Address"
             fullWidth

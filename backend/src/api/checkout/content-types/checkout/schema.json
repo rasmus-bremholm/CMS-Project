@@ -23,16 +23,6 @@
         }
       }
     },
-    "adress": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "sections.adress",
-      "repeatable": false
-    },
     "contact": {
       "type": "component",
       "pluginOptions": {
@@ -41,6 +31,16 @@
         }
       },
       "component": "sections.contact-card",
+      "repeatable": false
+    },
+    "adress": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.adress",
       "repeatable": false
     },
     "payment": {
@@ -62,6 +62,14 @@
       },
       "component": "sections.order-checkout",
       "repeatable": false
+    },
+    "pay_button": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

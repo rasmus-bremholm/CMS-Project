@@ -8,6 +8,24 @@
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "adress": {
+      "type": "string"
+    },
+    "adress_placeholder": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "zip": {
+      "type": "string"
     }
   },
   "config": {}

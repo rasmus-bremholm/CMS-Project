@@ -8,6 +8,18 @@
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "email_placeholder": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "phone_placeholder": {
+      "type": "string"
     }
   },
   "config": {}

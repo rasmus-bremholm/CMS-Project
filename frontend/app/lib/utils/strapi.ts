@@ -3,6 +3,8 @@ import { Product } from "@/types/product";
 import { Order, OrdersResponse } from "@/types/order";
 import { Category } from "@/types/category";
 import { ContactPage } from "@/types/contact";
+import { Cart } from "@/types/cart";
+import { Checkout } from "@/types/checkout";
 
 interface StrapiData {
   data: any;
@@ -149,7 +151,13 @@ export async function getContactpageData(
     populate: {
       hero: true,
       contact_form: true,
-      contact_information: true,
+      contact_information: {
+        populate: {
+          about: true,
+          phone: true,
+          email: true,
+        },
+      },
     },
   };
 
@@ -163,5 +171,58 @@ export async function getContactpageData(
     hero: data.hero,
     contact_form: data.contact_form,
     contact_information: data.contact_information,
+  };
+}
+
+export async function getCartData(locale: "sv" | "en"): Promise<Cart> {
+  const query = {
+    locale,
+    populate: {
+      cart_empty: true,
+      cart: true,
+      order_summary: true,
+    },
+  };
+
+  const response = await strapiQuery("cart", query);
+
+  const data = response.data;
+
+  return {
+    id: data.id,
+    locale: data.locale,
+    cart_empty: data.cart_empty,
+    cart: data.cart,
+    order_summary: data.order_summary,
+  };
+}
+
+export async function getCheckoutData(locale: "sv" | "en"): Promise<Checkout> {
+  const query = {
+    locale,
+    populate: {
+      adress: true,
+      contact: true,
+      payment: true,
+      order_summary: {
+        populate: {
+          empty: true,
+        },
+      },
+    },
+  };
+
+  const response = await strapiQuery("checkout", query);
+
+  const data = response.data;
+
+  return {
+    id: data.id,
+    locale: data.locale,
+    title: data.title,
+    adress: data.adress,
+    contact: data.contact,
+    payment: data.payment,
+    order_summary: data.order_summary,
   };
 }

@@ -6,8 +6,6 @@ import { Box, Container, Typography } from "@mui/material";
 export default function Hero({ data }: { data?: any }) {
   const hero = data?.hero;
 
-  console.log("data hero", data.hero);
-
   return (
     <Box
       sx={{

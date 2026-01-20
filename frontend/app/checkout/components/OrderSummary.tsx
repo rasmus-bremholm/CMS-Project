@@ -11,14 +11,17 @@ import {
 import PayButton from "./PayButton";
 import { useCart } from "@/app/context/CartContext";
 
-export default function OrderSummary() {
+export default function OrderSummary({ data }: { data?: any }) {
+  const orderSummary = data?.order_summary;
+  const empty = orderSummary?.empty;
+
   const { items, subtotal, shippingCost, total } = useCart();
 
   if (items.length === 0) {
     return (
       <Card>
         <CardContent>
-          <Typography>Your cart i empty</Typography>
+          <Typography>{empty?.subtitle ?? ""}</Typography>
         </CardContent>
       </Card>
     );
@@ -28,7 +31,7 @@ export default function OrderSummary() {
     <Card sx={{ position: "sticky", top: 96 }}>
       <CardContent>
         <Typography variant="h6" fontWeight={600} mb={2}>
-          Order Summary
+          {orderSummary?.title ?? ""}
         </Typography>
 
         <Stack spacing={1.5} mb={2}>
@@ -57,7 +60,9 @@ export default function OrderSummary() {
           </Box>
 
           <Box display="flex" justifyContent="space-between">
-            <Typography color="text.secondary">Shipping</Typography>
+            <Typography color="text.secondary">
+              {orderSummary?.subtotal ?? ""}
+            </Typography>
             <Typography>
               {shippingCost === 0 ? "Free" : `$${shippingCost}`}
             </Typography>
