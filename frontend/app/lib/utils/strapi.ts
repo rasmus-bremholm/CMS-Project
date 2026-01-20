@@ -1,6 +1,8 @@
 import qs from "qs";
 import { Product } from "@/types/product";
 import { Order, OrdersResponse } from "@/types/order";
+import { Category } from "@/types/category";
+import { ContactPage } from "@/types/contact";
 
 interface StrapiData {
   data: any;
@@ -21,10 +23,14 @@ async function strapiQuery(
   endpoint: string,
   queryParams: Record<string, any> = {}
 ) {
-  const queryString = qs.stringify(queryParams);
+  const queryString = qs.stringify(queryParams, {
+    encodeValuesOnly: true, // 🔥 REQUIRED FOR STRAPI V4
+  });
   const url = strapiUrl + endpoint + (queryString ? `?${queryString}` : "");
 
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    next: { revalidate: 60 }, // optional but recommended
+  });
 
   if (!response.ok) {
     throw new Error(`Strapi error: ${response.status}  @${endpoint}`);
@@ -124,4 +130,38 @@ export async function getFavorites() {
   const response = await strapiQuery("favorites", query);
 
   return response.data;
+};
+
+export async function getCategories(): Promise<Category[]> {
+  const query = {
+    populate: "*",
+  };
+
+  const response = await strapiQuery("categories", query);
+  return response.data;
+};
+
+export async function getContactpageData(
+  locale: "sv" | "en"
+): Promise<ContactPage> {
+  const query = {
+    locale,
+    populate: {
+      hero: true,
+      contact_form: true,
+      contact_information: true,
+    },
+  };
+
+  const response = await strapiQuery("contact-page", query);
+
+  const data = response.data;
+
+  return {
+    id: data.id,
+    locale: data.locale,
+    hero: data.hero,
+    contact_form: data.contact_form,
+    contact_information: data.contact_information,
+  };
 }
