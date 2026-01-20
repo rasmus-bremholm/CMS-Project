@@ -11,10 +11,7 @@ interface Props {
 
 export default async function ProductDetails({ params }: Props) {
   const { slug } = await params;
-  //const product = await getProduct(slug);
 	const product = await getProductBySlug(slug);
-	console.log('product', product)
-	
 
   return (
     <Box component="section" sx={{ backgroundColor: "brand.latte", py: 6 }}>
@@ -83,10 +80,3 @@ export default async function ProductDetails({ params }: Props) {
     </Box>
   );
 }
-
-/* async function getProduct(slug: string) {
-  const mod = await import("@/app/mockdata/products.json");
-  const products = mod.default;
-
-  return products.find(product => product.slug === slug);
-} */
