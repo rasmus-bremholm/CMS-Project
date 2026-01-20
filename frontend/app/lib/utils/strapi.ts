@@ -2,6 +2,7 @@ import qs from "qs";
 import { Product } from "@/types/product";
 import { Order, OrdersResponse } from "@/types/order";
 import { ContactPage } from "@/types/contact";
+import { Cart } from "@/types/cart";
 
 interface StrapiData {
   data: any;
@@ -144,5 +145,28 @@ export async function getContactpageData(
     hero: data.hero,
     contact_form: data.contact_form,
     contact_information: data.contact_information,
+  };
+}
+
+export async function getCartData(locale: "sv" | "en"): Promise<Cart> {
+  const query = {
+    locale,
+    populate: {
+      cart_empty: true,
+      cart: true,
+      order_summary: true,
+    },
+  };
+
+  const response = await strapiQuery("cart", query);
+
+  const data = response.data;
+
+  return {
+    id: data.id,
+    locale: data.locale,
+    cart_empty: data.cart_empty,
+    cart: data.cart,
+    order_summary: data.order_summary,
   };
 }
