@@ -13,7 +13,6 @@ interface Props {
 }
 
 export const ProductCard = ({ product }: Props) => {
-  console.log(`/product-details/${product.slug}`);
   return (
     <Card
       sx={{

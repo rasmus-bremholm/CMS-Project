@@ -7,11 +7,6 @@ interface AddToCartButtonProps {
 }
 
 export default function AddToCartButton({ product }: AddToCartButtonProps) {
-  /*   const handleAdd = () => {
-    console.log("Köpköpköp");
-  }; */
-
-  //lägger till logiken som finns i cartContext för test t.v.
   const { addItem } = useCart();
 
   return (

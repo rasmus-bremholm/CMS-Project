@@ -32,10 +32,6 @@ async function strapiQuery(
   });
   const url = strapiUrl + endpoint + (queryString ? `?${queryString}` : "");
 
-  console.log("--- STRAPI FETCH URL ---");
-  console.log(url);
-  console.log("------------------------");
-
   const response = await fetch(url, {
     next: { revalidate: 60 }, // optional but recommended
   });

@@ -6,7 +6,6 @@ import Testimonials from "./home/components/Testimonials";
 
 export default async function Home() {
   const data = await getHomepageData();
-  console.log("data", data);
 
   return (
     <>
