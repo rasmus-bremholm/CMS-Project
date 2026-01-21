@@ -1,7 +1,7 @@
 import { Box, Container } from "@mui/material";
 import { getProductsByCategory, getTags } from "@/app/lib/utils/strapi";
 import BackButton from "@/app/components/BackButton";
-import FilterPanel from "@/app/components/FilterPanel";
+import FilterPanel from "@/app/categories/[slug]/components/FilterPanel";
 import ProductGallery from "./components/ProductGallery";
 
 interface Props {
