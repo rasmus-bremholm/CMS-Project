@@ -1,6 +1,7 @@
 "use client";
 
 import { JSX, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Box,
   Button,
@@ -16,9 +17,12 @@ import RegisterForm from "./components/RegisterForm";
 export default function LoginPage() {
   const [isLogin, setIsLogin] = useState(true);
 
+  const router = useRouter();
+
   const handleSuccess = () => {
     console.log("Lyckad login/register");
-    // TODO: redirect efter login/register
+
+    router.push("/");
   };
 
   return (

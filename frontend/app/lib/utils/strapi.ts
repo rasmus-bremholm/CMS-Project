@@ -186,11 +186,11 @@ export async function getContactpageData(
 }
 
 export async function getTags(): Promise<string[]> {
-	const query = {}
+  const query = {};
 
-	const response = await strapiQuery("tags", query);
+  const response = await strapiQuery("tags", query);
 
-	return response.data;
+  return response.data;
 }
 
 export async function getCartData(locale: "sv" | "en"): Promise<Cart> {
@@ -264,4 +264,70 @@ export async function getBackButtonData(
     locale: data.locale,
     label: data.label,
   };
+}
+
+const STRAPI_BASE = "http://localhost:1337";
+
+/* Registrerar en ny användare i Strapi, Returnerar { jwt, user }*/
+export async function registerUser(
+  username: string,
+  email: string,
+  password: string
+) {
+  const response = await fetch(`${STRAPI_BASE}/api/auth/local/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+    }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data?.error?.message || "Registrering misslyckades");
+  }
+
+  return data;
+}
+
+/* Loggar in användare i Strapi, Returnerar { jwt, user }*/
+export async function loginUser(email: string, password: string) {
+  const response = await fetch(`${STRAPI_BASE}/api/auth/local`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      identifier: email,
+      password,
+    }),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data?.error?.message || "Inloggning misslyckades");
+  }
+
+  return data;
+}
+
+/* Hämtar inloggad användare baserat på JWT */
+export async function getCurrentUser(jwt: string) {
+  const response = await fetch(`${STRAPI_BASE}/api/users/me`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Kunde inte hämta användare");
+  }
+
+  return response.json();
 }
