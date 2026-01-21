@@ -28,13 +28,13 @@ async function strapiQuery(
   queryParams: Record<string, any> = {}
 ) {
   const queryString = qs.stringify(queryParams, {
-    encodeValuesOnly: true, // 🔥 REQUIRED FOR STRAPI V4
+    encodeValuesOnly: true,
     arrayFormat: "indices",
   });
   const url = strapiUrl + endpoint + (queryString ? `?${queryString}` : "");
 
   const response = await fetch(url, {
-    next: { revalidate: 60 }, // optional but recommended
+    next: { revalidate: 60 },
   });
 
   if (!response.ok) {
