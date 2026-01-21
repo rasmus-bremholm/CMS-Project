@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button, Container, TextField } from "@mui/material";
 import { loginUser } from "@/app/lib/utils/strapi";
+import { setAuthCookie } from "@/app/actions/setAuthCookie";
 
 interface Props {
   onSuccess: () => void;
@@ -19,6 +20,7 @@ export default function LoginForm({ onSuccess }: Props) {
       const data = await loginUser(email, password);
 
       localStorage.setItem("strapi_jwt", data.jwt);
+      await setAuthCookie(data.jwt);
 
       console.log("Inloggning lyckades:", data.user);
       onSuccess();
