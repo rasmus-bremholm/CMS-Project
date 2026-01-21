@@ -3,22 +3,27 @@ import AccountDashboard from "./components/AccountDashboard";
 import OrderList from "./components/OrderList";
 import AdressList from "./components/AdressList";
 import FavoritesList from "./components/FavoritesList";
-import { getFavorites, getOrders } from "../lib/utils/strapi";
+import { getCurrentUser, getFavorites, getOrders } from "../lib/utils/strapi";
 import { AccountPageLocale } from "./lib/AccountDashBoard";
 import Greeting from "./components/Greeting";
 import { Favorite } from "@/types/favorite";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { User } from "@/types/user";
 
 export default async function AccountPage() {
-  const user = {
-    id: 1,
-    firstName: "Sofia",
-    lastName: "Gustavsson",
-    email: "sofie@bahnhof.se",
-  };
+  const cookieStore = await cookies();
+  const jwt = cookieStore.get("strapi_jwt")?.value;
+
+  if (!jwt) {
+    redirect("/login");
+  }
+
+  const user: User = await getCurrentUser(jwt);
+  console.log("User:", user);
 
   const orders = await getOrders();
   const favorites: Favorite[] = await getFavorites();
-  console.log(favorites);
 
   const currentLocale = "en";
 
