@@ -20,7 +20,7 @@ const CartContext = createContext<CartContextType | null>(null);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItemType[]>([]);
-  const [shippingCost, setShippingCost] = useState<number>(5);
+  const [shippingCost, setShippingCost] = useState<number>(0);
 
   const addItem = (product: Product) =>
     setItems(prev => {

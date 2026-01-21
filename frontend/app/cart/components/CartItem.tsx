@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, CardMedia, IconButton, Typography } from "@mui/material";
 import { CartItemType } from "@/types/product";
 import { useCart } from "@/app/context/CartContext";
 import { Add, Close, Remove } from "@mui/icons-material";
+import { rootUrl } from "@/app/lib/utils/strapi";
 
 interface CartItemProps {
   item: CartItemType;
@@ -13,6 +13,8 @@ interface CartItemProps {
 export default function CartItem({ item }: CartItemProps) {
   const { updateQuantity, removeItem } = useCart();
   const { product, quantity } = item;
+
+  const imageUrl = product.img?.url ? `${rootUrl}${product.img.url}` : "";
 
   return (
     <Box
@@ -24,12 +26,11 @@ export default function CartItem({ item }: CartItemProps) {
       borderColor="divider"
       alignItems="center"
     >
-      <Image
-        src={product.imageUrl}
+      <CardMedia
+        component="img"
+        image={imageUrl}
         alt={product.title}
-        width={64}
-        height={64}
-        style={{ objectFit: "cover", borderRadius: 4 }}
+        sx={{ width: 64, height: 64, objectFit: "cover", borderRadius: 1 }}
       />
 
       <Typography fontWeight={500}>{product.title}</Typography>
@@ -53,7 +54,7 @@ export default function CartItem({ item }: CartItemProps) {
       </Box>
 
       <Typography color="brand.coffeeBean">
-        ${(product.price * quantity).toFixed(2)}
+        {(product.price * quantity).toFixed(2)}
       </Typography>
 
       <IconButton size="small" onClick={() => removeItem(product.id)}>
