@@ -18,4 +18,5 @@ export interface Checkout {
     title: string;
     shipping_label: string;
   };
+  pay_button: string;
 }

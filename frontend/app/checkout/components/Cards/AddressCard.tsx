@@ -26,28 +26,28 @@ export default function AddressCard({ data }: { data?: any }) {
         <Stack spacing={2}>
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField label="First Name" required fullWidth />
+              <TextField label={adress?.first_name ?? ""} required fullWidth />
             </Grid>
 
             <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField label="Last Name" required fullWidth />
+              <TextField label={adress?.last_name ?? ""} required fullWidth />
             </Grid>
           </Grid>
 
           <TextField
-            label="Adress"
+            label={adress?.adress ?? ""}
             required
-            placeholder="Street Address"
+            placeholder={adress?.adress_placeholder ?? ""}
             fullWidth
           />
 
           <Grid container spacing={2}>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField label="City" required fullWidth />
+              <TextField label={adress?.city ?? ""} required fullWidth />
             </Grid>
 
             <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField label="ZIP Code" required fullWidth />
+              <TextField label={adress?.zip ?? ""} required fullWidth />
             </Grid>
           </Grid>
         </Stack>
