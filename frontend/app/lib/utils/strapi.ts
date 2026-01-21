@@ -262,7 +262,11 @@ export async function getPopularProducts(
 }
 
 export async function getHeaderData(): Promise<Header> {
-	const response = await strapiQuery("header");
+  const query = {
+    populate: "*",
+  };
+
+  const response = await strapiQuery("header", query);
 
   return response.data;
 }

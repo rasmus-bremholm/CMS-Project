@@ -5,15 +5,20 @@ import Image from "next/image";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import LanguageToggle from "./LanguageToggle";
+import { getHeaderData } from "../lib/utils/strapi";
 
-export default function Navbar() {
-  const menuLinks = [
+export default async function Navbar() {
+	const data = await getHeaderData();
+	console.log('data', data)
+	
+	const menuLinks = data.nav_links
+  /* const menuLinks = [
     { id: 1, title: "Nyheter", url: "/news" },
     { id: 2, title: "Erbjudanden", url: "/discounts" },
     { id: 3, title: "Te", url: "/tea" },
     { id: 4, title: "Kaffe", url: "/coffee" },
     { id: 5, title: "Övrigt", url: "/categories" },
-  ];
+  ]; */
 
   return (
     <Box
