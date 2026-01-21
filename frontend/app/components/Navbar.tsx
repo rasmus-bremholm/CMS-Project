@@ -51,7 +51,7 @@ export default async function Navbar() {
             variant="navLink"
             style={{ color: "text.primary", textDecoration: "none" }}
           >
-            <Typography fontWeight="bold">{item.title}</Typography>
+            <Typography fontWeight="bold">{item.label}</Typography>
           </MuiLink>
         ))}
       </Box>
