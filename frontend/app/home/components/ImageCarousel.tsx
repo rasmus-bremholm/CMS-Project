@@ -27,7 +27,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
     >
       {/* Viewport */}
       <Box sx={{ display: "flex" }}>
-        {images.map((img) => (
+        {images.map(img => (
           <Box
             key={img.documentId}
             sx={{

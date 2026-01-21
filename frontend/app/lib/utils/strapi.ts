@@ -5,6 +5,7 @@ import { Category } from "@/types/category";
 import { ContactPage } from "@/types/contact";
 import { Cart } from "@/types/cart";
 import { Checkout } from "@/types/checkout";
+import { Header } from "@/types/header";
 import { BackButton } from "@/types/back-button";
 
 interface StrapiData {
@@ -28,6 +29,7 @@ async function strapiQuery(
 ) {
   const queryString = qs.stringify(queryParams, {
     encodeValuesOnly: true, // 🔥 REQUIRED FOR STRAPI V4
+    arrayFormat: "indices",
   });
   const url = strapiUrl + endpoint + (queryString ? `?${queryString}` : "");
 
@@ -45,15 +47,15 @@ async function strapiQuery(
 }
 
 export async function getProductsByCategory(
-  categoryName: string
+  categorySlug: string
 ): Promise<Product[]> {
   // API test
   // http://localhost:1337/api/products/filters[category][title][$eq]=coffee&populate=*
   const query = {
     filters: {
       category: {
-        title: {
-          $eq: categoryName,
+        slug: {
+          $eq: categorySlug,
         },
       },
     },
@@ -65,7 +67,7 @@ export async function getProductsByCategory(
   return response.data;
 }
 
-export async function getProductBySlug(slug: string): Promise<Product[]> {
+export async function getProductBySlug(slug: string): Promise<Product> {
   // API test
   // http://localhost:1337/api/products?filters[slug][$eq]=arvid-nordquist-mellan&populate=*
   const query = {
@@ -79,7 +81,7 @@ export async function getProductBySlug(slug: string): Promise<Product[]> {
 
   const response = await strapiQuery("products", query);
 
-  return response.data;
+  return response.data[0];
 }
 
 export async function getOrders(): Promise<OrdersResponse> {
@@ -186,11 +188,11 @@ export async function getContactpageData(
 }
 
 export async function getTags(): Promise<string[]> {
-	const query = {}
+  const query = {};
 
-	const response = await strapiQuery("tags", query);
+  const response = await strapiQuery("tags", query);
 
-	return response.data;
+  return response.data;
 }
 
 export async function getCartData(locale: "sv" | "en"): Promise<Cart> {
@@ -264,4 +266,38 @@ export async function getBackButtonData(
     locale: data.locale,
     label: data.label,
   };
+}
+
+export async function getPopularProducts(
+  categoryTitle: string
+): Promise<Product[]> {
+  const query = {
+    locale: "sv",
+    filters: {
+      category: {
+        title: {
+          $eq: categoryTitle,
+        },
+      },
+    },
+    sort: ["rating:desc"],
+    pagination: {
+      limit: 3,
+    },
+    populate: ["category", "img"],
+  };
+
+  const response = await strapiQuery("products", query);
+
+  return response.data;
+}
+
+export async function getHeaderData(): Promise<Header> {
+  const query = {
+    populate: "*",
+  };
+
+  const response = await strapiQuery("header", query);
+
+  return response.data;
 }

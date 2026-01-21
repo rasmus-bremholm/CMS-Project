@@ -17,7 +17,6 @@ export default async function CategoryGalleryPage({ params }: Props) {
     <Box component="section" sx={{ backgroundColor: "brand.latte", py: 6 }}>
       <Container
         component="main"
-        maxWidth="md"
         sx={{
           alignItems: "flex-start",
           display: "flex",
@@ -26,8 +25,17 @@ export default async function CategoryGalleryPage({ params }: Props) {
         }}
       >
         <BackButton />
-        <FilterPanel tags={tags} />
-        <ProductGallery products={products} />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            width: "100%",
+          }}
+        >
+          <FilterPanel tags={tags} />
+          <ProductGallery products={products} />
+        </Box>
       </Container>
     </Box>
   );

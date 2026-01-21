@@ -12,7 +12,7 @@ interface Props {
   product: Product;
 }
 
-export const PopularProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product }: Props) => {
   return (
     <Card
       sx={{
@@ -25,12 +25,12 @@ export const PopularProductCard = ({ product }: Props) => {
         boxShadow: 3,
       }}
     >
-      <Link href={`product/${product.slug}`}>
+      <Link href={`/product/${product.slug}`}>
         <CardMedia
           component="img"
-          height="250"
+          height="200"
           image={`${rootUrl}${product.img.url}`}
-          alt={product.title}
+          alt={product.img.alternativeText}
           sx={{ objectFit: "contain" }}
         />
       </Link>
@@ -41,9 +41,10 @@ export const PopularProductCard = ({ product }: Props) => {
         <Typography
           variant="h6"
           component={Link}
-          href={`product/${product.slug}`}
+          href={`/product/${product.slug}`}
           sx={{
             color: "inherit",
+            fontSize: 18,
             fontWeight: "semi-bold",
             textDecoration: "none",
             "&:hover": { color: "brand.darkCoffee" },
@@ -60,9 +61,10 @@ export const PopularProductCard = ({ product }: Props) => {
             mt: "auto",
           }}
         >
-          <Typography variant="body1" color="primary" fontWeight="bold">
+          <Typography variant="body2" color="primary" fontWeight="bold">
             {product.price} kr
           </Typography>
+
           <AddToCartButton product={product} />
         </Box>
       </CardContent>
