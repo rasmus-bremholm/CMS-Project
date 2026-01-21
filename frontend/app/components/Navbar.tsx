@@ -6,19 +6,11 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import LanguageToggle from "./LanguageToggle";
 import { getHeaderData } from "../lib/utils/strapi";
+import { rootUrl } from "../lib/utils/strapi";
 
 export default async function Navbar() {
-	const data = await getHeaderData();
-	console.log('data', data)
-	
-	const menuLinks = data.nav_links
-  /* const menuLinks = [
-    { id: 1, title: "Nyheter", url: "/news" },
-    { id: 2, title: "Erbjudanden", url: "/discounts" },
-    { id: 3, title: "Te", url: "/tea" },
-    { id: 4, title: "Kaffe", url: "/coffee" },
-    { id: 5, title: "Övrigt", url: "/categories" },
-  ]; */
+  const data = await getHeaderData();
+  const menuLinks = data.nav_links;
 
   return (
     <Box
@@ -35,10 +27,10 @@ export default async function Navbar() {
       <Box>
         <MuiLink component={NextLink} href="/">
           <Image
-            src="/coffe-time-logo.png"
+            src={`${rootUrl}${data.logo.url}`}
             height={60}
             width={64}
-            alt="Coffee Time Logo"
+            alt={data.logo.alternativeText}
           />
         </MuiLink>
       </Box>
