@@ -5,6 +5,7 @@ import { Category } from "@/types/category";
 import { ContactPage } from "@/types/contact";
 import { Cart } from "@/types/cart";
 import { Checkout } from "@/types/checkout";
+import { Header } from "@/types/header";
 
 interface StrapiData {
   data: any;
@@ -260,6 +261,12 @@ export async function getPopularProducts(
   };
 
   const response = await strapiQuery("products", query);
+
+  return response.data;
+}
+
+export async function getHeaderData(): Promise<Header> {
+	const response = await strapiQuery("header");
 
   return response.data;
 }
