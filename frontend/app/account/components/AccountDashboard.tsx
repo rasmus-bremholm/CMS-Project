@@ -1,5 +1,6 @@
 "use client";
 import { Box, Button } from "@mui/material";
+import Link from "next/link";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -49,7 +50,7 @@ export default function AccountDashboard({
           {DashboardLocale.btnFavorite[currentLocale]}
         </Button>
 
-        <Button variant="outlined">
+        <Button variant="outlined" LinkComponent={Link} href="/contact">
           {DashboardLocale.btnSupport[currentLocale]}
         </Button>
         <Button variant="outlined">

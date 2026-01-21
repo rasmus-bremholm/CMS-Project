@@ -2,6 +2,8 @@ import Image from "next/image";
 import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { ProductActions } from "./ProductActions";
 import BackButton from "@/app/components/BackButton";
+import { getProductBySlug } from "@/app/lib/utils/strapi";
+import { rootUrl } from "@/app/lib/utils/strapi";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -9,7 +11,7 @@ interface Props {
 
 export default async function ProductDetails({ params }: Props) {
   const { slug } = await params;
-  const product = await getProduct(slug);
+  const product = await getProductBySlug(slug);
 
   return (
     <Box component="section" sx={{ backgroundColor: "brand.latte", py: 6 }}>
@@ -25,7 +27,13 @@ export default async function ProductDetails({ params }: Props) {
       >
         <BackButton />
         <Box
-          sx={{ backgroundColor: "#E3DFD9", mx: "auto", px: 2, py: 4, width: "100%" }}
+          sx={{
+            backgroundColor: "#E3DFD9",
+            mx: "auto",
+            px: 2,
+            py: 4,
+            width: "100%",
+          }}
         >
           <Grid container spacing={4} alignItems="center">
             <Grid size={{ xs: 12, md: 6 }}>
@@ -38,7 +46,11 @@ export default async function ProductDetails({ params }: Props) {
                   width: { xs: "300px", md: "100%" },
                 }}
               >
-                <Image fill src={product.imageUrl} alt="Alt text" />
+                <Image
+                  fill
+                  src={`${rootUrl}${product.img.url}`}
+                  alt="Alt text"
+                />
               </Box>
             </Grid>
 
@@ -66,7 +78,7 @@ export default async function ProductDetails({ params }: Props) {
                 <Typography>{product.description}</Typography>
 
                 <Typography>
-                  {product.inStock ? "I lager" : "Ej i lager"}
+                  {product.quantity > 0 ? "I lager" : "Ej i lager"}
                 </Typography>
 
                 <ProductActions product={product} />
@@ -77,11 +89,4 @@ export default async function ProductDetails({ params }: Props) {
       </Container>
     </Box>
   );
-}
-
-async function getProduct(slug: string) {
-  const mod = await import("@/app/mockdata/products.json");
-  const products = mod.default;
-
-  return products.find(product => product.slug === slug);
 }
