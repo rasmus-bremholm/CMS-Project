@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button, Container, TextField } from "@mui/material";
+import { loginUser } from "@/app/lib/utils/strapi";
 
 interface Props {
   onSuccess: () => void;
@@ -11,13 +12,20 @@ export default function LoginForm({ onSuccess }: Props) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    console.log("Logga in:", { email, password });
-    // här kommer Strapi login API
+    try {
+      const data = await loginUser(email, password);
 
-    onSuccess();
+      localStorage.setItem("strapi_jwt", data.jwt);
+
+      console.log("Inloggning lyckades:", data.user);
+      onSuccess();
+    } catch (error: any) {
+      console.error("Fel vid login:", error.message);
+      alert(error.message);
+    }
   }
 
   return (

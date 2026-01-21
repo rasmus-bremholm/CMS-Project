@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Button, Container, TextField } from "@mui/material";
+import { registerUser } from "@/app/lib/utils/strapi";
 
 interface Props {
   onSuccess: () => void;
@@ -12,14 +13,21 @@ export default function RegisterForm({ onSuccess }: Props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    try {
+      const data = await registerUser(username, email, password);
 
-    // här kommer Strapi registring API senare
-    console.log("Skapa konto:", { username, email, password });
+      localStorage.setItem("strapi_jwt", data.jwt);
 
-    onSuccess();
-  };
+      console.log("Registrering lyckades:", data.user);
+      onSuccess();
+    } catch (error: any) {
+      console.error("Registreringsfel:", error.message);
+      alert(error.message);
+    }
+  }
+  // kl 15:39 i youtubevideon
 
   return (
     <Container maxWidth="sm">
