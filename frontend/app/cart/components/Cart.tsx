@@ -14,6 +14,19 @@ import { ArrowForward, ShoppingBag } from "@mui/icons-material";
 import Link from "next/link";
 import CartItem from "./CartItem";
 
+function parseShippingCost(shippingText: string): number {
+  if (!shippingText) return 0;
+
+  const match = shippingText.replace(/[^\d.,]/g, "").trim();
+  if (!match) return 0;
+
+  if (match.includes(",")) {
+    return parseFloat(match.replace(",", "."));
+  }
+
+  return parseFloat(match);
+}
+
 export default function Cart({ data }: { data?: any }) {
   const cartEmpty = data?.cart_empty;
   const cart = data?.cart;
@@ -131,8 +144,16 @@ export default function Cart({ data }: { data?: any }) {
                 value={shippingCost}
                 onChange={e => setShippingCost(Number(e.target.value))}
               >
-                <MenuItem value={5}>{orderSummary?.shipping_1 ?? ""}</MenuItem>
-                <MenuItem value={15}>{orderSummary?.shipping_2 ?? ""}</MenuItem>
+                {["shipping_1", "shipping_2"].map((key, index) => {
+                  const text = orderSummary?.[key];
+                  if (!text) return null;
+
+                  return (
+                    <MenuItem key={index} value={parseShippingCost(text)}>
+                      {text}
+                    </MenuItem>
+                  );
+                })}
               </Select>
             </Box>
 
