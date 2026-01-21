@@ -34,93 +34,100 @@ export default function Categories() {
   }, [locale]);
 
   return (
-    <Container>
-      <Paper sx={{ padding: 2, marginBottom: 4 }}>
-        <Typography variant="h5" component="h1">
-          {pageTitle}
-        </Typography>
-      </Paper>
-
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Box
+    <Box sx={{ backgroundColor: "brand.silver", padding: 4 }}>
+      <Container>
+        <Typography
+          variant="h3"
+          component="h1"
           sx={{
-            display: "grid",
-            gridTemplateColumns: {
-              xs: "1fr",
-              sm: "repeat(2, 1fr)",
-              md: "repeat(3, 1fr)",
-            },
-            gap: 2,
+            padding: 3,
+            textAlign: "center",
           }}
         >
-          {categories.map(category => (
-            <MuiLink
-              component={NextLink}
-              href={`http://localhost:3000/categories/${category.slug}`}
-              key={category.id}
-            >
-              <Box
+          {pageTitle}
+        </Typography>
+
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "repeat(2, 1fr)",
+                md: "repeat(3, 1fr)",
+              },
+              gap: 2,
+            }}
+          >
+            {categories.map(category => (
+              <MuiLink
+                component={NextLink}
+                href={`http://localhost:3000/categories/${category.slug}`}
                 key={category.id}
-                sx={{
-                  width: 200,
-                  height: 200,
-                  borderRadius: 2,
-                  boxShadow: 3,
-                  backgroundColor: "brand.silver",
-                  color: "white",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-start",
-                  overflow: "hidden",
-                  marginBottom: 2,
-                }}
               >
-                <Typography
-                  variant="h6"
+                <Box
+                  key={category.id}
                   sx={{
-                    width: "100%",
-                    marginBottom: 1,
-                    textAlign: "center",
-                    backgroundColor: "brand.darkCoffee",
-                    borderRadius: 0,
-                    boxShadow: 1,
+                    width: 200,
+                    height: 200,
+                    borderRadius: 2,
+                    boxShadow: 3,
+                    backgroundColor: "brand.silver",
+                    color: "white",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    overflow: "hidden",
+                    marginBottom: 2,
                   }}
                 >
-                  {category.title}
-                </Typography>
-
-                {category.image && (
-                  <Box
+                  <Typography
+                    variant="h6"
                     sx={{
-                      flex: 1,
-                      overflow: "hidden",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
+                      width: "100%",
+                      marginBottom: 1,
+                      textAlign: "center",
+                      backgroundColor: "brand.darkCoffee",
+                      borderRadius: 0,
+                      boxShadow: 1,
                     }}
                   >
+                    {category.title}
+                  </Typography>
+
+                  {category.image && (
                     <Box
-                      component="img"
-                      src={`http://localhost:1337${category.image.url}`}
-                      alt={category.image.alternativeText || category.title}
                       sx={{
-                        maxWidth: "100%",
-                        maxHeight: "100%",
-                        objectFit: "contain",
+                        flex: 1,
+                        overflow: "hidden",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
-                    />
-                  </Box>
-                )}
-              </Box>
-            </MuiLink>
-          ))}
+                    >
+                      <Box
+                        component="img"
+                        src={`http://localhost:1337${category.image.url}`}
+                        alt={category.image.alternativeText || category.title}
+                        sx={{
+                          maxWidth: "100%",
+                          maxHeight: "100%",
+                          objectFit: "contain",
+                        }}
+                      />
+                    </Box>
+                  )}
+                </Box>
+              </MuiLink>
+            ))}
+          </Box>
         </Box>
-      </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 }
