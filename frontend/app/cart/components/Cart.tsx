@@ -119,7 +119,7 @@ export default function Cart({ data }: { data?: any }) {
               <Typography fontWeight={600} marginRight={3}>
                 {itemCount} x items
               </Typography>
-              <Typography fontWeight={600}>${subtotal.toFixed(2)}</Typography>
+              <Typography fontWeight={600}>{subtotal.toFixed(2)}</Typography>
             </Box>
 
             <Box mb={2}>
@@ -145,7 +145,7 @@ export default function Cart({ data }: { data?: any }) {
             >
               <Typography marginRight={3}>Total:</Typography>
               <Typography color="brand.coffeeBean">
-                ${total.toFixed(2)}
+                {total.toFixed(2)}
               </Typography>
             </Box>
 
