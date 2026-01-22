@@ -67,12 +67,14 @@ export async function getProductsByCategory(
 	if (tagSlugs) {
 		const tagList = Array.isArray(tagSlugs) ? tagSlugs : [tagSlugs];
 
-		query.filters.tags = {
-			slug: {
-				$in: tagList,
-			},
-		};
-	}
+    query.filters.$and = tagList.map(slug => ({
+      tags: {
+        slug: {
+          $eq: slug,
+        },
+      },
+    }));
+  }
 
   const response = await strapiQuery("products", query);
 
