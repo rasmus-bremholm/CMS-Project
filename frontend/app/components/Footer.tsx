@@ -3,8 +3,12 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import { FooterText, FooterTitle } from "./Footer.styles";
 import Link from "next/link";
+import { getFooterData } from "../lib/utils/strapi";
 
-export default function Footer() {
+export default async function Footer() {
+  const { company_info, categories_links, support_links } =
+    await getFooterData();
+
   return (
     <Box
       component="footer"
@@ -20,31 +24,68 @@ export default function Footer() {
       }}
     >
       <Box sx={{ display: "flex", justifyContent: "space-around" }}>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <FooterTitle variant="h5">CoffeTime</FooterTitle>
-          {/* Självklart mappar ja igenom denna sen när vi har data */}
-          <FooterText variant="body1">Adressvägen 123</FooterText>
-          <FooterText variant="body1">123 45 Staden</FooterText>
-          <FooterText variant="body1">Orgnr: 1234 56789</FooterText>
-          <FooterText variant="body1">Tel: 031-26 58 00</FooterText>
+        <Box>
+          <FooterTitle variant="h5">{company_info.title}</FooterTitle>
+          <FooterText variant="body1">{company_info.field1_label}</FooterText>
+          <FooterText variant="body1">{company_info.field2_label}</FooterText>
+          <FooterText variant="body1">{company_info.field3_label}</FooterText>
+          <FooterText variant="body1">{company_info.field4_label}</FooterText>
         </Box>
         <Box>
-          <FooterTitle variant="h5">Populärt</FooterTitle>
-          <FooterText>Kaffe</FooterText>
-          <FooterText>Te</FooterText>
-          <FooterText>Matcha</FooterText>
-          <FooterText>Choklad</FooterText>
+          <FooterTitle variant="h5">{categories_links.title}</FooterTitle>
+          <Link
+            href={categories_links.field1_url}
+            style={{ textDecoration: "none" }}
+          >
+            <FooterText variant="body1">
+              {categories_links.field1_label}
+            </FooterText>
+          </Link>
+          <Link
+            href={categories_links.field2_url}
+            style={{ textDecoration: "none" }}
+          >
+            <FooterText variant="body1">
+              {categories_links.field2_label}
+            </FooterText>
+          </Link>
+          <Link
+            href={categories_links.field3_url}
+            style={{ textDecoration: "none" }}
+          >
+            <FooterText variant="body1">
+              {categories_links.field3_label}
+            </FooterText>
+          </Link>
+          <Link
+            href={categories_links.field4_url}
+            style={{ textDecoration: "none" }}
+          >
+            <FooterText variant="body1">
+              {categories_links.field4_label}
+            </FooterText>
+          </Link>
         </Box>
         <Box>
-          <FooterTitle variant="h5">Support</FooterTitle>
-          <Link href="/contact">
-            <FooterText>Kontakt</FooterText>
+          <FooterTitle variant="h5">{support_links.title}</FooterTitle>
+          <Link
+            href={support_links.field1_url}
+            style={{ textDecoration: "none" }}
+          >
+            <FooterText variant="body1">
+              {support_links.field1_label}
+            </FooterText>
           </Link>
-          <Link href="/account">
-            <FooterText>Ditt Konto</FooterText>
+          <Link
+            href={support_links.field2_url}
+            style={{ textDecoration: "none" }}
+          >
+            <FooterText variant="body1">
+              {support_links.field2_label}
+            </FooterText>
           </Link>
-          <FooterText>Karriär</FooterText>
-          <FooterText>Returer</FooterText>
+          <FooterText variant="body1">{support_links.field3_label}</FooterText>
+          <FooterText variant="body1">{support_links.field4_label}</FooterText>
         </Box>
       </Box>
       <Divider
@@ -62,18 +103,6 @@ export default function Footer() {
         <IconButton>
           <FacebookIcon sx={{ color: "brand.whiteSmoke" }} />
         </IconButton>
-      </Box>
-
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-around",
-          fontSize: "0.5rem",
-        }}
-      >
-        <Typography variant="caption">C 2026 Grupp 4</Typography>
-        <Typography variant="caption">Köpvillkår</Typography>
-        <Typography variant="caption">Sverige</Typography>
       </Box>
     </Box>
   );

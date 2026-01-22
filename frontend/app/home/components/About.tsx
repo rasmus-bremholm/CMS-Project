@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { rootUrl } from "@/app/lib/utils/strapi";
@@ -11,7 +12,7 @@ interface AboutProps {
 
 export default function About({ data }: AboutProps) {
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 8 }}>
       <Grid container spacing={4} alignItems="center">
         <Grid size={{ xs: 12, md: 6 }}>
           <Box
@@ -28,7 +29,20 @@ export default function About({ data }: AboutProps) {
             <Typography variant="body1" component="p">
               {data.body_text}
             </Typography>
-            <Button>{data.button_label}</Button>
+            <Typography
+              component={Link}
+              href={`${data.button_url}`}
+              sx={{
+                color: "inherit",
+                fontSize: 16,
+                fontWeight: "bold",
+                textDecoration: "none",
+                textTransform: "uppercase",
+                "&:hover": { color: "brand.darkCoffee" },
+              }}
+            >
+              {data.button_label}
+            </Typography>
           </Box>
         </Grid>
         <Grid size={{ xs: 12, md: 6 }}>

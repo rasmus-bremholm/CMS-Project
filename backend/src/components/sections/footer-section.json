@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_sections_footer_sections",
+  "info": {
+    "displayName": "footer_section",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "field1_label": {
+      "type": "string",
+      "required": true
+    },
+    "field1_url": {
+      "type": "string"
+    },
+    "field2_label": {
+      "type": "string",
+      "required": true
+    },
+    "field2_url": {
+      "type": "string"
+    },
+    "field3_label": {
+      "type": "string",
+      "required": true
+    },
+    "field3_url": {
+      "type": "string"
+    },
+    "field4_label": {
+      "type": "string",
+      "required": true
+    },
+    "field4_url": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

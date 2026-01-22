@@ -38,7 +38,7 @@ export default function Cart({ data }: { data?: any }) {
   if (items.length === 0) {
     return (
       <Box
-        minHeight="100vh"
+        minHeight="60vh"
         display="flex"
         justifyContent="center"
         alignItems="center"

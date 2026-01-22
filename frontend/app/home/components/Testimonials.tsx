@@ -11,7 +11,7 @@ interface TestimonialProps {
 
 export default async function Testimonials({ data }: TestimonialProps) {
   return (
-    <Box component="section" sx={{ backgroundColor: "#302620", py: 6 }}>
+    <Box component="section" sx={{ backgroundColor: "#302620", py: 8 }}>
       <Container>
         <Grid
           container
