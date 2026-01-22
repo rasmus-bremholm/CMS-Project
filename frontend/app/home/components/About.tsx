@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import { rootUrl } from "@/app/lib/utils/strapi";
@@ -28,7 +29,19 @@ export default function About({ data }: AboutProps) {
             <Typography variant="body1" component="p">
               {data.body_text}
             </Typography>
-            <Button>{data.button_label}</Button>
+            <Typography
+              variant="h6"
+              component={Link}
+              href={`${data.button_url}`}
+              sx={{
+                color: "inherit",
+                fontWeight: "semi-bold",
+                textDecoration: "none",
+                "&:hover": { color: "brand.darkCoffee" },
+              }}
+            >
+              {data.button_label}
+            </Typography>
           </Box>
         </Grid>
         <Grid size={{ xs: 12, md: 6 }}>
