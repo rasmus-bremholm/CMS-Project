@@ -17,7 +17,6 @@ export default async function CategoryGalleryPage({
   const { tag } = await searchParams;
   const products = await getProductsByCategory(slug, tag);
   const allTags = await getTags();
-  console.log("products", products);
 
   return (
     <Box component="section" sx={{ backgroundColor: "brand.latte", py: 10 }}>

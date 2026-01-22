@@ -18,8 +18,6 @@ export default function FilterPanel({ tags }) {
   const handleFilterChange = (tag: string) => {
     const params = new URLSearchParams(searchParams);
 
-    console.log("params", params);
-    console.log("pathname", pathname);
     if (params.has("tag", tag)) {
       params.delete("tag", tag);
     } else {
