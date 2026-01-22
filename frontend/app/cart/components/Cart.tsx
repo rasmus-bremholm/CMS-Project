@@ -91,17 +91,29 @@ export default function Cart({ data }: { data?: any }) {
           <Card sx={{ p: 2 }}>
             <Box
               display="grid"
-              gridTemplateColumns="80px 1fr 140px 80px 40px"
+              gridTemplateColumns={{
+                xs: "1 fr",
+                sm: "80px 1fr 140px 80px 40px",
+              }}
               gap={2}
             >
-              <Typography fontWeight={600}>
+              <Typography
+                fontWeight={600}
+                sx={{ display: { xs: "none", sm: "block" } }}
+              >
                 {cart?.product_title ?? ""}
               </Typography>
               <Box />
-              <Typography fontWeight={600}>
+              <Typography
+                fontWeight={600}
+                sx={{ display: { xs: "none", sm: "block" } }}
+              >
                 {cart?.quantity_title ?? ""}
               </Typography>
-              <Typography fontWeight={600}>
+              <Typography
+                fontWeight={600}
+                sx={{ display: { xs: "none", sm: "block" } }}
+              >
                 {cart?.total_title ?? ""}
               </Typography>
               <Box />
@@ -170,12 +182,16 @@ export default function Cart({ data }: { data?: any }) {
               </Typography>
             </Box>
 
-            <Stack direction="row" justifyContent="center" spacing={2}>
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              justifyContent="center"
+              spacing={2}
+            >
               <Button
                 component={Link}
                 variant="outlined"
-                href="/products"
-                sx={{ minWidth: 180 }}
+                href="/categories"
+                sx={{ minWidth: { sm: 180 } }}
               >
                 {orderSummary?.button_continue ?? ""}
               </Button>
@@ -184,7 +200,7 @@ export default function Cart({ data }: { data?: any }) {
                 component={Link}
                 variant="contained"
                 href="/checkout"
-                sx={{ minWidth: 180, bgcolor: "brand.darkCoffee" }}
+                sx={{ minWidth: { sm: 180 }, bgcolor: "brand.darkCoffee" }}
               >
                 {orderSummary?.button_checkout ?? ""}
               </Button>

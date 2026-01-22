@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/app/context/LanguageContext";
 import { getCheckoutData } from "@/app/lib/utils/strapi";
-import { Container, Grid, Stack, Typography } from "@mui/material";
+import { Container, Grid, Snackbar, Stack, Typography } from "@mui/material";
 import BackButton from "../components/BackButton";
 import ContactCard from "./components/Cards/ContactCard";
 import AddressCard from "./components/Cards/AddressCard";
@@ -14,6 +14,7 @@ export default function CheckoutWrapper() {
   const { locale } = useLanguage();
   const [checkout, setCheckout] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -27,6 +28,11 @@ export default function CheckoutWrapper() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSnackbarOpen(true);
+
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 2000);
   };
 
   return (
@@ -54,6 +60,17 @@ export default function CheckoutWrapper() {
           </Grid>
         </Grid>
       </form>
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={4000}
+        message={
+          locale === "sv"
+            ? "Din order har lagts!"
+            : "Your order has been placed!"
+        }
+        onClose={() => setSnackbarOpen(false)}
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      />
     </Container>
   );
 }

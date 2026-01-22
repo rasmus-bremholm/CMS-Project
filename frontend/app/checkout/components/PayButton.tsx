@@ -12,6 +12,7 @@ export default function PayButton({ total, label }: PayButtonProps) {
     <>
       <Button
         type="submit"
+        href="/"
         variant="contained"
         size="large"
         fullWidth
