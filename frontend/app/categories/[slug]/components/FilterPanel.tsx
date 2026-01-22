@@ -30,7 +30,7 @@ export default function FilterPanel({ tags }) {
             key={tag.id}
             control={
               <Checkbox
-                onClick={() => handleFilterChange(tag.title)}
+                onClick={() => handleFilterChange(tag.slug)}
                 sx={{ "& .MuiSvgIcon-root": { fontSize: 16 } }}
               />
             }
