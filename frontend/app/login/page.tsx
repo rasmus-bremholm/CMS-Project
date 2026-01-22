@@ -30,9 +30,8 @@ export default function LoginPage() {
       <Box
         display="flex"
         justifyContent="center"
-        alignItems="flex-start"
-        minHeight="100vh"
-        mt={4}
+        alignItems="center"
+        minHeight="70vh"
       >
         <Paper elevation={3} sx={{ padding: 4, width: 350 }}>
           <Typography variant="h5" component="h1" sx={{ marginBottom: 2 }}>
