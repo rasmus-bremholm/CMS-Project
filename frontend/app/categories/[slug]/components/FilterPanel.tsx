@@ -31,7 +31,7 @@ export default function FilterPanel({ tags }) {
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Box
         sx={{
-          display: { xs: showFilters ? "flex" : "none", md: "flex" },
+          display: showFilters ? "flex" : "none",
           flexDirection: { xs: "column", md: "row" },
           justifyContent: "center",
         }}
@@ -50,7 +50,11 @@ export default function FilterPanel({ tags }) {
         ))}
       </Box>
       <Divider>
-        <Chip label="Filter" size="small" onClick={handleToggle} />
+        <Chip
+          label={showFilters ? "Dölj filter" : "Visa filter"}
+          size="small"
+          onClick={handleToggle}
+        />
       </Divider>
     </Box>
   );
