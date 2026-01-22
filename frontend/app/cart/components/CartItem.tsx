@@ -19,7 +19,12 @@ export default function CartItem({ item }: CartItemProps) {
   return (
     <Box
       display="grid"
-      gridTemplateColumns="80px 1fr 140px 80px 40px"
+      gridTemplateColumns={{
+        xs: "1fr",
+        sm: "80px 1fr 140px 80px 40px",
+      }}
+      justifyItems={{ xs: "center", sm: "stretch" }}
+      textAlign={{ xs: "center", sm: "left" }}
       gap={2}
       py={2}
       borderBottom="1px solid"
@@ -30,10 +35,18 @@ export default function CartItem({ item }: CartItemProps) {
         component="img"
         image={imageUrl}
         alt={product.title}
-        sx={{ width: 64, height: 64, objectFit: "cover", borderRadius: 1 }}
+        sx={{
+          width: 64,
+          height: 64,
+          objectFit: "cover",
+          borderRadius: 1,
+          mx: { xs: "auto", sm: 0 },
+        }}
       />
 
-      <Typography fontWeight={500}>{product.title}</Typography>
+      <Typography fontWeight={500} textAlign={{ xs: "center", sm: "left" }}>
+        {product.title}
+      </Typography>
 
       <Box display="flex" alignItems="center" gap={1}>
         <IconButton
@@ -53,13 +66,18 @@ export default function CartItem({ item }: CartItemProps) {
         </IconButton>
       </Box>
 
-      <Typography color="brand.coffeeBean">
+      <Typography
+        color="brand.coffeeBean"
+        textAlign={{ xs: "center", sm: "left" }}
+      >
         {(product.price * quantity).toFixed(2)}
       </Typography>
 
-      <IconButton size="small" onClick={() => removeItem(product.id)}>
-        <Close fontSize="small" sx={{ color: "brand.coffeeBean" }} />
-      </IconButton>
+      <Box display="flex" justifyContent="center">
+        <IconButton size="small" onClick={() => removeItem(product.id)}>
+          <Close fontSize="small" sx={{ color: "brand.coffeeBean" }} />
+        </IconButton>
+      </Box>
     </Box>
   );
 }
