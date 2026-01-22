@@ -12,7 +12,7 @@ interface AboutProps {
 
 export default function About({ data }: AboutProps) {
   return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
+    <Container maxWidth="lg" sx={{ py: 8 }}>
       <Grid container spacing={4} alignItems="center">
         <Grid size={{ xs: 12, md: 6 }}>
           <Box
@@ -30,13 +30,14 @@ export default function About({ data }: AboutProps) {
               {data.body_text}
             </Typography>
             <Typography
-              variant="h6"
               component={Link}
               href={`${data.button_url}`}
               sx={{
                 color: "inherit",
-                fontWeight: "semi-bold",
+                fontSize: 16,
+                fontWeight: "bold",
                 textDecoration: "none",
+                textTransform: "uppercase",
                 "&:hover": { color: "brand.darkCoffee" },
               }}
             >
