@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { ProductCard } from "./ProductCard";
 
 // Types
@@ -13,9 +13,10 @@ export default function ProductGallery({ products }: Props) {
     <Box
       sx={{
         backgroundColor: "#E3DFD9",
+        borderRadius: 2,
         mx: "auto",
-        px: 2,
-        py: 4,
+        px: 4,
+        py: 6,
         width: "100%",
       }}
     >
@@ -27,15 +28,25 @@ export default function ProductGallery({ products }: Props) {
           justifyContent: { xs: "center", sm: "flex-start" },
         }}
       >
-        {products.map(product => (
-          <Grid
-            key={product.id}
-            size={{ xs: 10, sm: 6, md: 4, lg: 3 }}
-            sx={{ display: "flex" }}
-          >
-            <ProductCard product={product} />
+        {products.length > 0 ? (
+          products.map(product => (
+            <Grid
+              key={product.id}
+              size={{ xs: 10, sm: 6, md: 4, lg: 3 }}
+              sx={{ display: "flex" }}
+            >
+              <ProductCard product={product} />
+            </Grid>
+          ))
+        ) : (
+          <Grid size={12}>
+            <Box sx={{ textAlign: "center", py: 8 }}>
+              <Typography variant="h6">
+                Inga produkter matchade dina val.
+              </Typography>
+            </Box>
           </Grid>
-        ))}
+        )}
       </Grid>
     </Box>
   );

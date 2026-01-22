@@ -47,11 +47,10 @@ async function strapiQuery(
 }
 
 export async function getProductsByCategory(
-  categorySlug: string
+  categorySlug: string,
+  tagSlugs?: string | string[]
 ): Promise<Product[]> {
-  // API test
-  // http://localhost:1337/api/products/filters[category][title][$eq]=coffee&populate=*
-  const query = {
+  const query: any = {
     filters: {
       category: {
         slug: {
@@ -62,14 +61,24 @@ export async function getProductsByCategory(
     populate: "*",
   };
 
+  if (tagSlugs) {
+    const tagList = Array.isArray(tagSlugs) ? tagSlugs : [tagSlugs];
+
+    query.filters.$and = tagList.map(slug => ({
+      tags: {
+        slug: {
+          $eq: slug,
+        },
+      },
+    }));
+  }
+
   const response = await strapiQuery("products", query);
 
   return response.data;
 }
 
 export async function getProductBySlug(slug: string): Promise<Product> {
-  // API test
-  // http://localhost:1337/api/products?filters[slug][$eq]=arvid-nordquist-mellan&populate=*
   const query = {
     filters: {
       slug: {
@@ -85,8 +94,6 @@ export async function getProductBySlug(slug: string): Promise<Product> {
 }
 
 export async function getOrders(): Promise<OrdersResponse> {
-  // API test
-  // http://localhost:1337/api/orders?populate[order_items][populate]=product
   const query = {
     populate: {
       order_items: {
@@ -101,8 +108,6 @@ export async function getOrders(): Promise<OrdersResponse> {
 }
 
 export async function getHomepageData() {
-  // API test
-  // http://localhost:1337/api/home-page?populate[about][populate]=image&populate[carousel_images][populate]=*
   const query = {
     populate: {
       carousel_images: {
