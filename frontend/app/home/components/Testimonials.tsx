@@ -56,6 +56,7 @@ export default async function Testimonials({ data }: TestimonialProps) {
                     <Image
                       fill
                       src={`${rootUrl}${testimonial.avatar.url}`}
+											sizes="50px"
                       alt={testimonial.avatar.alternativeText}
                     />
                   </Box>

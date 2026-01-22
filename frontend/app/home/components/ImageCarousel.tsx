@@ -39,6 +39,7 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
           >
             <Image
               src={`${rootUrl}${img.url}`}
+							sizes="100vw"
               alt={img.alternativeText}
               fill
               style={{ objectFit: "cover" }}
