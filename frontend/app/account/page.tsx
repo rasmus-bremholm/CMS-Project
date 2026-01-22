@@ -28,18 +28,20 @@ export default async function AccountPage() {
   const currentLocale = "en";
 
   return (
-    <Container maxWidth="lg" sx={{ py: 6, bgcolor: "#CEC5BA" }}>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <Greeting user={user} />
-        <Typography variant="caption">{user.email}</Typography>
-      </Box>
-      <Box sx={{ display: "flex", py: 4, gap: 2 }}>
-        <AccountDashboard
-          ordersContent={<OrderList orders={orders} />}
-          addressContent={<AdressList />}
-          favoritesContent={<FavoritesList favorites={favorites} />}
-        />
-      </Box>
-    </Container>
+    <Box sx={{ backgroundColor: "brand.silver", padding: 4 }}>
+      <Container maxWidth="lg" sx={{ py: 6 }}>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <Greeting user={user} />
+          <Typography variant="caption">{user.email}</Typography>
+        </Box>
+        <Box sx={{ display: "flex", py: 4, gap: 2 }}>
+          <AccountDashboard
+            ordersContent={<OrderList orders={orders} />}
+            addressContent={<AdressList />}
+            favoritesContent={<FavoritesList favorites={favorites} />}
+          />
+        </Box>
+      </Container>
+    </Box>
   );
 }
