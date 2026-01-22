@@ -45,7 +45,7 @@ export default function OrderSummary({ data }: { data?: any }) {
                 {item.product.title} x {item.quantity}
               </Typography>
               <Typography variant="body2">
-                ${(item.product.price * item.quantity).toFixed(2)}
+                {(item.product.price * item.quantity).toFixed(2)}
               </Typography>
             </Box>
           ))}
@@ -56,16 +56,14 @@ export default function OrderSummary({ data }: { data?: any }) {
         <Stack spacing={1}>
           <Box display="flex" justifyContent="space-between">
             <Typography color="text.secondary">Subtotal</Typography>
-            <Typography>${subtotal.toFixed(2)}</Typography>
+            <Typography>{subtotal.toFixed(2)}</Typography>
           </Box>
 
           <Box display="flex" justifyContent="space-between">
             <Typography color="text.secondary">
               {orderSummary?.subtotal ?? ""}
             </Typography>
-            <Typography>
-              {shippingCost === 0 ? "Free" : `$${shippingCost}`}
-            </Typography>
+            <Typography>{shippingCost}</Typography>
           </Box>
 
           <Divider />
@@ -73,7 +71,7 @@ export default function OrderSummary({ data }: { data?: any }) {
           <Box display="flex" justifyContent="space-between">
             <Typography fontWeight={600}>Total</Typography>
             <Typography fontWeight={600} color="brand.coffeeBean">
-              ${total.toFixed(2)}
+              {total.toFixed(2)}
             </Typography>
           </Box>
         </Stack>

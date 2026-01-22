@@ -174,7 +174,7 @@ export default function Cart({ data }: { data?: any }) {
               <Button
                 component={Link}
                 variant="outlined"
-                href="/products"
+                href="/categories"
                 sx={{ minWidth: 180 }}
               >
                 {orderSummary?.button_continue ?? ""}
