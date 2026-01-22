@@ -17,7 +17,7 @@ export default async function CategoryGalleryPage({ params, searchParams }: Prop
 console.log('products', products)
 
   return (
-    <Box component="section" sx={{ backgroundColor: "brand.latte", py: 6 }}>
+    <Box component="section" sx={{ backgroundColor: "brand.latte", py: 10 }}>
       <Container
         component="main"
         sx={{
