@@ -19,7 +19,7 @@ export default async function Navbar() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        px: { xs: 2, sm: 4, m: 6 },
+        px: { xs: 2, sm: 4, md: 6 },
         py: 1,
         bgcolor: "brand.whiteSmoke",
       }}
@@ -34,18 +34,37 @@ export default async function Navbar() {
           />
         </MuiLink>
       </Box>
-      <Box sx={{ flex: 1, display: "flex", justifyContent: "center", gap: 3 }}>
-        {menuLinks.map(item => (
-          <MuiLink
-            component={NextLink}
-            key={item.id}
-            href={item.url}
-            variant="navLink"
-            style={{ color: "text.primary", textDecoration: "none" }}
-          >
-            <Typography fontWeight="bold">{item.label}</Typography>
-          </MuiLink>
-        ))}
+      <Box
+        sx={{
+          flex: 1,
+          display: "flex",
+          justifyContent: "center",
+          gap: 3,
+        }}
+      >
+        {menuLinks.map(item => {
+          const isKategorier =
+            item.label === "KATEGORIER" || item.label === "Kategorier";
+
+          return (
+            <MuiLink
+              component={NextLink}
+              key={item.id}
+              href={item.url}
+              variant="navLink"
+              sx={{
+                display: {
+                  xs: isKategorier ? "block" : "none",
+                  sm: "block",
+                },
+                color: "text.primary",
+                textDecoration: "none",
+              }}
+            >
+              <Typography fontWeight="bold">{item.label}</Typography>
+            </MuiLink>
+          );
+        })}
       </Box>
 
       <Box mr={2}>
