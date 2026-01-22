@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { getProductsByCategory, getTags } from "@/app/lib/utils/strapi";
 import BackButton from "@/app/components/BackButton";
 import FilterPanel from "@/app/categories/[slug]/components/FilterPanel";
@@ -37,6 +37,7 @@ console.log('products', products)
           }}
         >
           <FilterPanel tags={allTags} />
+					<Typography variant="h3" component="h1" sx={{ textTransform: "capitalize"}}>{slug}</Typography>
           <ProductGallery products={products} />
         </Box>
       </Container>
