@@ -20,9 +20,7 @@ export default function LoginPage() {
   const router = useRouter();
 
   const handleSuccess = () => {
-    console.log("Lyckad login/register");
-
-    router.push("/");
+    router.push("/account");
   };
 
   return (
