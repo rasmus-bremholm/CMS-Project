@@ -7,6 +7,7 @@ import { Cart } from "@/types/cart";
 import { Checkout } from "@/types/checkout";
 import { Header } from "@/types/header";
 import { BackButton } from "@/types/back-button";
+import { Footer } from "@/types/footer";
 
 interface StrapiData {
   data: any;
@@ -369,6 +370,16 @@ export async function getHeaderData(): Promise<Header> {
   };
 
   const response = await strapiQuery("header", query);
+
+  return response.data;
+}
+
+export async function getFooterData(): Promise<Footer> {
+  const query = {
+    populate: "*",
+  };
+
+  const response = await strapiQuery("footer", query);
 
   return response.data;
 }
