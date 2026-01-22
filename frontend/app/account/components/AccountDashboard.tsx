@@ -7,6 +7,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import { useState } from "react";
 import { DashboardLocale } from "../lib/AccountDashBoard";
 import { useLanguage } from "@/app/context/LanguageContext";
+import { clearAuthCookie } from "@/app/actions/clearAuthCookie";
 
 interface AccountDashboardProps {
   ordersContent: React.ReactNode;
@@ -53,7 +54,7 @@ export default function AccountDashboard({
         <Button variant="outlined" LinkComponent={Link} href="/contact">
           {DashboardLocale.btnSupport[currentLocale]}
         </Button>
-        <Button variant="outlined">
+        <Button variant="outlined" onClick={clearAuthCookie}>
           {DashboardLocale.btnLogout[currentLocale]}
         </Button>
       </Box>
