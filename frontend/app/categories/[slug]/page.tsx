@@ -1,16 +1,31 @@
 import { Box, Container } from "@mui/material";
-import { getProductsByCategory, getTags } from "@/app/lib/utils/strapi";
+import {
+  getProductsByCategory,
+  getTags,
+  getCategoryBySlug,
+} from "@/app/lib/utils/strapi";
 import BackButton from "@/app/components/BackButton";
 import FilterPanel from "@/app/components/FilterPanel";
 import ProductGallery from "./components/ProductGallery";
+import { draftMode } from "next/headers";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-export default async function CategoryGalleryPage({ params }: Props) {
-  const { slug } = await params;
-  const products = await getProductsByCategory(slug);
+export default async function CategoryGalleryPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+
+  const { isEnabled: isDraftMode } = await draftMode();
+  const status = isDraftMode ? "draft" : "published";
+
+  const category = await getCategoryBySlug(slug, status);
+  const products = await getProductsByCategory(slug, status);
   const tags = await getTags();
 
   return (
@@ -25,6 +40,9 @@ export default async function CategoryGalleryPage({ params }: Props) {
         }}
       >
         <BackButton />
+
+        <h1>{category?.title}</h1>
+
         <Box
           sx={{
             display: "flex",

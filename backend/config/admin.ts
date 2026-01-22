@@ -25,17 +25,46 @@ export default ({ env }) => ({
       async handler(uid, { documentId, locale, status }) {
         const document = await strapi.documents(uid).findOne({
           documentId,
-          /*,
           populate: null,
-          fields: ["slug"],*/
+          fields: ["slug"],
         });
 
-        // Single type (Homepage)
-        if (uid === "api::homepage.homepage") {
-          return `${env("CLIENT_URL")}/?preview=true`;
+        const { slug } = document;
+        // Bygg path baserat på content type
+        let pathname = "/";
+        if (uid === "api::category.category") {
+          pathname = document.slug
+            ? `/categories/${document.slug}`
+            : "/categories";
         }
 
-        const { slug } = document;
+        // Lägg till locale om det inte är engelska
+        if (locale && locale !== "en") {
+          pathname = `/${locale}${pathname}`;
+        }
+
+        // Generate the preview pathname based on content type and document
+        // const pathname = getPreviewPathname(uid, { locale, document });
+
+        // Disable preview if the pathname is not found
+        if (!pathname) {
+          return null;
+        }
+
+        // Use Next.js draft mode passing it a secret key and the content-type status
+        // Skicka med secret, status och documentId
+        const urlSearchParams = new URLSearchParams({
+          url: pathname,
+          secret: env("PREVIEW_SECRET"),
+          ...(slug && { slug }),
+          status,
+          uid,
+        });
+
+        const previewURL = `${env("CLIENT_URL")}/api/preview?${urlSearchParams}`;
+        return previewURL;
+
+        /* const { slug } = document;
         // Generate a preview url
         const urlSearchParams = new URLSearchParams({
           secret: env("PREVIEW_SECRET"),
@@ -46,16 +75,8 @@ export default ({ env }) => ({
 
         // return it so strapi can use it
         const previewURL = `${env("CLIENT_URL")}/api/preview?${urlSearchParams}`;
-        return previewURL;
+        return previewURL;*/
       },
     },
   },
 });
-
-/*
-        const pathname = getPreviewPathname(uid, { locale, document });
-
-        return `${env("PREVIEW_URL")}${pathname}`;
-
-    },
-    */

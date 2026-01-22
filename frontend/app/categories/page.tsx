@@ -3,7 +3,7 @@
 import NextLink from "next/link";
 import { Link as MuiLink } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Box, Container, Typography, Paper } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { Category } from "@/types/category";
 import { getCategories, getCategoriesPage } from "../lib/utils/strapi";
 import { useTheme } from "@mui/material/styles";

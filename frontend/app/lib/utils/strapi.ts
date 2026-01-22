@@ -47,11 +47,13 @@ async function strapiQuery(
 }
 
 export async function getProductsByCategory(
-  categorySlug: string
+  categorySlug: string,
+  status: "draft" | "published"
+  //  publicationState: documentId ? "preview" : "published",
 ): Promise<Product[]> {
   // API test
   // http://localhost:1337/api/products/filters[category][title][$eq]=coffee&populate=*
-  const query = {
+  const query: any = {
     filters: {
       category: {
         slug: {
@@ -59,6 +61,7 @@ export async function getProductsByCategory(
         },
       },
     },
+    status: status as "draft" | "published" | undefined,
     populate: "*",
   };
 
@@ -67,16 +70,32 @@ export async function getProductsByCategory(
   return response.data;
 }
 
-export async function getProductBySlug(slug: string): Promise<Product> {
-  // API test
-  // http://localhost:1337/api/products?filters[slug][$eq]=arvid-nordquist-mellan&populate=*
+export async function getCategoryBySlug(slug: string, status: string) {
+  console.log(slug, "slug");
+  const query: any = {
+    filters: { slug: { $eq: slug } },
+    populate: "*",
+    status: status as "draft" | "published" | undefined,
+  };
+
+  const response = await strapiQuery("categories", query);
+  return response.data[0];
+}
+
+export async function getProductBySlug(
+  slug: string,
+  status: "draft" | "published" = "published",
+  documentId?: string
+): Promise<Product> {
   const query = {
     filters: {
       slug: {
         $eq: slug,
       },
     },
+    //status,
     populate: "*",
+    publicationState: status === "draft" ? "preview" : "published",
   };
 
   const response = await strapiQuery("products", query);
