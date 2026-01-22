@@ -32,7 +32,8 @@ async function strapiQuery(
     arrayFormat: "indices",
   });
   const url = strapiUrl + endpoint + (queryString ? `?${queryString}` : "");
-
+	console.log('url', url)
+	
   const response = await fetch(url, {
     next: { revalidate: 60 }, // optional but recommended
   });
@@ -47,11 +48,12 @@ async function strapiQuery(
 }
 
 export async function getProductsByCategory(
-  categorySlug: string
+  categorySlug: string,
+  tagSlugs?: string | string[]
 ): Promise<Product[]> {
   // API test
   // http://localhost:1337/api/products/filters[category][title][$eq]=coffee&populate=*
-  const query = {
+  const query: any = {
     filters: {
       category: {
         slug: {
@@ -61,6 +63,16 @@ export async function getProductsByCategory(
     },
     populate: "*",
   };
+
+	if (tagSlugs) {
+		const tagList = Array.isArray(tagSlugs) ? tagSlugs : [tagSlugs];
+
+		query.filters.tags = {
+			slug: {
+				$in: tagList,
+			},
+		};
+	}
 
   const response = await strapiQuery("products", query);
 

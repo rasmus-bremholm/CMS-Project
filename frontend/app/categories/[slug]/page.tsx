@@ -6,12 +6,15 @@ import ProductGallery from "./components/ProductGallery";
 
 interface Props {
   params: Promise<{ slug: string }>;
+	searchParams: Promise<{ tag?: string | string[] }>;
 }
 
-export default async function CategoryGalleryPage({ params }: Props) {
+export default async function CategoryGalleryPage({ params, searchParams }: Props) {
   const { slug } = await params;
-  const products = await getProductsByCategory(slug);
-  const tags = await getTags();
+	const { tag } = await searchParams;
+  const products = await getProductsByCategory(slug, tag);
+  const allTags = await getTags();
+console.log('products', products)
 
   return (
     <Box component="section" sx={{ backgroundColor: "brand.latte", py: 6 }}>
@@ -33,7 +36,7 @@ export default async function CategoryGalleryPage({ params }: Props) {
             width: "100%",
           }}
         >
-          <FilterPanel tags={tags} />
+          <FilterPanel tags={allTags} />
           <ProductGallery products={products} />
         </Box>
       </Container>
