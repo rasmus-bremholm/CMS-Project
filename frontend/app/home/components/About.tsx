@@ -50,6 +50,7 @@ export default function About({ data }: AboutProps) {
             <Image
               fill
               src={`${rootUrl}${data.image.url}`}
+              sizes="(max-width: 768px) 100vw, 50vw"
               alt={data.image.alternativeText}
             />
           </Box>

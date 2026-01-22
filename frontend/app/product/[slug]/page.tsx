@@ -49,6 +49,7 @@ export default async function ProductDetails({ params }: Props) {
                 <Image
                   fill
                   src={`${rootUrl}${product.img.url}`}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   alt="Alt text"
                 />
               </Box>
