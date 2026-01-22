@@ -108,7 +108,7 @@ export async function getOrders(): Promise<OrdersResponse> {
   return response.data;
 }
 
-export async function getHomepageData() {
+export async function getHomepageData(isPreview: boolean = false) {
   const query = {
     populate: {
       carousel_images: {
@@ -121,6 +121,7 @@ export async function getHomepageData() {
         populate: "*",
       },
     },
+    status: isPreview ? "draft" : "published",
   };
 
   const response = await strapiQuery("home-page", query);

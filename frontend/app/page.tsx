@@ -4,8 +4,9 @@ import PopularProducts from "./home/components/PopularProducts";
 import About from "./home/components/About";
 import Testimonials from "./home/components/Testimonials";
 
-export default async function Home() {
-  const data = await getHomepageData();
+export default async function Home({ searchParams }) {
+	const isPreview = searchParams?.preview === 'true';
+  const data = await getHomepageData(isPreview);
 
   return (
     <>
